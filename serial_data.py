@@ -15,7 +15,6 @@ while True:
 
 
 
-
 # import serial
 # import struct
 
