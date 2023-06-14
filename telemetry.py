@@ -1,5 +1,6 @@
 import serial
 import struct
+import time
 
 # Constants
 RADIO_ADDRESS = 0xea
