@@ -10,7 +10,7 @@ def parse_arguments() -> argparse.Namespace:
         type=int
     )
     args = parser.parse_args()
-    return args
+    return args 
 
 
 def main():
