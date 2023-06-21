@@ -1,4 +1,0 @@
-install: npm install
-start: npm start
-
-everything else: https://gitlab.lrz.de/ga58zos/vis-frame/-/wikis/home
