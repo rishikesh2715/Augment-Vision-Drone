@@ -1,11 +1,8 @@
 import serial
 import struct
-import time
-import threading
 
-def processSerialData():
-    global lat, lon, speed, heading, altitude, sats, pitch, roll, yaw
-
+def processSerialData(drone):
+    
     # Constants
     RADIO_ADDRESS = 0xea
 
@@ -65,17 +62,17 @@ def processSerialData():
 
 
             if frame_type == 0x02:  # GPS
-                lat, lon, speed, heading, altitude, sats = struct.unpack('>iiHHHB', payload)
-                lat /= 1e7              # degrees
-                lon /= 1e7              # degrees
-                speed /= 10             # km/h
-                heading /= 100          # degrees
-                altitude -= 1000        # meters
-                print(f'GPS: Lat={lat}, Lon={lon}, Speed={speed}, Heading={heading}, Altitude={altitude}, Sats={sats}')
+                drone.lat, drone.lon, drone.speed, drone.heading, drone.altitude, drone.sats = struct.unpack('>iiHHHB', payload)
+                drone.lat /= 1e7              # degrees
+                drone.lon /= 1e7              # degrees
+                drone.speed /= 10             # km/h
+                drone.heading /= 100          # degrees
+                drone.altitude -= 1000        # meters
+                # print(f'GPS: Lat={drone.lat}, drone.Lon={drone.lon}, drone.Speed={drone.speed}, drone.heading={drone.heading}, drone.Altitude={drone.altitude}, drone.Sats={drone.sats}')
 
             elif frame_type == 0x07:  # VARIO
                 vertical_speed = struct.unpack('>h', payload)[0]
-                print(f'VARIO: Vertical speed={vertical_speed}')
+                # print(f'VARIO: Vertical speed={vertical_speed}')
 
             
             elif frame_type == 0x08:  # Battery
@@ -84,7 +81,7 @@ def processSerialData():
                 remaining = struct.unpack('>B', payload[7:])[0]
                 voltage /= 10            # volts
                 current /= 10          # amps
-                print(f'Battery: Voltage={voltage}, Current={current}, Used={used}, Remaining={remaining}')
+                # print(f'Battery: Voltage={voltage}, Current={current}, Used={used}, Remaining={remaining}')
 
 
             elif frame_type == 0x14:  # Link Statistics
@@ -95,26 +92,27 @@ def processSerialData():
                 uplink_rssi_ant1 /= -1
                 uplink_rssi_ant2 /= -1
                 downlink_rssi /= -1
-                print(f'Link Statistics: Uplink RSSI Ant.1={uplink_rssi_ant1}dBm, Uplink RSSI Ant.2={uplink_rssi_ant2}dBm, Uplink Quality={uplink_quality}%, Uplink SNR={uplink_snr}db, Active Antenna={active_antenna}, RF Mode={rf_mode}, Uplink TX Power={uplink_tx_power}, Downlink RSSI={downlink_rssi}dBm, Downlink Quality={downlink_quality}%, Downlink SNR={downlink_snr}db')
+                # print(f'Link Statistics: Uplink RSSI Ant.1={uplink_rssi_ant1}dBm, Uplink RSSI Ant.2={uplink_rssi_ant2}dBm, Uplink Quality={uplink_quality}%, Uplink SNR={uplink_snr}db, Active Antenna={active_antenna}, RF Mode={rf_mode}, Uplink TX Power={uplink_tx_power}, Downlink RSSI={downlink_rssi}dBm, Downlink Quality={downlink_quality}%, Downlink SNR={downlink_snr}db')
             
             elif frame_type == 0x1e:  # Attitude
-                pitch, roll, yaw = struct.unpack('>hhh', payload)
-                pitch /= 10000           # degrees
-                roll /= 10000            # degrees
-                yaw /= 10000             # degrees
-                print(f'Attitude: Pitch={pitch}, Roll={roll}, Yaw={yaw}')
+                drone.pitch, drone.roll, drone.yaw = struct.unpack('>hhh', payload)
+                drone.pitch /= 10000           # degrees
+                drone.roll /= 10000            # degrees
+                drone.yaw /= 10000             # degrees
+                # print(f'Attitude: drone.Pitch={drone.pitch}, drone.Roll={drone.roll}, drone.Yaw={drone.yaw}')
 
             elif frame_type == 0x21:  # Flight Mode
                 flight_mode = payload.decode('ascii').rstrip('\x00')
-                print(f'Flight Mode: {flight_mode}')
+                # print(f'Flight Mode: {flight_mode}')
 
             elif frame_type == 0x29:  # Device Info
                 destination, origin = struct.unpack('<BB', payload[:2])
                 device_name = payload[2:].decode('ascii').rstrip('\x00')
-                print(f'Device Info: Destination={destination}, Origin={origin}, Device Name={device_name}')
+                # print(f'Device Info: Destination={destination}, Origin={origin}, Device Name={device_name}')
 
             else:
-                print(f'Unknown frame type: {frame_type}')
+                # print(f'Unknown frame type: {frame_type}')
+                pass
 
         else:
             print(f'Unknown device address: {device_address}')
@@ -163,7 +161,7 @@ def processSerialData():
     #     return crc
 
     # with open(csv_file, 'w', newline='') as f:
-    #     fieldnames = ['Time', 'Type', 'Lat', 'Lon', 'Speed', 'Heading', 'Altitude', 'Sats', 
+    #     fieldnames = ['Time', 'Type', 'drone.lat', 'drone.Lon', 'Speed', 'Heading', 'Altitude', 'Sats', 
     #                   'Vertical Speed', 'Voltage', 'Current', 'Used', 'Remaining', 
     #                   'Uplink RSSI Ant.1', 'Uplink RSSI Ant.2', 'Uplink Quality', 'Uplink SNR', 'Active Antenna', 
     #                   'RF Mode', 'Uplink TX Power', 'Downlink RSSI', 'Downlink Quality', 'Downlink SNR', 
@@ -259,6 +257,3 @@ def processSerialData():
 
     #         else:
     #             print(f'Unknown device address: {device_address}')
-
-serialThread = threading.Thread(target=processSerialData)
-serialThread.start()
