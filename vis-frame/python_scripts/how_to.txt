@@ -1,0 +1,5 @@
+MP is for running in Mission Planner and the scruipt must be started via MissionPlanner
+MavProxy is a MP alternative
+MQTT works with the DG800 Plugin
+
+everything else: https://gitlab.lrz.de/ga58zos/vis-frame/-/wikis/home
