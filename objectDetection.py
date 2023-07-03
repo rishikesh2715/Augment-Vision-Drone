@@ -11,7 +11,7 @@ def main():
 
         model = YOLO('yolov8n.pt')
 
-        for result in model.track(source="1", show=False, stream=True, classes=0):
+        for result in model.track(source="0", show=False, stream=True, classes=0):
             frame = result.orig_img
             detections = sv.Detections.from_yolov8(result)        
 
@@ -29,11 +29,11 @@ def main():
                 [x1, y1, x2, y2] = detections.xyxy[0]
                                
                 #Camera parameters
-                focal_length = 730  # C920 webcam focal 
-                drone_real_width = 0.41  # Tello width
+                focal_length = 730  # drone cam focal // c920 = 730 
+                Object_Real_Height = 1.8  # Average Human Height in meters
 
-                drone_pixel_width = x2 - x1
-                distance = (drone_real_width * focal_length) / drone_pixel_width
+                drone_pixel_height = y2 - y1
+                distance = (Object_Real_Height * focal_length) / drone_pixel_height
                 
                 print(f"{distance:.2f} m")
 
