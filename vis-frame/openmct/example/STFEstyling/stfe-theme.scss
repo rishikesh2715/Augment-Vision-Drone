@@ -1,0 +1,21 @@
+@import "../../src/styles/vendor/normalize-min";
+@import "../../src/styles/constants";
+@import "../../src/styles/constants-mobile.scss";
+
+@import "/constants-stfe";
+
+@import "../../src/styles/mixins";
+@import "../../src/styles/animations";
+@import "../../src/styles/about";
+@import "../../src/styles/glyphs";
+@import "/global";
+@import "../../src/styles/status";
+@import "../../src/styles/controls";
+@import "../../src/styles/forms";
+@import "../../src/styles/table";
+@import "../../src/styles/legacy";
+@import "/legacy-plots";
+@import "../../src/styles/plotly";
+@import "../../src/styles/legacy-messages";
+
+@import "../../src/styles/vue-styles.scss";

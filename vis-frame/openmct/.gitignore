@@ -1,0 +1,46 @@
+*.scssc
+*.zip
+*.gzip
+*.tgz
+*.DS_Store
+*.swp
+
+# Compiled CSS, unless directly added
+*.sass-cache
+*COMPILE.css
+*.css
+*.css.map
+
+# still add Progress Bar styling
+!progress_bar.css
+
+# Intellij project configuration files
+*.idea
+*.iml
+
+# External dependencies
+
+# Build output
+target
+dist
+
+# Mac OS X Finder
+.DS_Store
+
+# Closed source libraries
+closed-lib
+
+# Node, Bower dependencies
+node_modules
+bower_components
+
+# Protractor logs
+protractor/logs
+
+# npm-debug log
+npm-debug.log
+
+# karma reports
+report.*.json
+
+package-lock.json

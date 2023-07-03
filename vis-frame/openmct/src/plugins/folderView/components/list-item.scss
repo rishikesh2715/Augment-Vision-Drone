@@ -1,0 +1,17 @@
+/******************************* LIST ITEM */
+.c-list-item {
+    &__type-icon {
+        color: $colorItemTreeIcon;
+    }
+
+    &__name {
+        @include ellipsize();
+    }
+
+    &.is-alias {
+        // Object is an alias to an original.
+        [class*='__type-icon'] {
+            @include isAlias();
+        }
+    }
+}

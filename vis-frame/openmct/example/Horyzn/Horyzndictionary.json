@@ -1,0 +1,656 @@
+{
+    "name": "Horyzn",
+    "key": "pl",
+    "measurements": [
+        {
+            "name": "GPS.alt",
+            "key": "GPS.alt",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "meter",
+                    "units": "meter",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+  
+        {
+            "name": "GPS.satcount",
+            "key": "GPS.satcount",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Airspeed.calc",
+            "key": "Airspeed.calc",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s",
+                    "units": "meter/second",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Airspeed.tar",
+            "key": "Airspeed.tar",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s",
+                    "units": "meter/second",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+
+        {
+            "name": "ACC.X",
+            "key": "ACC.X",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s^2",
+                    "units": "m/s^2",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ACC.Y",
+            "key": "ACC.Y",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s^2",
+                    "units": "m/s^2",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ACC.Z",
+            "key": "ACC.Z",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s^2",
+                    "units": "m/s^2",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Mag.X",
+            "key": "Mag.X",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Mag.Y",
+            "key": "Mag.Y",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Mag.Z",
+            "key": "Mag.Z",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Batt.V",
+            "key": "Batt.V",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "V",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Lidar.alt",
+            "key": "Lidar.alt",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "meter",
+                    "units": "meter",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ATT.roll",
+            "key": "ATT.roll",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "degree",
+                    "units": "degree",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ATT.pitch",
+            "key": "ATT.pitch",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "degree",
+                    "units": "degree",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ATT.yaw",
+            "key": "ATT.yaw",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "degree",
+                    "units": "degree",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        
+        {
+            "name": "NAV.roll",
+            "key": "NAV.roll",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "degree",
+                    "units": "degree",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "NAV.pitch",
+            "key": "NAV.pitch",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "degree",
+                    "units": "degree",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Ground.course",
+            "key": "Ground.course",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "degree",
+                    "units": "degree",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Groundspeed.calc",
+            "key": "Groundspeed.calc",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s",
+                    "units": "meter/second",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Climb.rate",
+            "key": "Climb.rate",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s",
+                    "units": "meter/second",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Turn.radius",
+            "key": "Turn.radius",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "meter",
+                    "units": "meter",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Wind.dir",
+            "key": "Wind.dir",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "degree",
+                    "units": "degree",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Wind.vel",
+            "key": "Wind.vel",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s",
+                    "units": "meter/second",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Turn.rate",
+            "key": "Turn.rate",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Dist.traveled",
+            "key": "Dist.traveled",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "meter",
+                    "units": "meter",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Dist.traveled",
+            "key": "Dist.traveled",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "meter",
+                    "units": "meter",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

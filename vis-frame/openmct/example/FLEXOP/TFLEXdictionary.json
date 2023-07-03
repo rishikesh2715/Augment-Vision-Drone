@@ -1,0 +1,4714 @@
+{
+    "name": "TFLEX",
+    "key": "pl",
+    "measurements": [
+
+        {
+            "name": "Error",
+            "key": "err.Flag",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        
+        {
+            "name": "RX MUX 1 Battery",
+            "key": "Bat.RX_MUX1",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "RX MUX 2 Battery",
+            "key": "Bat.RX_MUX2",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "RX MUX 3 Battery",
+            "key": "Bat.RX_MUX3",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Battery Flight Head",
+            "key": "Bat.FlightHead",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Hour",
+            "key": "xSens.Hour",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Minute",
+            "key": "xSens.Minute",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Second",
+            "key": "xSens.Second",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Millisecond",
+            "key": "xSens.Millisecond",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Euler A",
+            "key": "xSens.EulerA",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS EulerB",
+            "key": "xSens.EulerB",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS EulerY",
+            "key": "xSens.EulerY",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Volts",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS ECEFX",
+            "key": "xSens.ECEFX",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS ECEFY",
+            "key": "xSens.ECEFY",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS ECEFZ",
+            "key": "xSens.ECEFZ",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Angular Velocity a",
+            "key": "xSens.AngularVa",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Angular Velocity b",
+            "key": "xSens.AngularVb",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Angular Velocity y",
+            "key": "xSens.AngularVy",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Acceleration X",
+            "key": "xSens.AccX",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Acceleration Y",
+            "key": "xSens.AccY",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Acceleration Z",
+            "key": "xSens.AccZ",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Velocity X",
+            "key": "xSens.VelX",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Velocity Y",
+            "key": "xSens.VelY",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Seconds + Miliseconds",
+            "key": "xSens.Sec",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "XSENS Latency to arrival",
+            "key": "xSens.Latency",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ADS altitude",
+            "key": "ads.altitude",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ADS angle of attack",
+            "key": "ads.angleOfAttack",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ADS sideslip",
+            "key": "ads.sideslip",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ADS velocity",
+            "key": "ads.velocity",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "PPM Channel  1",
+            "key": "ppm.ch0",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  2",
+            "key": "ppm.ch1",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  3",
+            "key": "ppm.ch2",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  4",
+            "key": "ppm.ch3",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  5",
+            "key": "ppm.ch4",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  6",
+            "key": "ppm.ch5",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  7",
+            "key": "ppm.ch6",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  8",
+            "key": "ppm.ch7",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  9",
+            "key": "ppm.ch8",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  10",
+            "key": "ppm.ch9",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  11",
+            "key": "ppm.ch10",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  12",
+            "key": "ppm.ch11",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  13",
+            "key": "ppm.ch12",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  14",
+            "key": "ppm.ch13",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  15",
+            "key": "ppm.ch14",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PPM Channel  16",
+            "key": "ppm.ch15",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "DD 1",
+            "key": "dd.1",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ECU Fuel Flow per sec",
+            "key": "ecu.FuelFlowPerSec",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ECU Pump Voltage",
+            "key": "ecu.PupmVoltage",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ECU RPM Actual",
+            "key": "ecu.RPMActual",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ECU RPM control",
+            "key": "ecu.RPMControl",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ECU Status",
+            "key": "ecu.Status",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ECU Temp",
+            "key": "ecu.Temp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "ECU Throttle",
+            "key": "ecu.Throttle",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "PWM Channel 1",
+            "key": "servo_rev.ID0",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel 2",
+            "key": "servo_rev.ID1",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel 3",
+            "key": "servo_rev.ID2",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  4",
+            "key": "servo_rev.ID3",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  5",
+            "key": "servo_rev.ID4",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  6",
+            "key": "servo_rev.ID5",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  7",
+            "key": "servo_rev.ID6",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  8",
+            "key": "servo_rev.ID7",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  9",
+            "key": "servo_rev.ID8",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  10",
+            "key": "servo_rev.ID9",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  11",
+            "key": "servo_rev.ID10",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  12",
+            "key": "servo_rev.ID11",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  13",
+            "key": "servo_rev.ID12",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  14",
+            "key": "servo_rev.ID13",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  15",
+            "key": "servo_rev.ID14",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  16",
+            "key": "servo_rev.ID15",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  17",
+            "key": "servo_rev.ID16",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  18",
+            "key": "servo_rev.ID17",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  19",
+            "key": "servo_rev.ID18",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  20",
+            "key": "servo_rev.ID19",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PWM Channel  21",
+            "key": "servo_rev.ID20",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "D Pos Tail R1",
+            "key": "Dpos.TailR1",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU1 Analog Acceleration Z", 
+            "key": "imu1.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU2 Analog Acceleration Z", 
+            "key": "imu2.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU3 Analog Acceleration Z", 
+            "key": "imu3.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU4 Analog Acceleration Z", 
+            "key": "imu4.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU5 Analog Acceleration Z", 
+            "key": "imu5.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU6 Analog Acceleration Z", 
+            "key": "imu6.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU7 Analog Acceleration Z", 
+            "key": "imu7.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU8 Analog Acceleration Z", 
+            "key": "imu8.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU9 Analog Acceleration Z", 
+            "key": "imu9.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU10 Analog Acceleration Z", 
+            "key": "imu10.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU11 Analog Acceleration Z", 
+            "key": "imu11.AnlAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU12 Analog Acceleration Z", 
+            "key": "imu12.AnlAccZ"
+        },
+
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU1 Digital Acceleration Z", 
+            "key": "imu1.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU2 Digital Acceleration Z", 
+            "key": "imu2.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU3 Digital Acceleration Z", 
+            "key": "imu3.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU4 Digital Acceleration Z", 
+            "key": "imu4.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU5 Digital Acceleration Z", 
+            "key": "imu5.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU6 Digital Acceleration Z", 
+            "key": "imu6.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU7 Digital Acceleration Z", 
+            "key": "imu7.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU8 Digital Acceleration Z", 
+            "key": "imu8.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU9 Digital Acceleration Z", 
+            "key": "imu9.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU10 Digital Acceleration Z", 
+            "key": "imu10.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU11 Digital Acceleration Z", 
+            "key": "imu11.DigAccZ"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU12 Digital Acceleration Z", 
+            "key": "imu12.DigAccZ"
+        },
+
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU1 Gyro X", 
+            "key": "imu1.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU2 Gyro X", 
+            "key": "imu2.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU3 Gyro X", 
+            "key": "imu3.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU4 Gyro X", 
+            "key": "imu4.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU5 Gyro X", 
+            "key": "imu5.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU6 Gyro X", 
+            "key": "imu6.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU7 Gyro X", 
+            "key": "imu7.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU8 Gyro X", 
+            "key": "imu8.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU9 Gyro X", 
+            "key": "imu9.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU10 Gyro X", 
+            "key": "imu10.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU11 Gyro X", 
+            "key": "imu11.GyroX"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU12 Gyro X", 
+            "key": "imu12.GyroX"
+        },
+
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU1 Gyro Y", 
+            "key": "imu1.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU2 Gyro Y", 
+            "key": "imu2.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU3 Gyro Y", 
+            "key": "imu3.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU4 Gyro Y", 
+            "key": "imu4.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU5 Gyro Y", 
+            "key": "imu5.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU6 Gyro Y", 
+            "key": "imu6.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU7 Gyro Y", 
+            "key": "imu7.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU8 Gyro Y", 
+            "key": "imu8.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU9 Gyro Y", 
+            "key": "imu9.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU10 Gyro Y", 
+            "key": "imu10.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU11 Gyro Y", 
+            "key": "imu11.GyroY"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "IMU12 Gyro Y", 
+            "key": "imu12.GyroY"
+        },
+
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 1 Position", 
+            "key": "shm1.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 2 Position", 
+            "key": "shm2.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 3 Position", 
+            "key": "shm3.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 4 Position", 
+            "key": "shm4.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 5 Position", 
+            "key": "shm5.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 6 Position", 
+            "key": "shm6.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 7 Position", 
+            "key": "shm7.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 8 Position", 
+            "key": "shm8.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 9 Position", 
+            "key": "shm9.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 10 Position", 
+            "key": "shm10.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 11 Position", 
+            "key": "shm11.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 12 Position", 
+            "key": "shm12.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 13 Position", 
+            "key": "shm13.Pos"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 14 Position", 
+            "key": "shm14.Pos"
+        },
+
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 1 Temperature", 
+            "key": "shm1.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 2 Temperature", 
+            "key": "shm2.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 3 Temperature", 
+            "key": "shm3.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 4 Temperature", 
+            "key": "shm4.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 5 Temperature", 
+            "key": "shm5.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 6 Temperature", 
+            "key": "shm6.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 7 Temperature", 
+            "key": "shm7.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 8 Temperature", 
+            "key": "shm8.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 9 Temperature", 
+            "key": "shm9.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 10 Temperature", 
+            "key": "shm10.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 11 Temperature", 
+            "key": "shm11.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 12 Temperature", 
+            "key": "shm12.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 13 Temperature", 
+            "key": "shm13.Temp"
+        }, 
+        {
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "integer"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ], 
+            "name": "SHM 14 Temperature", 
+            "key": "shm14.Temp"
+        },
+
+        {
+            "name": "Flag: RX MUX1 Autopilot", 
+            "key": "Flag.RxMux1.Autopilot",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+        {
+            "name": "Flag: RX MUX1 SPI", 
+            "key": "Flag.RxMux1.SPI",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUX1 ECU PIN", 
+            "key": "Flag.RxMux1.ECU_PIN",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUX1 ECU PPM", 
+            "key": "Flag.RxMux1.ECU_PPM",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUX1 JETI", 
+            "key": "Flag.RxMux1.JETI",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUX1 GRP", 
+            "key": "Flag.RxMux1.GRP",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUX1 C JETI", 
+            "key": "Flag.RxMux1.c_JETI",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUX1 C GRP", 
+            "key": "Flag.RxMux1.c_GRP",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx2 Autopilot", 
+            "key": "Flag.RxMux2.Autopilot",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+        {
+            "name": "Flag: RX MUx2 SPI", 
+            "key": "Flag.RxMux2.SPI",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx2 ECU PIN", 
+            "key": "Flag.RxMux2.ECU_PIN",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx2 ECU PPM", 
+            "key": "Flag.RxMux2.ECU_PPM",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx2 JETI", 
+            "key": "Flag.RxMux2.JETI",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx2 GRP", 
+            "key": "Flag.RxMux2.GRP",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx2 C JETI", 
+            "key": "Flag.RxMux2.c_JETI",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx2 C GRP", 
+            "key": "Flag.RxMux2.c_GRP",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx3 Autopilot", 
+            "key": "Flag.RxMux3.Autopilot",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+        {
+            "name": "Flag: RX MUx3 SPI", 
+            "key": "Flag.RxMux3.SPI",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx3 ECU PIN", 
+            "key": "Flag.RxMux3.ECU_PIN",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx3 ECU PPM", 
+            "key": "Flag.RxMux3.ECU_PPM",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx3 JETI", 
+            "key": "Flag.RxMux3.JETI",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx3 GRP", 
+            "key": "Flag.RxMux3.GRP",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx3 C JETI", 
+            "key": "Flag.RxMux3.c_JETI",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: RX MUx3 C GRP", 
+            "key": "Flag.RxMux3.c_GRP",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Xsens Config Fault", 
+            "key": "Flag.flightHAT.XsensConfigFault",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Xsens unexp config", 
+            "key": "Flag.flightHAT.UnexpectedConfigAck",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Xsens Config CRC fault", 
+            "key": "Flag.flightHAT.XsensConfigChecksumFault",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Xsens Confic Receive Fault", 
+            "key": "Flag.flightHAT.XsensConfigReceiveFault",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Xsens Wrong Header", 
+            "key": "Flag.flightHAT.XsensWrongHeader",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Xsens Checksum Fault", 
+            "key": "Flag.flightHAT.XsensChecksumFault",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Xsens Data Type Error", 
+            "key": "Flag.flightHAT.XsensDataTypeError",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Xsens Unexpected Byte Index", 
+            "key": "Flag.flightHAT.XsensUnexpectedByteIndex",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Xsens Unexpected Data ID", 
+            "key": "Flag.flightHAT.XsensUnexpectedDataID",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: ADS Config Fault", 
+            "key": "Flag.flightHAT.ADSConfigFault",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: ADS Checksum Fault", 
+            "key": "Flag.flightHAT.ADSChecksumFault",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: ADS Too Much Data Types", 
+            "key": "Flag.flightHAT.ADSTooMuchDataTypes",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: IMU Wrong Request ID", 
+            "key": "Flag.flightHAT.IMUWrongRequestID",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: IMU Wrong ID", 
+            "key": "Flag.flightHAT.IMUWrongID",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: SHM Wrong ID", 
+            "key": "Flag.flightHAT.SHMWrongIDD",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        },
+
+        {
+            "name": "Flag: Wrong RXMUX Checksum", 
+            "key": "Flag.flightHAT.WrongRXMUXChecksum",
+            "values": [
+                {
+                    "units": "unit", 
+                    "hints": {
+                        "range": 1
+                    }, 
+                    "name": "Value", 
+                    "key": "value", 
+                    "format": "string"
+                }, 
+                {
+                    "source": "timestamp", 
+                    "hints": {
+                        "domain": 1
+                    }, 
+                    "name": "Timestamp", 
+                    "key": "utc", 
+                    "format": "utc"
+                }
+            ]
+            
+        }        
+        
+    ]
+}

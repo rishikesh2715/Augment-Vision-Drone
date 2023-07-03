@@ -1,0 +1,966 @@
+{
+    "name": "Flutterometer",
+    "key": "pl",
+    "measurements": [
+        {
+            "name": "Id 1 Frequency",
+            "key": "id1.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 1 Damping",
+            "key": "id1.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 2 Frequency",
+            "key": "id2.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 2 Damping",
+            "key": "id2.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 3 Frequency",
+            "key": "id3.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 3 Damping",
+            "key": "id3.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 4 Frequency",
+            "key": "id4.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 4 Damping",
+            "key": "id4.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 5 Frequency",
+            "key": "id5.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 5 Damping",
+            "key": "id5.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 6 Frequency",
+            "key": "id6.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 6 Damping",
+            "key": "id6.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 7 Frequency",
+            "key": "id7.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 7 Damping",
+            "key": "id7.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 8 Frequency",
+            "key": "id8.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 8 Damping",
+            "key": "id8.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 9 Frequency",
+            "key": "id9.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 9 Damping",
+            "key": "id9.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 10 Frequency",
+            "key": "id10.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 10 Damping",
+            "key": "id10.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 11 Frequency",
+            "key": "id11.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 11 Damping",
+            "key": "id11.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 12 Frequency",
+            "key": "id12.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 12 Damping",
+            "key": "id12.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 13 Frequency",
+            "key": "id13.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 13 Damping",
+            "key": "id13.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 14 Frequency",
+            "key": "id14.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 14 Damping",
+            "key": "id14.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 15 Frequency",
+            "key": "id15.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 15 Damping",
+            "key": "id15.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 16 Frequency",
+            "key": "id16.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 16 Damping",
+            "key": "id16.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 17 Frequency",
+            "key": "id17.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 17 Damping",
+            "key": "id17.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 18 Frequency",
+            "key": "id18.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 18 Damping",
+            "key": "id18.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 19 Frequency",
+            "key": "id19.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 19 Damping",
+            "key": "id19.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 20 Frequency",
+            "key": "id20.Freq",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "Hz",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Id 20 Damping",
+            "key": "id20.Damp",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "-",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

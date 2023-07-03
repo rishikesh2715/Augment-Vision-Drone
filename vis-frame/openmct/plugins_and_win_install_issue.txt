@@ -1,0 +1,11 @@
+in src/plugins/plugins.js
+add to define and function IT MUST BE IN THE RIGHT ORDER!
+add it downwards at plugins as well
+
+when running npm install on windows and getting errors:
+In the folder "openmct\src\plugins\themes" replace the paths from the *.scss files starting with "~stytles" with "../../styles"
+
+install: npm install
+start: npm start
+
+everything else: https://gitlab.lrz.de/ga58zos/vis-frame/-/wikis/home
