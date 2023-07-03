@@ -1,0 +1,346 @@
+{
+    "name": "Aircraft_42",
+    "key": "pl",
+    "measurements": [
+        {
+            "name": "Roll",
+            "key": "rollVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "deg",
+                    "units": "deg",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Pitch",
+            "key": "pitchVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "deg",
+                    "units": "deg",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Yaw",
+            "key": "yawVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "deg",
+                    "units": "deg",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        
+        {
+            "name": "Latitude",
+            "key": "latVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "value",
+                    "units": "deg",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Longitude",
+            "key": "lngVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "value",
+                    "units": "deg",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Heading",
+            "key": "heading",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "value",
+                    "units": "deg",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Altitude",
+            "key": "altVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "meters",
+                    "units": "meters",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GPS Status",
+            "key": "gpsstatusVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "meters",
+                    "units": "meters",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Airspeed",
+            "key": "airspeedVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s",
+                    "units": "m/s",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Groundspeed",
+            "key": "groundspeedVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s",
+                    "units": "m/s",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Acceleration Z",
+            "key": "azVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "g",
+                    "units": "g",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Battery Voltage",
+            "key": "battery_voltageVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "V",
+                    "units": "V",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Battery Remaining",
+            "key": "battery_remainingVal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "percent",
+                    "units": "percent",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Armed",
+            "key": "armed",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "value",
+                    "units": "deg",
+                    "format": "string",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        }
+        
+        
+
+    ]
+}

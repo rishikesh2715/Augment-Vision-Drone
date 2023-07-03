@@ -1,0 +1,31 @@
+{
+    "name": "EXAMPLE",
+    "key": "pl",
+    "measurements": [
+        {
+            "name": "EXAMPLE Telemetry Point",
+            "key": "key.1",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        }
+
+    ]
+}

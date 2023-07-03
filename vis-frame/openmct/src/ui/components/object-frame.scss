@@ -1,0 +1,89 @@
+.c-so-view {
+    display: flex;
+    flex-direction: column;
+
+    &.is-missing {
+        border: $borderMissing;
+    }
+
+    /*************************** HEADER */
+    &__header {
+        flex: 0 0 auto;
+        display: flex;
+        font-size: 1.05em;
+        align-items: center;
+        margin-bottom: $interiorMarginSm;
+        padding: 1px 2px;
+
+        .c-object-label {
+            &__name {
+                filter: $objectLabelNameFilter;
+            }
+        }
+    }
+
+    &:not(.c-so-view--no-frame) {
+        border: $browseFrameBorder;
+        padding: 0 $interiorMarginSm;
+
+        .is-editing & {
+            background: rgba($colorBodyBg, 0.8);
+        }
+    }
+
+    &--no-frame {
+        > .c-so-view__header {
+            display: none;
+        }
+
+        &.is-missing {
+            @include isMissing($absPos: true);
+
+            .is-missing__indicator {
+                top: $interiorMargin;
+                left: $interiorMargin;
+            }
+        }
+    }
+
+    &__local-controls {
+        // View Large button
+        box-shadow: $colorLocalControlOvrBg 0 0 0 2px;
+        position: absolute;
+        top: $interiorMargin; right: $interiorMargin;
+        z-index: 10;
+    }
+
+    .c-click-icon,
+    .c-button {
+        // Shrink buttons a bit when they appear in a frame
+        border-radius: $smallCr !important;
+        font-size: 0.9em;
+        padding: 3px 5px;
+    }
+
+    &__view-large {
+        display: none;
+    }
+
+    &.has-complex-content {
+        > .c-so-view__view-large { display: block; }
+    }
+
+    &__object-view {
+        flex: 1 1 auto;
+        height: 0; // Chrome 73 overflow bug fix
+        overflow: auto;
+
+        .u-fills-container {
+            // Expand component types that fill a container
+            @include abs();
+        }
+    }
+}
+
+.l-angular-ov-wrapper {
+    // This element is the recipient for object styling; cannot be display: contents
+    height: 100%;
+    overflow: hidden;
+}

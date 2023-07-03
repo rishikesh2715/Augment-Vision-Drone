@@ -1,0 +1,606 @@
+{
+    "name": "Drone",
+    "key": "pl",
+    "measurements": [
+        {
+            "name": "Latitude",
+            "key": "gps.lat",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Degrees",
+                    "units": "degrees",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Longitude",
+            "key": "gps.lon",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Degrees",
+                    "units": "degrees",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GPS Speed",
+            "key": "gps.speed",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "speed",
+                    "units": "m/s",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Heading",
+            "key": "gps.heading",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Degrees",
+                    "units": "degrees",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Altitude",
+            "key": "gps.altitude",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Meter",
+                    "units": "meters",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Satelites",
+            "key": "gps.sats",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "unit",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Vertical Speed",
+            "key": "gps.vario",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "m/s",
+                    "units": "m/s",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Voltage",
+            "key": "drone.voltage",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Voltage",
+                    "units": "volts",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Current",
+            "key": "drone.current",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Ampere",
+                    "units": "amps",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Used Battery Capacity",
+            "key": "batt.used",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "mAh",
+                    "units": "percent",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Remaining Battery Capacity",
+            "key": "batt.remaining",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "mAh",
+                    "units": "percent",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Uplink RSSI Ant.1",
+            "key": "rssi.uplink.ant1",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "dBm",
+                    "units": "dBm",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Uplink RSSI Ant.2",
+            "key": "rssi.uplink.ant2",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "dBm",
+                    "units": "dBm",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Uplink Quality",
+            "key": "rssi.uplink.quality",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Quality",
+                    "units": "percent",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Uplink SNR",
+            "key": "rssi.uplink.snr",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "SNR",
+                    "units": "dB",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Active Antenna",
+            "key": "rssi.no.antenna",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Antenna",
+                    "units": "number",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "RF Mode",
+            "key": "rf.mode",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Mode",
+                    "units": "uni",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Uplink TX Power",
+            "key": "rf.txpower",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "TX Power",
+                    "units": "dBm",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Downlink RSSI",
+            "key": "rssi.downlink",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "RSSI",
+                    "units": "dBm",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Downlink Quality",
+            "key": "rssi.downlink.quality",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Quality",
+                    "units": "percent",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Downlink SNR",
+            "key": "rssi.downlink.snr",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "SNR",
+                    "units": "dB",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Pitch",
+            "key": "drone.pitch",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Pitch",
+                    "units": "degrees",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Roll",
+            "key": "drone.roll",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Roll",
+                    "units": "degrees",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Yaw",
+            "key": "drone.yaw",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Yaw",
+                    "units": "degrees",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Flight Mode",
+            "key": "drone.flightmode",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Flight Mode",
+                    "units": "degrees",
+                    "format": "string",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        }
+    ]
+}
