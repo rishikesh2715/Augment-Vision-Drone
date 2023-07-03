@@ -12,6 +12,7 @@ var HistoryServer = require('./history-server');
 //var StaticServer = require('./static-server');
 var HistoryReader = require('./history_reader');
 var Aircraft_42 = require('./Aircraft_42');
+var Drone = require('./Drone');
 
 var expressWs = require('express-ws');
 var app = require('express')();
