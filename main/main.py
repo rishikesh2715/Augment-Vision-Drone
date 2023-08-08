@@ -1,7 +1,9 @@
+import sys
 import math
 from telemetry import processSerialData
 import time
 import threading
+sys.path.append('main/WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
 import JY901S
 
 class DroneState:
@@ -16,11 +18,18 @@ class DroneState:
         self.roll = roll
         self.yaw = yaw
 
-def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll):
+class PilotState:
+    def __init__(self, lat, lon, direction, altitude):
+        self.lat = lat
+        self.lon = lon
+        self.direction = direction
+        self.altitude = altitude        
+
+def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude):
     print(drone_latitude)
     # GPS coordinates
-    your_latitude = 33.6018033
-    your_longitude = -101.9247864
+    # your_latitude = 33.6018033
+    # your_longitude = -101.9247864
     your_altitude = 0
 
     # Conversion constants
@@ -62,18 +71,19 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     print("Vector from the drone to the target object (V2):", v2)
     print("Vector from your location to the target object (V4):", v4)
 
-def runGPSscript():
-    JY901S.runScript()
+def runGPSscript(pilot):
+    JY901S.runScript(pilot)
 
 drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+pilot = PilotState(0.0, 0.0, 0.0, 0.0)
 
-gpsThread = threading.Thread(target=runGPSscript)
+gpsThread = threading.Thread(target=runGPSscript, args=(pilot,))
 gpsThread.start()
 
-serialThread = threading.Thread(target=processSerialData, args=(drone,))
-serialThread.start()
+# serialThread = threading.Thread(target=processSerialData, args=(drone,))
+# serialThread.start()
 
 
 while True:
     time.sleep(2)
-    getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll)
+    getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon)
