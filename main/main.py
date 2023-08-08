@@ -2,6 +2,7 @@ import math
 from telemetry import processSerialData
 import time
 import threading
+import JY901S
 
 class DroneState:
     def __init__(self, lat, lon, speed, altitude, heading, pitch, roll, yaw, sats):
@@ -14,12 +15,6 @@ class DroneState:
         self.pitch = pitch
         self.roll = roll
         self.yaw = yaw
-
-drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-
-serialThread = threading.Thread(target=processSerialData, args=(drone,))
-serialThread.start()
-
 
 def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll):
     print(drone_latitude)
@@ -66,6 +61,18 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     print("Vector from your location to the drone (V1):", v1)
     print("Vector from the drone to the target object (V2):", v2)
     print("Vector from your location to the target object (V4):", v4)
+
+def runGPSscript():
+    JY901S.runScript()
+
+drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+
+gpsThread = threading.Thread(target=runGPSscript)
+gpsThread.start()
+
+serialThread = threading.Thread(target=processSerialData, args=(drone,))
+serialThread.start()
+
 
 while True:
     time.sleep(2)
