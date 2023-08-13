@@ -156,10 +156,6 @@ def runScript(mainPilot):
     global pilot
     pilot = mainPilot
     print("Starting GPS script:")
-    while True:
-        pass
-
-if __name__ == '__main__':
 
     print(welcome)
     """
