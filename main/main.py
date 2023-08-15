@@ -3,8 +3,9 @@ import math
 from telemetry import processSerialData
 import time
 import threading
-sys.path.append('main/WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
+sys.path.append('D:\projectLab5\Augment-Vision-Drone\main\WitStandardProtocol_JY901\Python\PythonWitProtocol\chs')
 import JY901S
+import signal
 
 class DroneState:
     def __init__(self, lat, lon, speed, altitude, heading, pitch, roll, yaw, sats):
@@ -23,7 +24,11 @@ class PilotState:
         self.lat = lat
         self.lon = lon
         self.direction = direction
-        self.altitude = altitude        
+        self.altitude = altitude
+
+def signal_handler(sig, frame):
+    print('You pressed Ctrl+C!')
+    sys.exit(0)
 
 def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude):
     print(drone_latitude)
@@ -65,25 +70,35 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
         v2[1] - v1[1],
         v2[2] - v1[2]
     )
-
+    
     # Print the vectors
     print("Vector from your location to the drone (V1):", v1)
     print("Vector from the drone to the target object (V2):", v2)
     print("Vector from your location to the target object (V4):", v4)
 
+
 def runGPSscript(pilot):
     JY901S.runScript(pilot)
+    print(f"Direction after running JY901S.runScript: {pilot.direction}")
 
 drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 pilot = PilotState(0.0, 0.0, 0.0, 0.0)
 
-gpsThread = threading.Thread(target=runGPSscript, args=(pilot,))
-gpsThread.start()
+def getCompassDirection():
+    global pilot
+    print (f"Direction: {pilot.direction}")
+    return pilot.direction
 
-# serialThread = threading.Thread(target=processSerialData, args=(drone,))
-# serialThread.start()
+if __name__ == "__main__":
+    gpsThread = threading.Thread(target=runGPSscript, args=(pilot,))
+    gpsThread.daemon = True # Daemon threads exit when the program does
+    gpsThread.start()
+
+    # serialThread = threading.Thread(target=processSerialData, args=(drone,))
+    # serialThread.start()
 
 
-while True:
-    time.sleep(2)
-    getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon)
+    while True:
+        time.sleep(2)
+        getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon)
+        getCompassDirection()
