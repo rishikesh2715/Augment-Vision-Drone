@@ -91,7 +91,7 @@ def onUpdate(deviceModel):
     compass_direction = (azimuth_deg + 360) % 360
     pilot.direction = compass_direction
     pilot.lat = deviceModel.getDeviceData("lat")
-    pilot.long = deviceModel.getDeviceData("lon")
+    pilot.lon = deviceModel.getDeviceData("lon") # pilot.long chnaged it to pilot.lon -- long is built-in function
     pilot.altitude = deviceModel.getDeviceData("altitude")
 
     print("Compass Direction:", compass_direction)
@@ -171,7 +171,7 @@ def runScript(mainPilot):
     if platform.system().lower() == 'linux':
         device.serialConfig.portName = "/dev/ttyUSB0"   # Set serial port
     else:
-        device.serialConfig.portName = "COM39"          # Set serial port
+        device.serialConfig.portName = "COM8"          # Set serial port
     device.serialConfig.baud = 9600                     # Set baud rate
     device.openDevice()                                 # Open serial port
     readConfig(device)                                  # Read configuration information
