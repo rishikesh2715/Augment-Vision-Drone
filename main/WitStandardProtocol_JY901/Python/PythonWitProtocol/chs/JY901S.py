@@ -119,38 +119,38 @@ def onUpdate(deviceModel):
         Tempstr += "\r\n"
         _writeF.write(Tempstr)
 
-def startRecord():
-    """
-    Start recording data
-    :return:
-    """
-    global _writeF
-    global _IsWriteF
-    _writeF = open(str(datetime.datetime.now().strftime('%Y%m%d%H%M%S')) + ".txt", "w")  # Create a new file
-    _IsWriteF = True  # Mark as writable
-    Tempstr = "Chiptime"
-    Tempstr += "\tax(g)\tay(g)\taz(g)"
-    Tempstr += "\twx(deg/s)\twy(deg/s)\twz(deg/s)"
-    Tempstr += "\tAngleX(deg)\tAngleY(deg)\tAngleZ(deg)"
-    Tempstr += "\tT(°)"
-    Tempstr += "\tmagx\tmagy\tmagz"
-    Tempstr += "\tlon\tlat"
-    Tempstr += "\tYaw\tSpeed"
-    Tempstr += "\tq1\tq2\tq3\tq4"
-    Tempstr += "\r\n"
-    _writeF.write(Tempstr)
-    print("Start recording data")
+# def startRecord():
+#     """
+#     Start recording data
+#     :return:
+#     """
+#     global _writeF
+#     global _IsWriteF
+#     _writeF = open(str(datetime.datetime.now().strftime('%Y%m%d%H%M%S')) + ".txt", "w")  # Create a new file
+#     _IsWriteF = True  # Mark as writable
+#     Tempstr = "Chiptime"
+#     Tempstr += "\tax(g)\tay(g)\taz(g)"
+#     Tempstr += "\twx(deg/s)\twy(deg/s)\twz(deg/s)"
+#     Tempstr += "\tAngleX(deg)\tAngleY(deg)\tAngleZ(deg)"
+#     Tempstr += "\tT(°)"
+#     Tempstr += "\tmagx\tmagy\tmagz"
+#     Tempstr += "\tlon\tlat"
+#     Tempstr += "\tYaw\tSpeed"
+#     Tempstr += "\tq1\tq2\tq3\tq4"
+#     Tempstr += "\r\n"
+#     _writeF.write(Tempstr)
+#     print("Start recording data")
 
-def endRecord():
-    """
-    End recording data
-    :return:
-    """
-    global _writeF
-    global _IsWriteF
-    _IsWriteF = False  # Mark as not writable
-    _writeF.close()  # Close file
-    print("End recording data")
+# def endRecord():
+#     """
+#     End recording data
+#     :return:
+#     """
+#     global _writeF
+#     global _IsWriteF
+#     _IsWriteF = False  # Mark as not writable
+#     _writeF.close()  # Close file
+#     print("End recording data")
 
 def runScript(mainPilot):
     global pilot
@@ -171,13 +171,13 @@ def runScript(mainPilot):
     if platform.system().lower() == 'linux':
         device.serialConfig.portName = "/dev/ttyUSB0"   # Set serial port
     else:
-        device.serialConfig.portName = "COM8"          # Set serial port
+        device.serialConfig.portName = "COM9"          # Set serial port
     device.serialConfig.baud = 9600                     # Set baud rate
     device.openDevice()                                 # Open serial port
     readConfig(device)                                  # Read configuration information
     device.dataProcessor.onVarChanged.append(onUpdate)  # Data update event
 
-    startRecord()                                       # Start recording data
+    # startRecord()                                       # Start recording data
     input()
     device.closeDevice()
-    endRecord()                                         # End recording data
+    # endRecord()                                         # End recording data
