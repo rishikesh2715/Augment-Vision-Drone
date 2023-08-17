@@ -1,18 +1,22 @@
-# import sys
+import sys
+import threading
+import time
+sys.path.append('main/WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
+import main
 
-# sys.path.append('D:\projectLab5\Augment-Vision-Drone\main\WitStandardProtocol_JY901\Python\PythonWitProtocol\chs')
-# import JY901S
+def compass_direction():
+    direction = main.getCompassDirection()
+    if direction is not None:
+        print("Compass Direction:", direction)
+    else:
+        print("Compass direction data is not available.")
 
-# def compass_direction():
-#     direction = JY901S.pilot.get('direction')
-#     if direction is not None:
-#         print("Compass Direction:", direction)
-#     else:
-#         print("Compass direction data is not available.")
-
-# if __name__ == "__main__":
-#     compass_direction()
-
+if __name__ == "__main__":
+    gpsThread = threading.Thread(target=main.runGPSscript, args=(main.pilot,))
+    gpsThread.daemon = True # Daemon threads exit when the program does
+    gpsThread.start()
+    time.sleep(1)
+    compass_direction()
 
 
 import cv2
