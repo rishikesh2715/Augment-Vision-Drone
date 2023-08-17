@@ -78,6 +78,32 @@ if __name__ == "__main__":
         if direction is not None:
             print("Compass Direction:", direction)
 
+            # Calculate the angle difference between north (0 degrees) and current direction
+            angle_difference = abs(direction)
+
+            # Calculate the position of the triangle based on direction and distance
+            triangle_heading = direction  # Use the current direction as the heading
+            triangle_distance = 100  # 10 meters, adjust as needed
+
+            # Convert angle to radians
+            triangle_heading_rad = np.radians(triangle_heading)
+
+            # Calculate the change in x and y based on heading and distance
+            delta_x = triangle_distance * np.sin(triangle_heading_rad)
+            delta_y = -triangle_distance * np.cos(triangle_heading_rad)
+
+            # Calculate the position of the triangle relative to the center of the screen
+            x_90_degrees = int(target_width / 2 + delta_x)
+            y_90_degrees = int(target_height / 2 + delta_y)
+
+            if angle_difference < 39 or angle_difference > 321:  # Angle limit
+                # Draw a triangle at the calculated point
+                triangle_size = 50
+                triangle_color = (0, 255, 0)  # Green color
+                cv2.drawMarker(resized_frame, (x_90_degrees, y_90_degrees), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
+
+            
+
             # Rotate the compass image based on the direction angle
             rotated_compass = rotate_image(compass_img, direction)
 
