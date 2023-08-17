@@ -7,7 +7,8 @@ def processSerialData(drone):
     RADIO_ADDRESS = 0xea
 
     # Open serial port
-    ser = serial.Serial('/dev/ttyUSB0', 115200)
+    # ser = serial.Serial('/dev/ttyUSB0', 115200)
+    ser = serial.Serial('COM8', 115200)
 
 
     crc8_dvb_s2_table = [
