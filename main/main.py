@@ -3,7 +3,7 @@ import math
 from telemetry import processSerialData
 import time
 import threading
-sys.path.append('D:\projectLab5\Augment-Vision-Drone\main\WitStandardProtocol_JY901\Python\PythonWitProtocol\chs')
+sys.path.append('main/WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
 import JY901S
 import signal
 
