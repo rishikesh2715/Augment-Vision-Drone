@@ -16,6 +16,9 @@
 
 
 import cv2
+import numpy as np
+
+compass_img = cv2.imread('compass.png', cv2.IMREAD_UNCHANGED)
 
 camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
