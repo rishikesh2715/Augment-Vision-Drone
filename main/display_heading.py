@@ -4,8 +4,14 @@ import time
 import cv2
 import numpy as np
 
-sys.path.append('main/WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
-import main
+target_width = 1920
+target_height = 1080
+
+# Calculate the position of the triangle based on direction and distance
+triangle_heading = 180  # Use the current direction as the heading
+triangle_distance = 10  # 10 meters, adjust as needed
+
+camFOVangle = 60
 
 def rotate_image(image, angle):
     center = tuple(np.array(image.shape[1::-1]) / 2)
@@ -22,26 +28,40 @@ def overlay_transparent(background, overlay, x, y):
         background[y:y+h, x:x+w, c] = (1.0 - alpha) * background[y:y+h, x:x+w, c] + alpha * foreground[:, :, c]
     return background
 
-def compass_direction(compass_image):
+def compass_direction(compass_image, pilot):
     while True:
-        direction = main.getCompassDirection()
+        direction = pilot.direction
         if direction is not None:
-            print("Compass Direction:", direction)
+            pass
+            #print("Compass Direction:", direction)
         else:
             print("Compass direction data is not available.")
         time.sleep(0.1)  # Adjust the sleep interval as needed
 
-if __name__ == "__main__":
+def drawTriangle(direction, resized_frame):
+
+    direction_difference = triangle_heading - direction
+    if direction_difference <= 0:
+        direction_difference += 360
+    if direction_difference >= 330:
+        direction_difference -= 360
+    
+    x_triangle = int(target_width / 2 + direction_difference / (camFOVangle/2) * target_width / 2)
+    y_triangle = target_height // 2
+
+    # Draw the triangle at the calculated position
+    triangle_size = int(target_height * (2 / triangle_distance))  # Adjust size based on distance
+    triangle_color = (0, 255, 0)  # Green color
+    cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
+
+def display_heading(pilot):
     # Initialize camera
-    camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    camera = cv2.VideoCapture(0)
     camera.set(cv2.CAP_PROP_FPS, 30.0)
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('m','j','p','g'))
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('M','J','P','G'))
     camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
-
-    target_width = 2560
-    target_height = 1440
 
     # Load compass image with transparency
     compass_img = cv2.imread('compass_white.png', cv2.IMREAD_UNCHANGED)
@@ -49,12 +69,7 @@ if __name__ == "__main__":
     # Resize compass image 
     compass_img = cv2.resize(compass_img, (400, 400))  # Adjust size as needed
 
-    # Start the compass direction thread
-    gpsThread = threading.Thread(target=main.runGPSscript, args=(main.pilot,))
-    gpsThread.daemon = True  # Daemon threads exit when the program does
-    gpsThread.start()
-
-    compass_thread = threading.Thread(target=compass_direction, args=(compass_img,))
+    compass_thread = threading.Thread(target=compass_direction, args=(compass_img,pilot,))
     compass_thread.daemon = True
     compass_thread.start()
 
@@ -73,17 +88,13 @@ if __name__ == "__main__":
         resized_frame = cv2.resize(im, (target_width, target_height))
 
         # Get the compass direction
-        direction = main.getCompassDirection()
+        direction = pilot.direction
 
         if direction is not None:
-            print("Compass Direction:", direction)
+            # print("Compass Direction:", direction)
 
             # Calculate the angle difference between north (0 degrees) and current direction
             angle_difference = abs(direction)
-
-            # Calculate the position of the triangle based on direction and distance
-            triangle_heading = direction  # Use the current direction as the heading
-            triangle_distance = 100  # 10 meters, adjust as needed
 
             # Convert angle to radians
             triangle_heading_rad = np.radians(triangle_heading)
@@ -96,13 +107,18 @@ if __name__ == "__main__":
             x_90_degrees = int(target_width / 2 + delta_x)
             y_90_degrees = int(target_height / 2 + delta_y)
 
-            if angle_difference < 39 or angle_difference > 321:  # Angle limit
-                # Draw a triangle at the calculated point
-                triangle_size = 50
-                triangle_color = (0, 255, 0)  # Green color
-                cv2.drawMarker(resized_frame, (x_90_degrees, y_90_degrees), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
+            # Calculate the angle limits based on camera field of view
+            angle_limit_left = (triangle_heading - camFOVangle / 2) % 360
+            angle_limit_right = (triangle_heading + camFOVangle / 2) % 360
 
-            
+
+            if angle_limit_left <= angle_limit_right:
+                if angle_limit_left <= direction <= angle_limit_right:
+                    drawTriangle(direction, resized_frame)
+
+            else:
+                if direction >= angle_limit_left or direction <= angle_limit_right:
+                    drawTriangle(direction, resized_frame)
 
             # Rotate the compass image based on the direction angle
             rotated_compass = rotate_image(compass_img, direction)

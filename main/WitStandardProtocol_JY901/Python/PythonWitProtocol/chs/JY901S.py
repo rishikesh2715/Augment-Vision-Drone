@@ -92,7 +92,6 @@ def onUpdate(deviceModel):
     pilot.direction = compass_direction
     pilot.lat = deviceModel.getDeviceData("lat")
     pilot.lon = deviceModel.getDeviceData("lon") # pilot.long chnaged it to pilot.lon -- long is built-in function
-    pilot.altitude = deviceModel.getDeviceData("altitude")
 
     # print("Compass Direction:", compass_direction)
     # print("Chip time: " + str(deviceModel.getDeviceData("Chiptime"))
