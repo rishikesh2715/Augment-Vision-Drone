@@ -8,7 +8,7 @@ target_width = 1920
 target_height = 1080
 
 # Calculate the position of the triangle based on direction and distance
-triangle_heading = 180  # Use the current direction as the heading
+# triangle_heading = 180  # Use the current direction as the heading
 triangle_distance = 10  # 10 meters, adjust as needed
 
 camFOVangle = 60
@@ -38,9 +38,9 @@ def compass_direction(compass_image, pilot):
             print("Compass direction data is not available.")
         time.sleep(0.1)  # Adjust the sleep interval as needed
 
-def drawTriangle(direction, resized_frame):
+def drawTriangle(pilot, direction, resized_frame):
 
-    direction_difference = triangle_heading - direction
+    direction_difference = pilot.objectDirection - direction
     if direction_difference <= 0:
         direction_difference += 360
     if direction_difference >= 330:
@@ -50,7 +50,7 @@ def drawTriangle(direction, resized_frame):
     y_triangle = target_height // 2
 
     # Draw the triangle at the calculated position
-    triangle_size = int(target_height * (2 / triangle_distance))  # Adjust size based on distance
+    triangle_size = int(target_height * (2 / pilot.objectDistance))  # Adjust size based on distance
     triangle_color = (0, 255, 0)  # Green color
     cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
 
@@ -97,28 +97,28 @@ def display_heading(pilot):
             angle_difference = abs(direction)
 
             # Convert angle to radians
-            triangle_heading_rad = np.radians(triangle_heading)
+            triangle_heading_rad = np.radians(pilot.objectDirection)
 
             # Calculate the change in x and y based on heading and distance
-            delta_x = triangle_distance * np.sin(triangle_heading_rad)
-            delta_y = -triangle_distance * np.cos(triangle_heading_rad)
+            delta_x = pilot.objectDistance * np.sin(triangle_heading_rad)
+            delta_y = -pilot.objectDistance * np.cos(triangle_heading_rad)
 
             # Calculate the position of the triangle relative to the center of the screen
             x_90_degrees = int(target_width / 2 + delta_x)
             y_90_degrees = int(target_height / 2 + delta_y)
 
             # Calculate the angle limits based on camera field of view
-            angle_limit_left = (triangle_heading - camFOVangle / 2) % 360
-            angle_limit_right = (triangle_heading + camFOVangle / 2) % 360
+            angle_limit_left = (pilot.objectDirection - camFOVangle / 2) % 360
+            angle_limit_right = (pilot.objectDirection + camFOVangle / 2) % 360
 
 
             if angle_limit_left <= angle_limit_right:
                 if angle_limit_left <= direction <= angle_limit_right:
-                    drawTriangle(direction, resized_frame)
+                    drawTriangle(pilot, direction, resized_frame)
 
             else:
                 if direction >= angle_limit_left or direction <= angle_limit_right:
-                    drawTriangle(direction, resized_frame)
+                    drawTriangle(pilot, direction, resized_frame)
 
             # Rotate the compass image based on the direction angle
             rotated_compass = rotate_image(compass_img, direction)
