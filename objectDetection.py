@@ -15,12 +15,14 @@ def main():
             frame = result.orig_img
             detections = sv.Detections.from_yolov8(result)        
 
+            print(detections)
+
             if result.boxes.id is not None:
                 detections.tracker_id = result.boxes.id.cpu().numpy() .astype(int)
 
             lables = [
                 f"#{tracker_id}{class_id} {confidence:.2f}"
-                for xyxy, confidence, class_id, tracker_id
+                for xyxy, mask, confidence, class_id, tracker_id
                 in detections
             ]
             frame = box_annotator.annotate(scene=frame, detections=detections, labels=lables)
