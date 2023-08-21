@@ -4,9 +4,11 @@ import time
 import cv2
 import numpy as np
 
-sys.path.append('main/WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
-import main
+sys.path.append('D:\projectLab5\Augment-Vision-Drone\main\WitStandardProtocol_JY901\Python\PythonWitProtocol\chs')
 
+
+sys.path.append('D:\projectLab5\Augment-Vision-Drone\main')
+import main
 def rotate_image(image, angle):
     center = tuple(np.array(image.shape[1::-1]) / 2)
     rot_mat = cv2.getRotationMatrix2D(center, angle, 1.0)
@@ -49,15 +51,15 @@ def drawTriangle():
 
 if __name__ == "__main__":
     # Initialize camera
-    camera = cv2.VideoCapture(0)
+    camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     camera.set(cv2.CAP_PROP_FPS, 30.0)
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('m','j','p','g'))
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('M','J','P','G'))
     camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
-    target_width = 1920
-    target_height = 1080
+    target_width = 2560
+    target_height = 1440
 
     # Load compass image with transparency
     compass_img = cv2.imread('compass_white.png', cv2.IMREAD_UNCHANGED)
