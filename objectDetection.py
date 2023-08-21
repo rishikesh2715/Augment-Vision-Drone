@@ -22,7 +22,7 @@ def main():
 
             lables = [
                 f"#{tracker_id}{class_id} {confidence:.2f}"
-                for xyxy, mask, confidence, class_id, tracker_id
+                for xyxy, confidence, class_id, tracker_id
                 in detections
             ]
             frame = box_annotator.annotate(scene=frame, detections=detections, labels=lables)
