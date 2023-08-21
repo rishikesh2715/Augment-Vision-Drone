@@ -9,6 +9,10 @@ sys.path.append('WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
 import JY901S
 import signal
 
+
+# global flag to exit the process
+should_exit = False
+
 class DroneState:
     def __init__(self, lat, lon, speed, altitude, heading, pitch, roll, yaw, sats, objectDistance):
         self.lat = lat
@@ -32,14 +36,22 @@ class PilotState:
         self.objectDistance = objectDistance
 
 def signal_handler(sig, frame):
+    global should_exit
     print('You pressed Ctrl+C!')
-    sys.exit(0)
+    should_exit = True
+    # sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
 
 def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude, drone, pilot):
     print(drone_latitude)
     # GPS coordinates
-    # your_latitude = 33.6018033
-    # your_longitude = -101.9247864
+    drone_latitude = 33.565348
+    drone_longitude = -101.869102
+    drone_altitude = 0
+
+    your_latitude = 33.565402
+    your_longitude = -101.869008
     your_altitude = 0
 
     # Conversion constants
@@ -79,13 +91,17 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
 
 
 def runGPSscript(pilot):
-    JY901S.runScript(pilot)
-    print(f"Direction after running JY901S.runScript: {pilot.direction}")
+    global should_exit
+    while not should_exit:
+        JY901S.runScript(pilot)
+        print(f"Direction after running JY901S.runScript: {pilot.direction}")
+        time.sleep(0.1)
 
 drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 pilot = PilotState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 
 def getCompassDirection():
+    
     global pilot
     print (f"Direction: {pilot.direction}")
     return pilot.direction
@@ -107,7 +123,7 @@ if __name__ == "__main__":
     # serialThread.start()
 
 
-    while True:
+    while not should_exit():
         time.sleep(2)
         getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon, drone, pilot)
         getCompassDirection()
