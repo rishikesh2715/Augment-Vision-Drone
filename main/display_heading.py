@@ -4,8 +4,8 @@ import time
 import cv2
 import numpy as np
 
-target_width = 1920
-target_height = 1080
+target_width = 2560
+target_height = 1440
 
 # Calculate the position of the triangle based on direction and distance
 # triangle_heading = 180  # Use the current direction as the heading
@@ -50,13 +50,15 @@ def drawTriangle(pilot, direction, resized_frame):
     y_triangle = target_height // 2
 
     # Draw the triangle at the calculated position
+    pilot.objectDistance = 10
     triangle_size = int(target_height * (2 / pilot.objectDistance))  # Adjust size based on distance
     triangle_color = (0, 255, 0)  # Green color
     cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
 
 def display_heading(pilot):
     # Initialize camera
-    camera = cv2.VideoCapture(0)
+    # camera = cv2.VideoCapture(0)
+    camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     camera.set(cv2.CAP_PROP_FPS, 30.0)
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('m','j','p','g'))
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('M','J','P','G'))
