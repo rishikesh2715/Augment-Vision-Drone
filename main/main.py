@@ -47,12 +47,13 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     print(drone_latitude)
     # GPS coordinates
     drone_latitude = 33.565348
-    drone_longitude = -101.869102
+    drone_longitude = -101.869980
     drone_altitude = 0
+    drone_heading = 90
 
-    your_latitude = 33.565402
-    your_longitude = -101.869008
-    your_altitude = 0
+    your_latitude = 33.565325
+    your_longitude = -101.869024
+    your_latitude_altitude = 0
 
     # Conversion constants
     feet_to_meters = 0.3048
@@ -115,12 +116,12 @@ if __name__ == "__main__":
     displayHeadingThread.deamon = True
     displayHeadingThread.start()
 
-    # objectDetectionThread = threading.Thread(target=objectDetection.objectDetection, args=(drone,))
-    # objectDetectionThread.deamon = True
-    # objectDetectionThread.start()
+    objectDetectionThread = threading.Thread(target=objectDetection.objectDetection, args=(drone,))
+    objectDetectionThread.deamon = True
+    objectDetectionThread.start()
 
-    # serialThread = threading.Thread(target=processSerialData, args=(drone,))
-    # serialThread.start()
+    serialThread = threading.Thread(target=processSerialData, args=(drone,))
+    serialThread.start()
 
 
     while not should_exit():
