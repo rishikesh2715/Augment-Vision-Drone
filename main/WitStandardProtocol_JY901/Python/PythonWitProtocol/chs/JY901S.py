@@ -152,31 +152,34 @@ def onUpdate(deviceModel):
 #     print("End recording data")
 
 def runScript(mainPilot):
-    global pilot
-    pilot = mainPilot
-    print("Starting GPS script:")
+    try:
+        global pilot
+        pilot = mainPilot
+        print("Starting GPS script:")
 
-    print(welcome)
-    """
-    Initialize a device model
-    """
-    device = deviceModel.DeviceModel(
-        "My JY901",
-        WitProtocolResolver(),
-        JY901SDataProcessor(),
-        "51_0"
-    )
+        print(welcome)
+        """
+        Initialize a device model
+        """
+        device = deviceModel.DeviceModel(
+            "My JY901",
+            WitProtocolResolver(),
+            JY901SDataProcessor(),
+            "51_0"
+        )
 
-    if platform.system().lower() == 'linux':
-        device.serialConfig.portName = "/dev/ttyUSB0"   # Set serial port
-    else:
-        device.serialConfig.portName = "COM9"          # Set serial port
-    device.serialConfig.baud = 9600                     # Set baud rate
-    device.openDevice()                                 # Open serial port
-    readConfig(device)                                  # Read configuration information
-    device.dataProcessor.onVarChanged.append(onUpdate)  # Data update event
+        if platform.system().lower() == 'linux':
+            device.serialConfig.portName = "/dev/ttyUSB0"   # Set serial port
+        else:
+            device.serialConfig.portName = "COM9"          # Set serial port
+        device.serialConfig.baud = 9600                     # Set baud rate
+        device.openDevice()                                 # Open serial port
+        readConfig(device)                                  # Read configuration information
+        device.dataProcessor.onVarChanged.append(onUpdate)  # Data update event
 
-    # startRecord()                                       # Start recording data
-    input()
-    device.closeDevice()
-    # endRecord()                                         # End recording data
+        # startRecord()                                       # Start recording data
+        input()
+        device.closeDevice()
+        # endRecord()                                         # End recording data
+    except EOFError:
+        pass
