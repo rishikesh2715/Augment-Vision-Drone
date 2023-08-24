@@ -5,13 +5,14 @@ import time
 import threading
 import display_heading
 import objectDetection
-sys.path.append('WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
+# sys.path.append('WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
+sys.path.append('D:\projectLab5\Augment-Vision-Drone\main\WitStandardProtocol_JY901\Python\PythonWitProtocol\chs')
 import JY901S
 import signal
 
 
 # global flag to exit the process
-should_exit = False
+exit_event = threading.Event()
 
 class DroneState:
     def __init__(self, lat, lon, speed, altitude, heading, pitch, roll, yaw, sats, objectDistance):
@@ -36,10 +37,8 @@ class PilotState:
         self.objectDistance = objectDistance
 
 def signal_handler(sig, frame):
-    global should_exit
-    print('You pressed Ctrl+C!')
-    should_exit = True
-    # sys.exit(0)
+    print("exiting signal")
+    exit_event.set()
 
 signal.signal(signal.SIGINT, signal_handler)
 
@@ -92,8 +91,7 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
 
 
 def runGPSscript(pilot):
-    global should_exit
-    while not should_exit:
+    while not exit_event.is_set():
         JY901S.runScript(pilot)
         print(f"Direction after running JY901S.runScript: {pilot.direction}")
         time.sleep(0.1)
@@ -102,7 +100,6 @@ drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 pilot = PilotState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 
 def getCompassDirection():
-    
     global pilot
     print (f"Direction: {pilot.direction}")
     return pilot.direction
@@ -112,19 +109,25 @@ if __name__ == "__main__":
     gpsThread.daemon = True # Daemon threads exit when the program does
     gpsThread.start()
 
-    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot,))
-    displayHeadingThread.deamon = True
+    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, exit_event))
+    displayHeadingThread.daemon = True
     displayHeadingThread.start()
 
-    objectDetectionThread = threading.Thread(target=objectDetection.objectDetection, args=(drone,))
-    objectDetectionThread.deamon = True
+    objectDetectionThread = threading.Thread(target=objectDetection.objectDetection, args=(drone, exit_event))
+    objectDetectionThread.daemon = True
     objectDetectionThread.start()
 
     serialThread = threading.Thread(target=processSerialData, args=(drone,))
+    serialThread.daemon = True
     serialThread.start()
 
 
-    while not should_exit():
-        time.sleep(2)
+    while not exit_event.is_set():
+        time.sleep(0.1)
         getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon, drone, pilot)
         getCompassDirection()
+    
+    gpsThread.join()
+    displayHeadingThread.join()
+    objectDetectionThread.join()
+    serialThread.join()
