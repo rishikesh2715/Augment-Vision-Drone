@@ -2,7 +2,7 @@ import cv2
 from ultralytics import YOLO
 import supervision as sv
 
-def objectDetection(drone):
+def objectDetection(drone,exit_event):
     box_annotator = sv.BoxAnnotator(
         thickness=2,
         text_thickness=1,
@@ -12,17 +12,19 @@ def objectDetection(drone):
     model = YOLO('yolov8n.pt')
 
     for result in model.track(source="1", show=False, stream=True, classes=0):
+        if exit_event.is_set():
+            break
         frame = result.orig_img
         detections = sv.Detections.from_yolov8(result)        
 
-        print(detections)
+        # print(detections)
 
         if result.boxes.id is not None:
             detections.tracker_id = result.boxes.id.cpu().numpy() .astype(int)
 
         lables = [
             f"#{tracker_id}{class_id} {confidence:.2f}"
-            for xyxy, mask, confidence, class_id, tracker_id
+            for xyxy, confidence, class_id, tracker_id
             in detections
         ]
         frame = box_annotator.annotate(scene=frame, detections=detections, labels=lables)
@@ -40,8 +42,14 @@ def objectDetection(drone):
             print(f"{drone.objectDistance:.2f} m")
 
         cv2.imshow("frame", frame)
-        if (cv2.waitKey(1) & 0xFF) == ord("q"):
-                break
+        k = cv2.waitKey(1) & 0xff
+        if k == 27 or exit_event.is_set():
+            cv2.destroyAllWindows()
+            break
+
+    
+    cv2.destroyAllWindows()
+
         
     
                     
