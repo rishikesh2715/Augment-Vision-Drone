@@ -88,7 +88,7 @@ def processSerialData(drone):
             elif frame_type == 0x14:  # Link Statistics
                 # Unpack data
                 data = struct.unpack('>BBBBBBBbbb', payload)
-                print(f'Link Statistics: Uplink RSSI Ant. 1={data[0]}, Uplink RSSI Ant. 2={data[1]}, Uplink Package success rate / Link quality={data[2]}, Uplink SNR={data[3]}, Diversity active antenna={data[4]}, RF Mode={data[5]}, Uplink TX Power={data[6]}, Downlink RSSI={data[7]}, Downlink package success rate / Link quality={data[8]}, Downlink SNR={data[9]}')
+                # print(f'Link Statistics: Uplink RSSI Ant. 1={data[0]}, Uplink RSSI Ant. 2={data[1]}, Uplink Package success rate / Link quality={data[2]}, Uplink SNR={data[3]}, Diversity active antenna={data[4]}, RF Mode={data[5]}, Uplink TX Power={data[6]}, Downlink RSSI={data[7]}, Downlink package success rate / Link quality={data[8]}, Downlink SNR={data[9]}')
                 uplink_rssi_ant1, uplink_rssi_ant2, uplink_quality, uplink_snr, active_antenna, rf_mode, uplink_tx_power, downlink_rssi, downlink_quality, downlink_snr = struct.unpack('>bbbBbbbbbB', payload)
                 uplink_rssi_ant1 /= -1
                 uplink_rssi_ant2 /= -1
