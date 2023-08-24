@@ -28,7 +28,7 @@ def overlay_transparent(background, overlay, x, y):
         background[y:y+h, x:x+w, c] = (1.0 - alpha) * background[y:y+h, x:x+w, c] + alpha * foreground[:, :, c]
     return background
 
-def compass_direction(compass_image, pilot):
+def compass_direction(compass_img, pilot):   ## I changed compass_image to compass_img
     while True:
         direction = pilot.direction
         if direction is not None:
@@ -55,7 +55,7 @@ def drawTriangle(pilot, direction, resized_frame):
     triangle_color = (0, 255, 0)  # Green color
     cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
 
-def display_heading(pilot):
+def display_heading(pilot, exit_event):
     # Initialize camera
     # camera = cv2.VideoCapture(0)
     camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
@@ -66,7 +66,7 @@ def display_heading(pilot):
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
     # Load compass image with transparency
-    compass_img = cv2.imread('compass_white.png', cv2.IMREAD_UNCHANGED)
+    compass_img = cv2.imread('D:\projectLab5\Augment-Vision-Drone\main\compass_white.png', cv2.IMREAD_UNCHANGED)
 
     # Resize compass image 
     compass_img = cv2.resize(compass_img, (400, 400))  # Adjust size as needed
@@ -81,6 +81,8 @@ def display_heading(pilot):
     font_thickness = 2 # font thickness
 
     while True:
+        if exit_event.is_set():
+            break
         # Read the camera frames
         retval, im = camera.read()
         if not retval:
@@ -127,7 +129,7 @@ def display_heading(pilot):
 
             # Overlay the rotated compass image in the top-right corner
             overlayed_frame = overlay_transparent(resized_frame, rotated_compass, target_width - rotated_compass.shape[1], 0)
-
+            
             # Display the heading value as text und
             heading_text = "Heading: {:.2f}".format(direction)
             text_size = cv2.getTextSize(heading_text, font, font_scale, font_thickness)[0]
@@ -139,7 +141,8 @@ def display_heading(pilot):
 
         # Press 'ESC' for exiting video
         k = cv2.waitKey(1) & 0xff
-        if k == 27:
+        if k == 27 or exit_event.is_set():
+            cv2.destroyAllWindows()
             break
 
     camera.release()
