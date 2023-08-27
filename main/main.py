@@ -85,15 +85,15 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     pilot.objectDistance = math.sqrt(v3[0]**2 + v3[1]**2 + v3[2]**2)
 
     # Print the vectors
-    print("Vector from your location to the drone (V1):", v1)
-    print("Vector from the drone to the target object (V2):", v2)
-    print("Vector from your location to the target object (V3):", v3)
+    # print("Vector from your location to the drone (V1):", v1)
+    # print("Vector from the drone to the target object (V2):", v2)
+    # print("Vector from your location to the target object (V3):", v3)
 
 
 def runGPSscript(pilot):
     while not exit_event.is_set():
         JY901S.runScript(pilot)
-        print(f"Direction after running JY901S.runScript: {pilot.direction}")
+        # print(f"Direction after running JY901S.runScript: {pilot.direction}")
         time.sleep(0.1)
 
 drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
@@ -101,7 +101,7 @@ pilot = PilotState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 
 def getCompassDirection():
     global pilot
-    print (f"Direction: {pilot.direction}")
+    # print (f"Direction: {pilot.direction}")
     return pilot.direction
 
 if __name__ == "__main__":
