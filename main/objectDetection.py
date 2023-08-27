@@ -11,7 +11,7 @@ def objectDetection(drone,exit_event):
 
     model = YOLO('yolov8n.pt')
 
-    for result in model.track(source="1", show=False, stream=True, classes=0):
+    for result in model.track(source="1", show=False, stream=True, classes=0, verbose=False):
         if exit_event.is_set():
             break
         frame = result.orig_img
@@ -35,11 +35,15 @@ def objectDetection(drone,exit_event):
             #Camera parameters
             focal_length = 730  # drone cam focal // c920 = 730 
             Object_Real_Height = 1.8  # Average Human Height in meters
+            print (f"{x1, y1, x2, y2}")
 
             drone_pixel_height = y2 - y1
             drone.objectDistance = (Object_Real_Height * focal_length) / drone_pixel_height
             
-            print(f"{drone.objectDistance:.2f} m")
+            print(f"object distance is{drone.objectDistance:.2f} m")
+
+        else:
+            drone.objectDistance = 0
 
         cv2.imshow("frame", frame)
         k = cv2.waitKey(1) & 0xff
