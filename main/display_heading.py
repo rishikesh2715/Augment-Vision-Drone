@@ -9,7 +9,6 @@ target_height = 1440
 
 # Calculate the position of the triangle based on direction and distance
 # triangle_heading = 180  # Use the current direction as the heading
-triangle_distance = 10  # 10 meters, adjust as needed
 
 camFOVangle = 60
 
@@ -50,10 +49,11 @@ def drawTriangle(pilot, direction, resized_frame):
     y_triangle = target_height // 2
 
     # Draw the triangle at the calculated position
-    pilot.objectDistance = 10
+    # pilot.objectDistance = 10
     triangle_size = int(target_height * (2 / pilot.objectDistance))  # Adjust size based on distance
     triangle_color = (0, 255, 0)  # Green color
     cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
+    # print(f"object distance is {pilot.objectDistance:.2f} m")
 
 def display_heading(pilot, exit_event):
     # Initialize camera
