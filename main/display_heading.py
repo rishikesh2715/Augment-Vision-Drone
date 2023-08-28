@@ -27,7 +27,7 @@ def overlay_transparent(background, overlay, x, y):
         background[y:y+h, x:x+w, c] = (1.0 - alpha) * background[y:y+h, x:x+w, c] + alpha * foreground[:, :, c]
     return background
 
-def compass_direction(compass_img, pilot):   ## I changed compass_image to compass_img
+def compass_direction(compass_img, pilot, drone):   ## I changed compass_image to compass_img
     while True:
         direction = pilot.direction
         if direction is not None:
@@ -37,7 +37,7 @@ def compass_direction(compass_img, pilot):   ## I changed compass_image to compa
             print("Compass direction data is not available.")
         time.sleep(0.1)  # Adjust the sleep interval as needed
 
-def drawTriangle(pilot, direction, resized_frame):
+def drawTriangle(pilot, direction, resized_frame, drone):
 
     direction_difference = pilot.objectDirection - direction
     if direction_difference <= 0:
@@ -54,8 +54,9 @@ def drawTriangle(pilot, direction, resized_frame):
     triangle_color = (0, 255, 0)  # Green color
     cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
     # print(f"object distance is {pilot.objectDistance:.2f} m")
+    print(f"offset angle is {drone.offsetAngle}")
 
-def display_heading(pilot, exit_event):
+def display_heading(pilot, exit_event, drone):
     # Initialize camera
     # camera = cv2.VideoCapture(0)
     camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
@@ -136,6 +137,16 @@ def display_heading(pilot, exit_event):
             text_x = target_width - rotated_compass.shape[1] - 25  # X-axis--align text with PNG image
             text_y = rotated_compass.shape[0] + text_size[1] + 10  # Y-axis--align text with PNG image
             cv2.putText(overlayed_frame, heading_text, (text_x, text_y), font, font_scale, font_color, font_thickness)
+
+            # Convert objectDirection to string and format it
+            object_direction_text = "Object Direction: {:.2f}".format(pilot.objectDirection)
+
+            # Define the position where you want to print the text (for example, at the bottom of the frame)
+            text_x1 = 10  # X-axis position
+            text_y1 = target_height - 10  # Y-axis position
+
+            # Use cv2.putText() to print the text on the frame
+            cv2.putText(overlayed_frame, object_direction_text, (text_x1, text_y1), font, font_scale, font_color, font_thickness)
 
         cv2.imshow("image", overlayed_frame)
 
