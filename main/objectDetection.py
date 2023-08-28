@@ -50,7 +50,7 @@ def objectDetection(drone,exit_event):
             drone_pixel_height = y2 - y1
             drone.objectDistance = (Object_Real_Height * focal_length) / drone_pixel_height
             
-            print(f"object distance is{drone.objectDistance:.2f} m")
+            # print(f"object distance is{drone.objectDistance:.2f} m")
 
         else:
             drone.objectDistance = 0
