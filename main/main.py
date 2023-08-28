@@ -15,7 +15,7 @@ import signal
 exit_event = threading.Event()
 
 class DroneState:
-    def __init__(self, lat, lon, speed, altitude, heading, pitch, roll, yaw, sats, objectDistance):
+    def __init__(self, lat, lon, speed, altitude, heading, pitch, roll, yaw, sats, objectDistance, offsetAngle):
         self.lat = lat
         self.lon = lon
         self.speed = speed
@@ -26,6 +26,7 @@ class DroneState:
         self.roll = roll
         self.yaw = yaw
         self.objectDistance = objectDistance
+        self.offsetAngle = offsetAngle
 
 class PilotState:
     def __init__(self, lat, lon, direction, altitude, objectDirection, objectDistance):
@@ -82,6 +83,11 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
 
     pilot.objectDirection = math.degrees(math.atan2(v3[1], v3[0]))
     pilot.objectDirection = (pilot.objectDirection + 360) % 360
+
+    # add the offset angle from the drone camera to the pilot heading
+    pilot.objectDirection += drone.offsetAngle
+    pilot.objectDirection = (pilot.objectDirection + 360) % 360
+
     pilot.objectDistance = math.sqrt(v3[0]**2 + v3[1]**2 + v3[2]**2)
 
     # Print the vectors
@@ -96,7 +102,7 @@ def runGPSscript(pilot):
         # print(f"Direction after running JY901S.runScript: {pilot.direction}")
         time.sleep(0.1)
 
-drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 pilot = PilotState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 
 def getCompassDirection():
@@ -105,11 +111,11 @@ def getCompassDirection():
     return pilot.direction
 
 if __name__ == "__main__":
-    gpsThread = threading.Thread(target=runGPSscript, args=(pilot,))
+    gpsThread = threading.Thread(target=runGPSscript, args=(pilot, ))
     gpsThread.daemon = True # Daemon threads exit when the program does
     gpsThread.start()
 
-    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, drone, exit_event))
+    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, exit_event, drone))
     displayHeadingThread.daemon = True
     displayHeadingThread.start()
 
