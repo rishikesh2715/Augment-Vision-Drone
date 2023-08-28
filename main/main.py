@@ -109,7 +109,7 @@ if __name__ == "__main__":
     gpsThread.daemon = True # Daemon threads exit when the program does
     gpsThread.start()
 
-    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, exit_event))
+    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, drone, exit_event))
     displayHeadingThread.daemon = True
     displayHeadingThread.start()
 
