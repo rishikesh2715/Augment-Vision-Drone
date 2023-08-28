@@ -27,7 +27,7 @@ def overlay_transparent(background, overlay, x, y):
         background[y:y+h, x:x+w, c] = (1.0 - alpha) * background[y:y+h, x:x+w, c] + alpha * foreground[:, :, c]
     return background
 
-def compass_direction(compass_img, pilot, drone):   ## I changed compass_image to compass_img
+def compass_direction(compass_img, pilot):   ## I changed compass_image to compass_img
     while True:
         direction = pilot.direction
         if direction is not None:
@@ -53,7 +53,7 @@ def drawTriangle(pilot, direction, resized_frame, drone):
     triangle_size = int(target_height * (2 / pilot.objectDistance))  # Adjust size based on distance
     triangle_color = (0, 255, 0)  # Green color
     cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
-    # print(f"object distance is {pilot.objectDistance:.2f} m")
+    print(f"object distance is {pilot.objectDistance:.2f} m")
     print(f"offset angle is {drone.offsetAngle}")
 
 def display_heading(pilot, exit_event, drone):
@@ -119,11 +119,11 @@ def display_heading(pilot, exit_event, drone):
 
             if angle_limit_left <= angle_limit_right:
                 if angle_limit_left <= direction <= angle_limit_right:
-                    drawTriangle(pilot, direction, resized_frame)
+                    drawTriangle(pilot, direction, resized_frame, drone)
 
             else:
                 if direction >= angle_limit_left or direction <= angle_limit_right:
-                    drawTriangle(pilot, direction, resized_frame)
+                    drawTriangle(pilot, direction, resized_frame, drone)
 
             # Rotate the compass image based on the direction angle
             rotated_compass = rotate_image(compass_img, direction)
