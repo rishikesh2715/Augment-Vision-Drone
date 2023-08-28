@@ -33,10 +33,20 @@ def objectDetection(drone,exit_event):
             [x1, y1, x2, y2] = detections.xyxy[0]
                             
             #Camera parameters
+            FOV = 160 # walknail avatar camera fov
             focal_length = 730  # drone cam focal // c920 = 730 
             Object_Real_Height = 1.8  # Average Human Height in meters
-            print (f"{x1, y1, x2, y2}")
+            # print (f"{x1, y1, x2, y2}")
+            
+            # calculating the heading offset from the center of the frame
+            object_center_x = (x1 + x2) / 2
+            frame_center_x = frame.shape[1] / 2
+            offset_x = object_center_x - frame_center_x
 
+            drone.offsetAngle = (offset_x/frame.shape[1]) * (FOV) # angle offset from center of frame
+            # print(f"offset angle is {drone.offsetAngle:.2f} degrees")
+
+            # calculating the distance to the object
             drone_pixel_height = y2 - y1
             drone.objectDistance = (Object_Real_Height * focal_length) / drone_pixel_height
             
