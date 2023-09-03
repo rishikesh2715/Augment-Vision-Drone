@@ -4,3 +4,6 @@ Augmented Drone Vision is a project that combines object detection and augmented
 <video width="1920" height="1080" controls>
   <source src="drone_video.mp4" type="video/mp4">
 </video>
+
+https://github.com/rishikesh2715/Augment-Vision-Drone/assets/72249404/c8a2ea8d-f2c1-446d-b462-615fb7fdb45f
+
