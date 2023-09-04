@@ -111,21 +111,21 @@ def getCompassDirection():
     return pilot.direction
 
 if __name__ == "__main__":
-    gpsThread = threading.Thread(target=runGPSscript, args=(pilot, ))
-    gpsThread.daemon = True # Daemon threads exit when the program does
-    gpsThread.start()
+    # gpsThread = threading.Thread(target=runGPSscript, args=(pilot, ))
+    # gpsThread.daemon = True # Daemon threads exit when the program does
+    # gpsThread.start()
 
-    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, exit_event, drone))
-    displayHeadingThread.daemon = True
-    displayHeadingThread.start()
+    # displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, exit_event, drone))
+    # displayHeadingThread.daemon = True
+    # displayHeadingThread.start()
 
     objectDetectionThread = threading.Thread(target=objectDetection.objectDetection, args=(drone, exit_event))
     objectDetectionThread.daemon = True
     objectDetectionThread.start()
 
-    serialThread = threading.Thread(target=processSerialData, args=(drone,))
-    serialThread.daemon = True
-    serialThread.start()
+    # serialThread = threading.Thread(target=processSerialData, args=(drone,))
+    # serialThread.daemon = True
+    # serialThread.start()
 
 
     while not exit_event.is_set():
@@ -133,7 +133,7 @@ if __name__ == "__main__":
         getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon, drone, pilot)
         getCompassDirection()
     
-    gpsThread.join()
-    displayHeadingThread.join()
+    # gpsThread.join()
+    # displayHeadingThread.join()
     objectDetectionThread.join()
-    serialThread.join()
+    # serialThread.join()
