@@ -5,8 +5,10 @@
 The **Augment-Vision-Drone** is a groundbreaking project that introduces a foldable drone equipped with auto-deployment and augmented reality (AR) capabilities. This drone can detect objects of interest and overlay their information onto a VR headset, pinpointing their exact direction and distance, even if these objects aren't in the user's direct line of sight.
 
 ## Project Outline
-https://github.com/rishikesh2715/Augment-Vision-Drone/assets/72249404/c8a2ea8d-f2c1-446d-b462-615fb7fdb45f
+
 ### 1. Auto Deployment
+https://github.com/rishikesh2715/Augment-Vision-Drone/assets/72249404/c8a2ea8d-f2c1-446d-b462-615fb7fdb45f
+
 We are in the process of designing a 3D body with spring-loaded foldable arms that can auto-deploy when the drone is thrown into the air. Currently, we are testing our third iteration of the drone body. The initial two iterations have proven that our control algorithm can stabilize the drone regardless of its orientation when thrown. We are optimistic that this iteration of the drone frame will be successful. This phase of the project is ongoing.
 
 ### 2. Object Detection Model
