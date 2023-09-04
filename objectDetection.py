@@ -11,7 +11,7 @@ def main():
 
         model = YOLO('yolov8n.pt')
 
-        for result in model.track(source="1", show=False, stream=True, classes=0):
+        for result in model.track(source="0", show=False, stream=True, classes=0):
             frame = result.orig_img
             detections = sv.Detections.from_yolov8(result)        
 
@@ -38,7 +38,7 @@ def main():
                 distance = (Object_Real_Height * focal_length) / drone_pixel_height
                 
                 print(f"{distance:.2f} m")
-
+                cv2.putText(frame, f"Detected object Distance: {distance:.2f} m", (10, frame.shape[0] // 2), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             cv2.imshow("frame", frame)
             if (cv2.waitKey(1) & 0xFF) == ord("q"):
                     break
