@@ -10,7 +10,7 @@ target_height = 1440
 # Calculate the position of the triangle based on direction and distance
 # triangle_heading = 180  # Use the current direction as the heading
 
-camFOVangle = 60
+camFOVangle = 78
 
 def rotate_image(image, angle):
     center = tuple(np.array(image.shape[1::-1]) / 2)
@@ -50,9 +50,18 @@ def drawTriangle(pilot, direction, resized_frame, drone):
 
     # Draw the triangle at the calculated position
     # pilot.objectDistance = 10
-    triangle_size = int(target_height * (2 / pilot.objectDistance))  # Adjust size based on distance
+    triangle_size = int(100)
+    # triangle_size = int(target_height * (2 / pilot.objectDistance))  # Adjust size based on distance
     triangle_color = (0, 255, 0)  # Green color
     cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
+
+    # Display the distance at the bottom of the triangle
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 0.5
+    font_color = (255, 255, 255)  # White color
+    text = f"Distance: {pilot.objectDistance:.2f} m"
+    cv2.putText(resized_frame, text, (x_triangle, y_triangle + triangle_size + 20), font, font_scale, font_color)
+
     print(f"object distance is {pilot.objectDistance:.2f} m")
     print(f"offset angle is {drone.offsetAngle}")
 
@@ -143,7 +152,7 @@ def display_heading(pilot, exit_event, drone):
 
             # Define the position where you want to print the text (for example, at the bottom of the frame)
             text_x1 = 10  # X-axis position
-            text_y1 = target_height - 10  # Y-axis position
+            text_y1 = target_height - 30  # Y-axis position
 
             # Use cv2.putText() to print the text on the frame
             cv2.putText(overlayed_frame, object_direction_text, (text_x1, text_y1), font, font_scale, font_color, font_thickness)
