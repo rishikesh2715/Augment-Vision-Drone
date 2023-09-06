@@ -43,42 +43,77 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
+def haversine_distance_meters(lat1, lon1, lat2, lon2):
+    # Radius of the Earth in kilometers
+    R = 6371.0
+
+    # Convert degrees to radians
+    lat1_rad = math.radians(lat1)
+    lon1_rad = math.radians(lon1)
+    lat2_rad = math.radians(lat2)
+    lon2_rad = math.radians(lon2)
+
+    # Differences in coordinates
+    dlat = lat2_rad - lat1_rad
+    dlon = lon2_rad - lon1_rad
+
+    # Haversine formula
+    a = math.sin(dlat / 2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+    distance_km = R * c
+    distance_m = distance_km * 1000  # Convert to meters
+    return distance_m
+
 def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude, drone, pilot):
     print(drone_latitude)
     # GPS coordinates
-    drone_latitude = 33.565348
-    drone_longitude = -101.869980
+    drone_latitude = 33.565325
+    drone_longitude = -101.869024
     drone_altitude = 0
     drone_heading = 90
 
-    your_latitude = 33.565325
-    your_longitude = -101.869024
-    your_latitude_altitude = 0
+    your_latitude = 33.565371
+    your_longitude = -101.868981
 
-    # Conversion constants
-    feet_to_meters = 0.3048
 
+    north_south_diff = haversine_distance_meters(drone_latitude, drone_longitude, your_latitude, drone_longitude)
+    east_west_diff = haversine_distance_meters(drone_latitude, drone_longitude, drone_latitude, your_longitude)
+
+    # Adjust for direction (north/south and east/west)
+    if drone_latitude < your_latitude:
+        north_south_diff = -north_south_diff
+    if drone_longitude < your_longitude:
+        east_west_diff = -east_west_diff
     # Calculate position vector from your location to the drone
     v1 = (
-        drone_latitude - your_latitude,
-        drone_longitude - your_longitude,
+        north_south_diff,
+        east_west_diff,
         drone.altitude - pilot.altitude
     )
-
+    
     # Calculate direction vector from the drone to the target object
     target_altitude = drone_altitude
+    # drone.objectDistance = 10
+
+    # Calculate the actual direction from the drone to the detected object
+    # drone.offsetAngle = 15
+    droneToObjectDirection = (drone_heading + drone.offsetAngle) % 360
+
+    # Calculate direction vector from the drone to the target object
     v2 = (
-        drone.objectDistance * math.cos(math.radians(drone_pitch)) * math.sin(math.radians(drone_heading)),
-        drone.objectDistance * math.cos(math.radians(drone_pitch)) * math.cos(math.radians(drone_heading)),
+        drone.objectDistance * math.cos(math.radians(drone_pitch)) * math.sin(math.radians(droneToObjectDirection)),
+        drone.objectDistance * math.cos(math.radians(drone_pitch)) * math.cos(math.radians(droneToObjectDirection)),
         drone.objectDistance * math.sin(math.radians(drone_pitch))
     )
 
 
+
     # Calculate vector from your location to the target object
     v3 = (
-        v2[0] - v1[0],
-        v2[1] - v1[1],
-        v2[2] - v1[2]
+    v1[0] + v2[0],
+    v1[1] + v2[1],
+    v1[2] + v2[2]
     )
 
     pilot.objectDirection = math.degrees(math.atan2(v3[1], v3[0]))
@@ -91,9 +126,10 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     pilot.objectDistance = math.sqrt(v3[0]**2 + v3[1]**2 + v3[2]**2)
 
     # Print the vectors
-    # print("Vector from your location to the drone (V1):", v1)
-    # print("Vector from the drone to the target object (V2):", v2)
-    # print("Vector from your location to the target object (V3):", v3)
+    print("Vector from your location to the drone (V1):", v1)
+    print("Vector from the drone to the target object (V2):", v2)
+    print("Vector from your location to the target object (V3):", v3)
+    print(f"{pilot.objectDistance:.2f} degrees")
 
 
 def runGPSscript(pilot):
@@ -111,13 +147,13 @@ def getCompassDirection():
     return pilot.direction
 
 if __name__ == "__main__":
-    # gpsThread = threading.Thread(target=runGPSscript, args=(pilot, ))
-    # gpsThread.daemon = True # Daemon threads exit when the program does
-    # gpsThread.start()
+    gpsThread = threading.Thread(target=runGPSscript, args=(pilot, ))
+    gpsThread.daemon = True # Daemon threads exit when the program does
+    gpsThread.start()
 
-    # displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, exit_event, drone))
-    # displayHeadingThread.daemon = True
-    # displayHeadingThread.start()
+    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, exit_event, drone))
+    displayHeadingThread.daemon = True
+    displayHeadingThread.start()
 
     objectDetectionThread = threading.Thread(target=objectDetection.objectDetection, args=(drone, exit_event))
     objectDetectionThread.daemon = True
@@ -133,7 +169,7 @@ if __name__ == "__main__":
         getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon, drone, pilot)
         getCompassDirection()
     
-    # gpsThread.join()
-    # displayHeadingThread.join()
+    gpsThread.join()
+    displayHeadingThread.join()
     objectDetectionThread.join()
     # serialThread.join()
