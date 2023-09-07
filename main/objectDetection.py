@@ -10,7 +10,6 @@ def objectDetection(drone,exit_event):
     )
 
     model = YOLO('yolov8n.pt')
-    drone.objectDistance = 5 # default distance to object
 
     for result in model.track(source="1", show=False, stream=True, classes=0, verbose=False):
         if exit_event.is_set():
@@ -46,15 +45,12 @@ def objectDetection(drone,exit_event):
 
             drone.offsetAngle = (offset_x/frame.shape[1]) * (FOV) # angle offset from center of frame
             # print(f"offset angle is {drone.offsetAngle:.2f} degrees")
-            cv2.putText(frame, f"Offset angle: {drone.offsetAngle:.2f} degrees", (10, frame.shape[0] // 2 + 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
             # calculating the distance to the object
-            drone_pixel_height = y2 - y1 
+            drone_pixel_height = y2 - y1
             drone.objectDistance = (Object_Real_Height * focal_length) / drone_pixel_height
-
-            # print(f"{drone.objectDistance:.2f} m")
-            cv2.putText(frame, f"Detected object Distance: {drone.objectDistance:.2f} m", (10, frame.shape[0] // 2), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             
+            print(f"object distance is{drone.objectDistance:.2f} m")
 
         else:
             drone.objectDistance = 0
