@@ -10,7 +10,7 @@ target_height = 1440
 # Calculate the position of the triangle based on direction and distance
 # triangle_heading = 180  # Use the current direction as the heading
 
-camFOVangle = 60
+camFOVangle = 78
 
 def rotate_image(image, angle):
     center = tuple(np.array(image.shape[1::-1]) / 2)
@@ -27,7 +27,7 @@ def overlay_transparent(background, overlay, x, y):
         background[y:y+h, x:x+w, c] = (1.0 - alpha) * background[y:y+h, x:x+w, c] + alpha * foreground[:, :, c]
     return background
 
-def compass_direction(compass_img, pilot, drone):   ## I changed compass_image to compass_img
+def compass_direction(compass_img, pilot):   ## I changed compass_image to compass_img
     while True:
         direction = pilot.direction
         if direction is not None:
@@ -50,10 +50,19 @@ def drawTriangle(pilot, direction, resized_frame, drone):
 
     # Draw the triangle at the calculated position
     # pilot.objectDistance = 10
-    triangle_size = int(target_height * (2 / pilot.objectDistance))  # Adjust size based on distance
+    triangle_size = int(100)
+    # triangle_size = int(target_height * (2 / pilot.objectDistance))  # Adjust size based on distance
     triangle_color = (0, 255, 0)  # Green color
     cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
-    # print(f"object distance is {pilot.objectDistance:.2f} m")
+
+    # Display the distance at the bottom of the triangle
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 0.5
+    font_color = (255, 255, 255)  # White color
+    text = f"Distance: {pilot.objectDistance:.2f} m"
+    cv2.putText(resized_frame, text, (x_triangle, y_triangle + triangle_size + 20), font, font_scale, font_color)
+
+    print(f"object distance is {pilot.objectDistance:.2f} m")
     print(f"offset angle is {drone.offsetAngle}")
 
 def display_heading(pilot, exit_event, drone):
@@ -119,11 +128,11 @@ def display_heading(pilot, exit_event, drone):
 
             if angle_limit_left <= angle_limit_right:
                 if angle_limit_left <= direction <= angle_limit_right:
-                    drawTriangle(pilot, direction, resized_frame)
+                    drawTriangle(pilot, direction, resized_frame, drone)
 
             else:
                 if direction >= angle_limit_left or direction <= angle_limit_right:
-                    drawTriangle(pilot, direction, resized_frame)
+                    drawTriangle(pilot, direction, resized_frame, drone)
 
             # Rotate the compass image based on the direction angle
             rotated_compass = rotate_image(compass_img, direction)
@@ -143,7 +152,7 @@ def display_heading(pilot, exit_event, drone):
 
             # Define the position where you want to print the text (for example, at the bottom of the frame)
             text_x1 = 10  # X-axis position
-            text_y1 = target_height - 10  # Y-axis position
+            text_y1 = target_height - 30  # Y-axis position
 
             # Use cv2.putText() to print the text on the frame
             cv2.putText(overlayed_frame, object_direction_text, (text_x1, text_y1), font, font_scale, font_color, font_thickness)
