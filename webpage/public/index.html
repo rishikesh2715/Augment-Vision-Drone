@@ -19,9 +19,10 @@
     </script>
 
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="script.js" type="module"></script>
   </head>
   <body>
-    <header>
+    <header id="header">
       <a href="#top">
         <!-- Add this anchor link to go to the top -->
         <img src="./logo.png" class="icon" alt="Logo" />
@@ -35,81 +36,24 @@
         <!-- Add this anchor link for Donate -->
       </div>
     </header>
-    <section id="3d-container">
-      <script type="module">
-        import * as THREE from "three";
-        import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
-        import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(
-          75,
-          window.innerWidth / window.innerHeight,
-          0.1,
-          1000
-        );
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setClearColor(0x2d3142); // Set background color to white
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document
-          .getElementById("3d-container")
-          .appendChild(renderer.domElement);
-
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.update();
-
-        const loader = new OBJLoader();
-        loader.load("./droneV2.obj", (object) => {
-          object.scale.set(0.02, 0.02, 0.02); // Adjust the scale as needed
-          object.rotation.x = (3 / 2) * Math.PI;
-          scene.add(object);
-          // Set camera position and look at the center of the scene
-          camera.position.set(0, 0, 5); // Adjust the position as needed
-          camera.lookAt(0, 0, 0);
-
-          const ambientLight = new THREE.AmbientLight(0xffffff); // Set ambient light color
-          ambientLight.intensity = 0.5;
-          scene.add(ambientLight);
-
-          // // Create a directional light for overall illumination
-          // const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-          // directionalLight.position.set(1, 1, 1).normalize();
-          // scene.add(directionalLight);
-
-          // Create a point light and attach it to the camera
-          const pointLight = new THREE.PointLight(0xffffff, 25); // Adjust intensity
-          camera.add(pointLight);
-          pointLight.position.set(0, 0, 2);
-          scene.add(camera);
-
-          const animate = () => {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-          };
-
-          animate();
-        });
-      </script>
-    </section>
+    <div class="cool" style="width: 92vw; height: 96vh; z-index: -1"></div>
+    <section id="3d-container"></section>
     <section id="explore">
       <div class="explore-video">
         <!-- Place this code where you want the video to appear -->
-        <iframe
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/15XNx00r0XI"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+        <video width="100%" height="100%" controls>
+          <source src="droneFull.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div class="text-content">
-        <h2 class="highlight">Revolutionary</h2>
+        <h2 class="highlight">
+          Discover the Future of Flight: Collapsible, Portable, and Smart
+        </h2>
         <p>
-          Meet the future of aerial technology with our cutting-edge drone,
-          equipped with a state-of-the-art flight controller and unstoppable
-          navigation capabilities. Never worry about losing control or missing a
-          shot, our drone’s got your back.
+          Our drone combines cutting-edge technology with unmatched portability.
+          Fly anywhere, anytime.
         </p>
       </div>
     </section>

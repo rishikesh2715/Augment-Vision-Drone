@@ -19,6 +19,7 @@
     </script>
 
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="script.js" type="module"></script>
   </head>
   <body>
     <header id="header">
@@ -36,123 +37,14 @@
       </div>
     </header>
     <div class="cool" style="width: 92vw; height: 96vh; z-index: -1"></div>
-    <section id="3d-container">
-      <script type="module">
-        import * as THREE from "three";
-        import { ThreeMFLoader } from "three/addons/loaders/3MFLoader.js";
-        import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(
-          75,
-          window.innerWidth / window.innerHeight,
-          0.1,
-          1000
-        );
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setClearColor(0x2d3142); // Set background color to white
-        renderer.setSize(window.innerWidth / 2, window.innerHeight);
-        document
-          .getElementById("3d-container")
-          .appendChild(renderer.domElement);
-
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.update();
-
-        const loader = new ThreeMFLoader();
-        loader.load("./droneV2.3mf", (object) => {
-          object.scale.set(0.02, 0.02, 0.02); // Adjust the scale as needed
-          object.rotation.x = (3 / 2) * Math.PI;
-          scene.add(object);
-          // Set camera position and look at the center of the scene
-          camera.position.set(0, 0, 5); // Adjust the position as needed
-          camera.lookAt(0, 0, 0);
-
-          const ambientLight = new THREE.AmbientLight(0xffffff); // Set ambient light color
-          ambientLight.intensity = 0.5;
-          scene.add(ambientLight);
-
-          // // Create a directional light for overall illumination
-          // const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-          // directionalLight.position.set(1, 1, 1).normalize();
-          // scene.add(directionalLight);
-
-          // Create a point light and attach it to the camera
-          const pointLight = new THREE.PointLight(0xffffff, 25); // Adjust intensity
-          camera.add(pointLight);
-          pointLight.position.set(0, 0, 2);
-          scene.add(camera);
-
-          const animate = () => {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-          };
-
-          animate();
-
-          let previousScroll = window.scrollY;
-          let objectXdirection = 1;
-
-          window.addEventListener("scroll", (eve) => {
-            camera.position.set(0, 0, 5); // Adjust the position as needed
-            camera.lookAt(0, 0, 0);
-            const currentScroll = window.scrollY;
-            const scrollDirection =
-              currentScroll > previousScroll ? "down" : "up";
-            const rotationSpeed = 0.1;
-
-            if (window.scrollY === document.body.scrollHeight)
-              objectXdirection = -objectXdirection;
-            if (object.position.x >= 4) objectXdirection = -1;
-            else if (object.position.x <= -4) objectXdirection = 1;
-            object.position.x += objectXdirection * rotationSpeed;
-            if (
-              (object.rotation.z >= -1 && objectXdirection === -1) ||
-              (object.rotation.z <= 1 && objectXdirection === 1)
-            )
-              object.rotation.z += (objectXdirection * rotationSpeed) / 4;
-            if (scrollDirection === "down") {
-              if (object.rotation.x <= 6) object.rotation.x += rotationSpeed;
-              else if (object.position.y >= -1) {
-                object.position.y -= rotationSpeed;
-              }
-            } else if (
-              scrollDirection === "up" &&
-              object.rotation.x < 4.8 &&
-              object.position.y <= 0
-            )
-              object.position.y += rotationSpeed;
-            // else if (scrollDirection === "up" && object.rotation.x >= 4.8)
-            //   object.rotation.x -= rotationSpeed;
-            console.log(window.scrollY);
-            console.log(
-              document.body.clientHeight -
-                window.innerHeight -
-                document.getElementById("header").offsetHeight
-            );
-            previousScroll = currentScroll;
-
-            if (window.scrollY === 0) {
-              object.position.x = 0;
-              object.position.y = 0;
-              object.rotation.x = 4.8;
-              objectXdirection = 1;
-              object.rotation.z = 0;
-            }
-          });
-        });
-      </script>
-    </section>
+    <section id="3d-container"></section>
     <section id="explore">
       <div class="explore-video">
         <!-- Place this code where you want the video to appear -->
-        <iframe
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/15XNx00r0XI"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+        <video width="100%" height="100%" controls>
+          <source src="droneFull.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div class="text-content">
