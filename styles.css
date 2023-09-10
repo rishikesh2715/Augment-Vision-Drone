@@ -72,7 +72,7 @@ canvas {
   height: 40vw !important;
   margin: auto auto;
   position: fixed;
-  top: 0;
+  top: 8vw;
   left: 30vw;
   z-index: 0;
 }

@@ -1,4 +1,9 @@
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< GENERAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
+* {
+  z-index: 99;
+  position: relative;
+}
+
 @font-face {
   font-family: "Dela Gothic One";
   src: url("dela.ttf") format("truetype");
@@ -11,6 +16,7 @@ body {
   padding: 0;
   background-color: #2d3142;
   font-family: "Dela Gothic One", sans-serif;
+  color: #e0dfdb; /* Light gray text color */
 }
 
 /* Highlighted text styles */
@@ -62,19 +68,15 @@ header a {
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< 3D MODEL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
 
-/* Section container styles */
-#3d-container {
-  padding: 20px;
-  text-align: center;
-  overflow: auto;
-}
-
 /* 3D model canvas styles */
 canvas {
   max-width: 40vw; /* Resize the canvas to 1/3 of the viewport */
   height: 40vw !important;
-  display: block;
   margin: auto auto;
+  position: fixed;
+  top: 8vw;
+  left: 30vw;
+  z-index: 0;
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< EXPLORE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
@@ -86,10 +88,22 @@ canvas {
   margin: 0 0 6vw;
   padding-top: 8vw;
 }
+
 .explore-video {
   width: 33vw;
   height: 15vw;
 }
+
+/* Style the video controls */
+video::-webkit-media-controls {
+  display: none; /* Hide the default controls */
+}
+
+/* Style the custom controls on mouseover */
+video:hover::-webkit-media-controls {
+  display: flex; /* Show controls on hover */
+}
+
 .text-content {
   text-align: left;
   max-width: 25vw;
@@ -97,19 +111,18 @@ canvas {
 
 .text-content h2 {
   color: #ef8354; /* Orange text color */
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .text-content p {
   color: white; /* White text color */
-  font-size: 16px;
+  font-size: 22px;
   line-height: 1.5;
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< NEWSLETTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
 /* Newsletter section styles */
 #newsletter {
-  background-color: #2d3142; /* Dark blue/gray background */
   color: white; /* White text color */
   text-align: center;
   display: block;
@@ -173,7 +186,6 @@ canvas {
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SUPPORT US >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
 /* Support Us section styles */
 #support-us {
-  background-color: #2d3142; /* Dark blue/gray background */
   text-align: center;
   border-radius: 10px; /* Rounded corners */
   max-width: 50vw;
@@ -228,8 +240,11 @@ canvas {
     width: 20vw;
   }
   canvas {
-    max-width: 92vw;
+    width: 100vw !important;
+    max-width: 100vw !important;
     height: 92vw !important;
+    top: 8vw;
+    left: 0;
   }
   #explore {
     flex-direction: column;
@@ -251,7 +266,7 @@ canvas {
     padding-top: 12vw;
   }
   #support-us .icon {
-    width: 10vw; /* Adjust icon size as needed */
+    width: 15vw; /* Adjust icon size as needed */
   }
   #newsletter {
     max-width: 92vw;
@@ -259,6 +274,6 @@ canvas {
     padding-top: 12vw;
   }
   .newsletter-icon {
-    width: 10vw;
+    width: 15vw;
   }
 }
