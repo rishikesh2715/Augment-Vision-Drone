@@ -5,8 +5,10 @@ import time
 import threading
 import display_heading
 import objectDetection
-# sys.path.append('WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
-sys.path.append('D:\projectLab5\Augment-Vision-Drone\main\WitStandardProtocol_JY901\Python\PythonWitProtocol\chs')
+import os
+from dotenv import load_dotenv
+load_dotenv()
+sys.path.append(os.environ.get('CHS_PATH'))
 import JY901S
 import signal
 
@@ -126,10 +128,10 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     pilot.objectDistance = math.sqrt(v3[0]**2 + v3[1]**2 + v3[2]**2)
 
     # Print the vectors
-    print("Vector from your location to the drone (V1):", v1)
-    print("Vector from the drone to the target object (V2):", v2)
-    print("Vector from your location to the target object (V3):", v3)
-    print(f"{pilot.objectDistance:.2f} degrees")
+    # print("Vector from your location to the drone (V1):", v1)
+    # print("Vector from the drone to the target object (V2):", v2)
+    # print("Vector from your location to the target object (V3):", v3)
+    # print(f"{pilot.objectDistance:.2f} degrees")
 
 
 def runGPSscript(pilot):

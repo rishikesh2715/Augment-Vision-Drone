@@ -3,6 +3,10 @@ import threading
 import time
 import cv2
 import numpy as np
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 target_width = 2560
 target_height = 1440
@@ -76,7 +80,7 @@ def display_heading(pilot, exit_event, drone):
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
     # Load compass image with transparency
-    compass_img = cv2.imread('D:\projectLab5\Augment-Vision-Drone\main\compass_white.png', cv2.IMREAD_UNCHANGED)
+    compass_img = cv2.imread(os.environ.get('COMPASS_PATH'), cv2.IMREAD_UNCHANGED)
 
     # Resize compass image 
     compass_img = cv2.resize(compass_img, (400, 400))  # Adjust size as needed
