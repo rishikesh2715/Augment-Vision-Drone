@@ -11,7 +11,7 @@ def main():
 
         model = YOLO('yolov8n.pt')
 
-        for result in model.track(source="1", show=False, stream=True, classes=0):
+        for result in model.track(source="2", show=False, stream=True, classes=0):
             frame = result.orig_img
             detections = sv.Detections.from_yolov8(result)        
 

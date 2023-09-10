@@ -10,11 +10,6 @@ from dotenv import load_dotenv
 load_dotenv()
 sys.path.append(os.environ.get('CHS_PATH'))
 import JY901S
-import signal
-
-
-# global flag to exit the process
-exit_event = threading.Event()
 
 class DroneState:
     def __init__(self, lat, lon, speed, altitude, heading, pitch, roll, yaw, sats, objectDistance, offsetAngle):
@@ -38,12 +33,6 @@ class PilotState:
         self.altitude = altitude
         self.objectDirection = objectDirection
         self.objectDistance = objectDistance
-
-def signal_handler(sig, frame):
-    print("exiting signal")
-    exit_event.set()
-
-signal.signal(signal.SIGINT, signal_handler)
 
 def haversine_distance_meters(lat1, lon1, lat2, lon2):
     # Radius of the Earth in kilometers
@@ -135,10 +124,8 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
 
 
 def runGPSscript(pilot):
-    while not exit_event.is_set():
-        JY901S.runScript(pilot)
-        # print(f"Direction after running JY901S.runScript: {pilot.direction}")
-        time.sleep(0.1)
+    JY901S.runScript(pilot)
+
 
 drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 pilot = PilotState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
@@ -153,11 +140,11 @@ if __name__ == "__main__":
     gpsThread.daemon = True # Daemon threads exit when the program does
     gpsThread.start()
 
-    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, exit_event, drone))
+    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, drone, ))
     displayHeadingThread.daemon = True
     displayHeadingThread.start()
 
-    objectDetectionThread = threading.Thread(target=objectDetection.objectDetection, args=(drone, exit_event))
+    objectDetectionThread = threading.Thread(target=objectDetection.objectDetection, args=(drone, ))
     objectDetectionThread.daemon = True
     objectDetectionThread.start()
 
@@ -166,12 +153,7 @@ if __name__ == "__main__":
     # serialThread.start()
 
 
-    while not exit_event.is_set():
+    while True:
         time.sleep(0.1)
         getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon, drone, pilot)
         getCompassDirection()
-    
-    gpsThread.join()
-    displayHeadingThread.join()
-    objectDetectionThread.join()
-    # serialThread.join()
