@@ -17,6 +17,9 @@ https://github.com/rishikesh2715/Augment-Vision-Drone/assets/72249404/e26e6b2b-a
 This phase involved developing an object detection model that operates seamlessly on the drone. We are pleased to announce that this part of the project has been completed successfully.
 
 ### 3. AR Overlay on VR Headset
+
+https://github.com/rishikesh2715/Augment-Vision-Drone/assets/72249404/c2243ad8-529f-4e66-ac49-11d08a6ce6c5
+
 The objective of this phase is to overlay the detected object's distance and direction onto a VR headset, ensuring it aligns with a team member's line of sight. This part of the project is still in progress.
 
 ## Contributing
