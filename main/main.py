@@ -2,7 +2,6 @@ import sys
 import math
 from telemetry import processSerialData
 import time
-import threading
 import display_heading
 import objectDetection
 import os
@@ -10,6 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 sys.path.append(os.environ.get('CHS_PATH'))
 import JY901S
+import multiprocessing
 
 class DroneState:
     def __init__(self, lat, lon, speed, altitude, heading, pitch, roll, yaw, sats, objectDistance, offsetAngle):
@@ -123,8 +123,8 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     # print(f"{pilot.objectDistance:.2f} degrees")
 
 
-def runGPSscript(pilot):
-    JY901S.runScript(pilot)
+def runGPSscript(pilot, q):
+    JY901S.runScript(pilot, q)
 
 
 drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
@@ -136,24 +136,38 @@ def getCompassDirection():
     return pilot.direction
 
 if __name__ == "__main__":
-    gpsThread = threading.Thread(target=runGPSscript, args=(pilot, ))
-    gpsThread.daemon = True # Daemon threads exit when the program does
-    gpsThread.start()
+    gpsQueue = multiprocessing.Queue()
+    gpsProcess = multiprocessing.Process(target=runGPSscript, args=(pilot, gpsQueue,))
+    gpsProcess.daemon = False # Daemon Process exit when the program does
+    gpsProcess.start()
 
-    displayHeadingThread = threading.Thread(target=display_heading.display_heading, args=(pilot, drone, ))
-    displayHeadingThread.daemon = True
-    displayHeadingThread.start()
+    objectDistance = multiprocessing.Value('f', 0.0)
+    offsetAngle = multiprocessing.Value('f', 0.0)
 
-    objectDetectionThread = threading.Thread(target=objectDetection.objectDetection, args=(drone, ))
-    objectDetectionThread.daemon = True
-    objectDetectionThread.start()
+    displayHeadingQueue = multiprocessing.Queue()
+    displayHeadingProcess = multiprocessing.Process(target=display_heading.display_heading, args=(pilot, drone, displayHeadingQueue, objectDistance, offsetAngle ))
+    displayHeadingProcess.daemon = False
+    displayHeadingProcess.start()
 
-    # serialThread = threading.Thread(target=processSerialData, args=(drone,))
-    # serialThread.daemon = True
-    # serialThread.start()
+    objectDetectionProcess = multiprocessing.Process(target=objectDetection.objectDetection, args=(objectDistance, offsetAngle,))
+    objectDetectionProcess.start()
+
+    # serialQueue = multiprocessing.Queue()
+    # serialProcess = multiprocessing.Process(target=processSerialData, args=(drone,))
+    # serialProcess.daemon = True
+    # serialProcess.start()
 
 
     while True:
-        time.sleep(0.1)
+        if not gpsQueue.empty():
+            pilot = gpsQueue.get()
+        if not displayHeadingQueue.empty():
+            drone, pilot = displayHeadingQueue.get()
+        # if not serialQueue.empty():
+        #     drone = serialQueue.get()
+        drone.objectDistance = objectDistance.value
+        drone.offsetAngle = offsetAngle.value
+        print("Object Distance:", drone.objectDistance)
         getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon, drone, pilot)
         getCompassDirection()
+        time.sleep(0.1)

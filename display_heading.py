@@ -4,10 +4,10 @@ import time
 import cv2
 import numpy as np
 
-sys.path.append('D:\projectLab5\Augment-Vision-Drone\main\WitStandardProtocol_JY901\Python\PythonWitProtocol\chs')
+sys.path.append('main/WitStandardProtocol_JY901/Python/PythonWitProtocol/chs')
 
 
-sys.path.append('D:\projectLab5\Augment-Vision-Drone\main')
+sys.path.append('main')
 import main
 def rotate_image(image, angle):
     center = tuple(np.array(image.shape[1::-1]) / 2)
@@ -23,15 +23,6 @@ def overlay_transparent(background, overlay, x, y):
     for c in range(0, 3):
         background[y:y+h, x:x+w, c] = (1.0 - alpha) * background[y:y+h, x:x+w, c] + alpha * foreground[:, :, c]
     return background
-
-def compass_direction(compass_image):
-    while True:
-        direction = main.getCompassDirection()
-        if direction is not None:
-            print("Compass Direction:", direction)
-        else:
-            print("Compass direction data is not available.")
-        time.sleep(0.1)  # Adjust the sleep interval as needed
 
 def drawTriangle():
 
@@ -51,7 +42,7 @@ def drawTriangle():
 
 if __name__ == "__main__":
     # Initialize camera
-    camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    camera = cv2.VideoCapture(0)
     camera.set(cv2.CAP_PROP_FPS, 30.0)
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('m','j','p','g'))
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('M','J','P','G'))
@@ -71,10 +62,6 @@ if __name__ == "__main__":
     gpsThread = threading.Thread(target=main.runGPSscript, args=(main.pilot,))
     gpsThread.daemon = True  # Daemon threads exit when the program does
     gpsThread.start()
-
-    compass_thread = threading.Thread(target=compass_direction, args=(compass_img,))
-    compass_thread.daemon = True
-    compass_thread.start()
 
     font = cv2.FONT_HERSHEY_TRIPLEX  # font style
     font_scale = 1.5  # font size

@@ -10,7 +10,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 const renderer = new THREE.WebGLRenderer();
-renderer.setClearColor(0x2d3142); // Set background color to white
+renderer.setClearColor(0x403f4c, 0); // Set background color to white
 renderer.setSize(window.innerWidth / 2, window.innerHeight);
 document.getElementById("3d-container").appendChild(renderer.domElement);
 
@@ -28,11 +28,6 @@ loader.load("./droneV2.3mf", (object) => {
   const ambientLight = new THREE.AmbientLight(0xffffff); // Set ambient light color
   ambientLight.intensity = 0.5;
   scene.add(ambientLight);
-
-  // // Create a directional light for overall illumination
-  // const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-  // directionalLight.position.set(1, 1, 1).normalize();
-  // scene.add(directionalLight);
 
   // Create a point light and attach it to the camera
   const pointLight = new THREE.PointLight(0xffffff, 25); // Adjust intensity

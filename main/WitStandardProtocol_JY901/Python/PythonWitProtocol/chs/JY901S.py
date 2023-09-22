@@ -10,6 +10,7 @@ import lib.device_model as deviceModel
 import math
 from lib.data_processor.roles.jy901s_dataProcessor import JY901SDataProcessor
 from lib.protocol_resolver.roles.wit_protocol_resolver import WitProtocolResolver
+import multiprocessing
 
 welcome = """
 Welcome to the Wit-Motion sample program
@@ -17,6 +18,7 @@ Welcome to the Wit-Motion sample program
 _writeF = None                    # File writing
 _IsWriteF = False                 # File writing flag
 pilot = {}
+q = multiprocessing.Queue()
 
 def readConfig(device):
     """
@@ -92,6 +94,7 @@ def onUpdate(deviceModel):
     pilot.direction = compass_direction
     pilot.lat = deviceModel.getDeviceData("lat")
     pilot.lon = deviceModel.getDeviceData("lon") # pilot.long chnaged it to pilot.lon -- long is built-in function
+    q.put(pilot)
 
     # print("Compass Direction:", compass_direction)
     # print("Chip time: " + str(deviceModel.getDeviceData("Chiptime"))
@@ -151,10 +154,11 @@ def onUpdate(deviceModel):
 #     _writeF.close()  # Close file
 #     print("End recording data")
 
-def runScript(mainPilot):
+def runScript(mainPilot, queue):
     try:
-        global pilot
+        global pilot, q
         pilot = mainPilot
+        q = queue
         print("Starting GPS script:")
 
         print(welcome)

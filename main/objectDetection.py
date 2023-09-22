@@ -1,75 +1,120 @@
-import cv2
 from ultralytics import YOLO
-import supervision as sv
+import cv2
 import platform
+import time
 
-def objectDetection(drone):
-    box_annotator = sv.BoxAnnotator(
-        thickness=2,
-        text_thickness=1,
-        text_scale=0.5,
-    )
+def get_objects(results, frame, objectDistance, offsetAngle):
+    detected_objects = []
+    
+    # Camera parameters
+    FOV = 160  # walknail avatar camera fov
+    focal_length = 730  # drone cam focal // c920 = 730 
+    Object_Real_Height = 1.8  # Average Human Height in meters
 
-    model = YOLO('yolov8n.pt')
+    if not len(results):
+        offsetAngle = 0
+        objectDistance = 0
+        # Append default object when no detections are available
+        detected_objects.append({
+            'bbox': None,
+            'class_name': None,
+            'confidence': 0,
+            'class_id': None,
+            'distance': 0,
+            'offset': 0,
+            'objectDistance': objectDistance,
+            'offsetAngle': offsetAngle
+        })
+        return detected_objects
 
-    for result in model.track(source="2", show=False, stream=True, classes=0, verbose=False):
-        frame = result.orig_img
-        detections = sv.Detections.from_yolov8(result)        
+    for det in results:
+        if len(det.boxes.xyxy) > 0:
+            # Extract bounding boxes
+            xyxy = det.boxes.xyxy[0].cpu().numpy()
+            x1, y1, x2, y2 = map(int, xyxy)
 
-        # print(detections)
+            # Extract class name and confidence score
+            class_id = int(det.boxes.cls[0])
+            class_name = det.names[class_id]
+            confidence = float(det.boxes.conf[0])
 
-        if result.boxes.id is not None:
-            detections.tracker_id = result.boxes.id.cpu().numpy() .astype(int)
-
-        if platform.system().lower() == 'linux':
-            lables = [
-                f"#{tracker_id}{class_id} {confidence:.2f}"
-                for xyxy, mask, confidence, class_id, tracker_id
-                in detections
-            ]
-        else:
-            lables = [
-                f"#{tracker_id}{class_id} {confidence:.2f}"
-                for xyxy, confidence, class_id, tracker_id
-                in detections
-            ]    
-        frame = box_annotator.annotate(scene=frame, detections=detections, labels=lables)
-
-        if detections.xyxy.any():
-            [x1, y1, x2, y2] = detections.xyxy[0]
-                            
-            #Camera parameters
-            FOV = 160 # walknail avatar camera fov
-            focal_length = 730  # drone cam focal // c920 = 730 
-            Object_Real_Height = 1.8  # Average Human Height in meters
-            # print (f"{x1, y1, x2, y2}")
-            
             # calculating the heading offset from the center of the frame
             object_center_x = (x1 + x2) / 2
             frame_center_x = frame.shape[1] / 2
             offset_x = object_center_x - frame_center_x
 
-            drone.offsetAngle = (offset_x/frame.shape[1]) * (FOV) # angle offset from center of frame
-            # print(f"offset angle is {drone.offsetAngle:.2f} degrees")
+            offsetAngle = (offset_x/frame.shape[1]) * (FOV) # angle offset from center of frame
+            
 
             # calculating the distance to the object
             drone_pixel_height = y2 - y1
-            drone.objectDistance = (Object_Real_Height * focal_length) / drone_pixel_height
-            
-            print(f"object distance is{drone.objectDistance:.2f} m")
+            objectDistance = (Object_Real_Height * focal_length) / drone_pixel_height
 
+            detected_objects.append({
+                'bbox': (x1, y1, x2, y2),
+                'class_name': class_name,
+                'confidence': confidence,
+                'class_id': class_id,
+                'distance': objectDistance,
+                'offset': offsetAngle
+            })
+    return detected_objects
+
+def objectDetection(objectDistance, offsetAngle):
+    try:
+        print("Starting objectDetection function...")
+        # Initialize camera
+        if platform.system().lower() == 'linux':
+            cap = cv2.VideoCapture(2)
+            print("Camera initialized...")
+            time.sleep(2)
         else:
-            drone.objectDistance = 0
+            cap = cv2.VideoCapture(2, cv2.CAP_DSHOW)
 
-        cv2.imshow("frame", frame)
-        k = cv2.waitKey(1) & 0xff
-        if k == 27:
-            cv2.destroyAllWindows()
-            break
+        if not cap.isOpened():
+            print("Error: Could not open camera 2.")
+            return
 
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
     
-    cv2.destroyAllWindows()
+        model = YOLO('yolov8n.pt')
 
-        
-    
+        while True:
+            ret, frame = cap.read()
+
+            # print('capped a frame')
+
+            if not ret:
+                print("Failed to grab frame")
+                break
+
+            results = model(frame)
+            detected_objects = get_objects(results, frame, objectDistance, offsetAngle)
+
+            if len(detected_objects) != 0:
+                for obj in detected_objects:
+                    # Access properties of each object:
+                    bbox = obj['bbox']
+                    class_name = obj['class_name']
+                    confidence = obj['confidence']
+                    class_id = obj['class_id']
+                    distance = obj['distance']
                     
+                    # For instance, you can draw bounding boxes using OpenCV
+                    color = (0, 255, 0)  # green color for bounding boxes
+                    cv2.rectangle(frame, bbox[0:2], bbox[2:4], color, 2)
+                    label = f"{class_name} {distance:.2f}m"
+                    cv2.putText(frame, label, (bbox[0], bbox[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+            cv2.imshow("YOLO Stream", frame)
+
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                print("q pressed, exiting...")
+                break
+
+        print("Releasing resources in objectDetection...")
+        cap.release()
+        cv2.destroyAllWindows()
+    except Exception as e:
+        print("Exception in objectDetection:", e)
