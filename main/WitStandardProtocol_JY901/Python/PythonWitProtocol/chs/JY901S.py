@@ -19,6 +19,7 @@ _writeF = None                    # File writing
 _IsWriteF = False                 # File writing flag
 pilot = {}
 q = multiprocessing.Queue()
+dir = multiprocessing.Value('f', 0.0)
 
 def readConfig(device):
     """
@@ -88,10 +89,9 @@ def onUpdate(deviceModel):
     # Calculate the azimuth angle (compass direction) in degrees
     azimuth_rad = math.atan2(magY, magX)
     azimuth_deg = math.degrees(azimuth_rad)
-
     # Ensure the azimuth is within the range [0, 360)
     compass_direction = (azimuth_deg + 360) % 360
-    pilot.direction = compass_direction
+    dir.value = compass_direction
     pilot.lat = deviceModel.getDeviceData("lat")
     pilot.lon = deviceModel.getDeviceData("lon") # pilot.long chnaged it to pilot.lon -- long is built-in function
     q.put(pilot)
@@ -154,11 +154,12 @@ def onUpdate(deviceModel):
 #     _writeF.close()  # Close file
 #     print("End recording data")
 
-def runScript(mainPilot, queue):
+def runScript(mainPilot, queue, direction):
     try:
-        global pilot, q
+        global pilot, q, dir
         pilot = mainPilot
         q = queue
+        dir = direction
         print("Starting GPS script:")
 
         print(welcome)

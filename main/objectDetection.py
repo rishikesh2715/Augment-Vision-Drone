@@ -48,7 +48,8 @@ def get_objects(results, frame, objectDistance, offsetAngle):
 
             # calculating the distance to the object
             drone_pixel_height = y2 - y1
-            objectDistance = (Object_Real_Height * focal_length) / drone_pixel_height
+            objectDistance.value = (Object_Real_Height * focal_length) / drone_pixel_height
+            
 
             detected_objects.append({
                 'bbox': (x1, y1, x2, y2),
@@ -65,11 +66,10 @@ def objectDetection(objectDistance, offsetAngle):
         print("Starting objectDetection function...")
         # Initialize camera
         if platform.system().lower() == 'linux':
-            cap = cv2.VideoCapture(2)
+            cap = cv2.VideoCapture(0)
             print("Camera initialized...")
-            time.sleep(2)
         else:
-            cap = cv2.VideoCapture(2, cv2.CAP_DSHOW)
+            cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
         if not cap.isOpened():
             print("Error: Could not open camera 2.")
@@ -104,7 +104,7 @@ def objectDetection(objectDistance, offsetAngle):
                     # For instance, you can draw bounding boxes using OpenCV
                     color = (0, 255, 0)  # green color for bounding boxes
                     cv2.rectangle(frame, bbox[0:2], bbox[2:4], color, 2)
-                    label = f"{class_name} {distance:.2f}m"
+                    label = f"{class_name} {distance.value:.2f}m"
                     cv2.putText(frame, label, (bbox[0], bbox[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
             cv2.imshow("YOLO Stream", frame)

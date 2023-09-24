@@ -62,10 +62,12 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     drone_latitude = 33.565325
     drone_longitude = -101.869024
     drone_altitude = 0
-    drone_heading = 90
+    drone_heading = 240
 
-    your_latitude = 33.565371
-    your_longitude = -101.868981
+    your_latitude = 33.565325
+    your_longitude = -101.869024
+    # your_latitude = 33.565371
+    # your_longitude = -101.868981
 
 
     north_south_diff = haversine_distance_meters(drone_latitude, drone_longitude, your_latitude, drone_longitude)
@@ -90,7 +92,7 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     # Calculate the actual direction from the drone to the detected object
     # drone.offsetAngle = 15
     droneToObjectDirection = (drone_heading + drone.offsetAngle) % 360
-
+    print("droneToObjectDirection", droneToObjectDirection)
     # Calculate direction vector from the drone to the target object
     v2 = (
         drone.objectDistance * math.cos(math.radians(drone_pitch)) * math.sin(math.radians(droneToObjectDirection)),
@@ -111,8 +113,8 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     pilot.objectDirection = (pilot.objectDirection + 360) % 360
 
     # add the offset angle from the drone camera to the pilot heading
-    pilot.objectDirection += drone.offsetAngle
-    pilot.objectDirection = (pilot.objectDirection + 360) % 360
+    # pilot.objectDirection += drone.offsetAngle
+    # pilot.objectDirection = (pilot.objectDirection + 360) % 360
 
     pilot.objectDistance = math.sqrt(v3[0]**2 + v3[1]**2 + v3[2]**2)
 
@@ -120,11 +122,11 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     # print("Vector from your location to the drone (V1):", v1)
     # print("Vector from the drone to the target object (V2):", v2)
     # print("Vector from your location to the target object (V3):", v3)
-    # print(f"{pilot.objectDistance:.2f} degrees")
+    # print(f"{pilot.objectDistance:.2f} meters")
 
 
-def runGPSscript(pilot, q):
-    JY901S.runScript(pilot, q)
+def runGPSscript(pilot, q, direction):
+    JY901S.runScript(pilot, q, direction)
 
 
 drone = DroneState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
@@ -136,16 +138,19 @@ def getCompassDirection():
     return pilot.direction
 
 if __name__ == "__main__":
+    objectDistance = multiprocessing.Value('f', 0.0)
+    offsetAngle = multiprocessing.Value('f', 0.0)
+    direction = multiprocessing.Value('f', 0.0)
+    objectDirection = multiprocessing.Value('f', 0.0)
+
     gpsQueue = multiprocessing.Queue()
-    gpsProcess = multiprocessing.Process(target=runGPSscript, args=(pilot, gpsQueue,))
+    gpsProcess = multiprocessing.Process(target=runGPSscript, args=(pilot, gpsQueue, direction))
     gpsProcess.daemon = False # Daemon Process exit when the program does
     gpsProcess.start()
 
-    objectDistance = multiprocessing.Value('f', 0.0)
-    offsetAngle = multiprocessing.Value('f', 0.0)
 
     displayHeadingQueue = multiprocessing.Queue()
-    displayHeadingProcess = multiprocessing.Process(target=display_heading.display_heading, args=(pilot, drone, displayHeadingQueue, objectDistance, offsetAngle ))
+    displayHeadingProcess = multiprocessing.Process(target=display_heading.display_heading, args=(direction, objectDistance, objectDirection ))
     displayHeadingProcess.daemon = False
     displayHeadingProcess.start()
 
@@ -159,15 +164,17 @@ if __name__ == "__main__":
 
 
     while True:
+        time.sleep(0.1)
         if not gpsQueue.empty():
             pilot = gpsQueue.get()
         if not displayHeadingQueue.empty():
             drone, pilot = displayHeadingQueue.get()
         # if not serialQueue.empty():
         #     drone = serialQueue.get()
-        drone.objectDistance = objectDistance.value
-        drone.offsetAngle = offsetAngle.value
-        print("Object Distance:", drone.objectDistance)
+        # print("Object Distance:", drone.objectDistance)
         getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon, drone, pilot)
         getCompassDirection()
-        time.sleep(0.1)
+        drone.objectDistance = objectDistance.value
+        drone.offsetAngle = offsetAngle.value
+        pilot.direction = direction.value
+        objectDirection.value = pilot.objectDirection
