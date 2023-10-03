@@ -72,10 +72,10 @@ def display_heading(direction, objectDistance, objectDirection):
         print("Starting display_heading function...")
         # Initialize camera
         if platform.system().lower() == 'linux':
-            camera = cv2.VideoCapture(3)
+            camera = cv2.VideoCapture(0)
             print("Camera initialized...")
         else:
-            camera = cv2.VideoCapture(3, cv2.CAP_DSHOW)
+            camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         camera.set(cv2.CAP_PROP_FPS, 30.0)
         camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('m','j','p','g'))
         camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('M','J','P','G'))

@@ -59,13 +59,13 @@ def haversine_distance_meters(lat1, lon1, lat2, lon2):
 def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude, drone, pilot):
     print(drone_latitude)
     # GPS coordinates
-    drone_latitude = 33.565325
-    drone_longitude = -101.869024
+    drone_latitude = 32.938396
+    drone_longitude = -96.652748
     drone_altitude = 0
-    drone_heading = 240
+    drone_heading = 302
 
-    your_latitude = 33.565325
-    your_longitude = -101.869024
+    your_latitude = 32.938392
+    your_longitude = -96.652770
     # your_latitude = 33.565371
     # your_longitude = -101.868981
 
@@ -92,15 +92,12 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     # Calculate the actual direction from the drone to the detected object
     # drone.offsetAngle = 15
     droneToObjectDirection = (drone_heading + drone.offsetAngle) % 360
-    print("droneToObjectDirection", droneToObjectDirection)
     # Calculate direction vector from the drone to the target object
     v2 = (
         drone.objectDistance * math.cos(math.radians(drone_pitch)) * math.sin(math.radians(droneToObjectDirection)),
         drone.objectDistance * math.cos(math.radians(drone_pitch)) * math.cos(math.radians(droneToObjectDirection)),
         drone.objectDistance * math.sin(math.radians(drone_pitch))
     )
-
-
 
     # Calculate vector from your location to the target object
     v3 = (
@@ -110,7 +107,7 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     )
 
     pilot.objectDirection = math.degrees(math.atan2(v3[1], v3[0]))
-    pilot.objectDirection = (pilot.objectDirection + 360) % 360
+    pilot.objectDirection = (-pilot.objectDirection + 90 + 360) % 360
 
     # add the offset angle from the drone camera to the pilot heading
     # pilot.objectDirection += drone.offsetAngle
@@ -169,6 +166,7 @@ if __name__ == "__main__":
             pilot = gpsQueue.get()
         if not displayHeadingQueue.empty():
             drone, pilot = displayHeadingQueue.get()
+        print("Pilot Latitude", pilot.lat)
         # if not serialQueue.empty():
         #     drone = serialQueue.get()
         # print("Object Distance:", drone.objectDistance)

@@ -2,7 +2,7 @@ import cv2
 
 def main():
     # Start capture from the first camera (usually the built-in webcam)
-    cap1 = cv2.VideoCapture(3)
+    cap1 = cv2.VideoCapture(2)
 
     # Start capture from the second camera
     cap2 = cv2.VideoCapture(0)

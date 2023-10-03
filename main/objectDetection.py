@@ -43,7 +43,7 @@ def get_objects(results, frame, objectDistance, offsetAngle):
             frame_center_x = frame.shape[1] / 2
             offset_x = object_center_x - frame_center_x
 
-            offsetAngle = (offset_x/frame.shape[1]) * (FOV) # angle offset from center of frame
+            offsetAngle.value = (offset_x/frame.shape[1]) * (FOV) # angle offset from center of frame
             
 
             # calculating the distance to the object
@@ -66,10 +66,10 @@ def objectDetection(objectDistance, offsetAngle):
         print("Starting objectDetection function...")
         # Initialize camera
         if platform.system().lower() == 'linux':
-            cap = cv2.VideoCapture(0)
+            cap = cv2.VideoCapture(2)
             print("Camera initialized...")
         else:
-            cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+            cap = cv2.VideoCapture(2, cv2.CAP_DSHOW)
 
         if not cap.isOpened():
             print("Error: Could not open camera 2.")
