@@ -69,7 +69,7 @@ def objectDetection(objectDistance, offsetAngle):
             cap = cv2.VideoCapture(2)
             print("Camera initialized...")
         else:
-            cap = cv2.VideoCapture(2, cv2.CAP_DSHOW)
+            cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
 
         if not cap.isOpened():
             print("Error: Could not open camera 2.")
@@ -89,7 +89,7 @@ def objectDetection(objectDistance, offsetAngle):
                 print("Failed to grab frame")
                 break
 
-            results = model(frame)
+            results = model(frame, classes=0, verbose=False)
             detected_objects = get_objects(results, frame, objectDistance, offsetAngle)
 
             if len(detected_objects) != 0:
