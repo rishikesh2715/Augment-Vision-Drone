@@ -59,15 +59,15 @@ def haversine_distance_meters(lat1, lon1, lat2, lon2):
 def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude, drone, pilot):
     print(drone_latitude)
     # GPS coordinates
-    drone_latitude = 32.938382
-    drone_longitude = -96.652736
+    drone_latitude = 33.565325
+    drone_longitude = -101.869024
     drone_altitude = 0
-    drone_heading = 302
+    drone_heading = 90
 
-    your_latitude = 32.938385
-    your_longitude = -96.652751
-    # your_latitude = 33.565371
-    # your_longitude = -101.868981
+    # your_latitude = 32.938385
+    # your_longitude = -96.652751
+    your_latitude = 33.565371
+    your_longitude = -101.868981
 
 
     north_south_diff = haversine_distance_meters(drone_latitude, drone_longitude, your_latitude, drone_longitude)

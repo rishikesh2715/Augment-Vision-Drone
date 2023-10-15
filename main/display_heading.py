@@ -48,11 +48,11 @@ def drawTriangle(direction, resized_frame, objectDistance, objectDirection):
 
     # Draw the triangle at the calculated position
     # objectDistance.value = 10
-    # triangle_size = int(100)
-    if objectDistance.value != 0:
-        triangle_size = int(screen_height * (2 / objectDistance.value))  # Adjust size based on distance
-    else:
-        triangle_size = int(100)
+    triangle_size = int(100)
+    # if objectDistance.value != 0:
+    #     triangle_size = int(screen_height * (2 / objectDistance.value))  # Adjust size based on distance
+    # else:
+    #     triangle_size = int(100)
     triangle_color = (0, 255, 0)  # Green color
     cv2.drawMarker(resized_frame, (x_triangle, y_triangle), triangle_color, markerType=cv2.MARKER_TRIANGLE_UP, markerSize=triangle_size)
 
