@@ -32,7 +32,7 @@ body {
   background-size: cover;
   padding: 0;
   background-color: #e2e2e2; /* Adjusted to a lighter shade */
-  font-family: "Poppins", sans-serif;
+  font-family: "w", sans-serif;
   color: #403f4c; /* Drone's primary gray color */
   position: relative;
   height: 100%;
@@ -310,7 +310,7 @@ video:hover::-webkit-media-controls {
 /* Title styles */
 #support-us h2 {
   color: white; /* Orange text color */
-  font-family: "Poppins", sans-serif;
+  font-family: "w", sans-serif;
   font-size: 36px;
 }
 
@@ -354,13 +354,41 @@ video:hover::-webkit-media-controls {
 
 .social-icon {
   margin: 0 1rem;
-  height: 40px; /* Adjust this value for desired icon size */
+  width: 60px; /* Adjust as needed */
+  height: 60px;
+  display: flex; /* Flexbox for centering the SVG icon */
+  align-items: center; /* Vertically centers the SVG icon */
+  justify-content: center; /* Horizontally centers the SVG icon */
+
+  /* Drop shadow */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s;
+  filter: drop-shadow(0 0 3px #f6c041);
+
+  border: double 2px transparent;
+  border-radius: 10px;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(20, 19, 25, 0.8),
+      rgba(30, 29, 35, 0.95)
+    ),
+    linear-gradient(to top right, #f6c041, white);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+/* For the SVG icon */
+.social-icon img {
+  width: 30px; /* Adjust as needed */
+  height: 30px;
   filter: drop-shadow(0 0 5px #f6c041);
 }
 
 .social-icon:hover {
-  opacity: 0.7;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 0 5px #f6c041);
+}
+.social-icon img:hover {
+  filter: drop-shadow(0 0 10px #f6c041);
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< MEDIA QUERIES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
