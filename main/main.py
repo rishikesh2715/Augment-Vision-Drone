@@ -56,18 +56,18 @@ def haversine_distance_meters(lat1, lon1, lat2, lon2):
     distance_m = distance_km * 1000  # Convert to meters
     return distance_m
 
-def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude, drone, pilot):
+def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude, drone, pilot, pilotObjectDistance):
     print(drone_latitude)
     # GPS coordinates
-    drone_latitude = 33.565325
-    drone_longitude = -101.869024
+    drone_latitude = 33.5654845
+    drone_longitude = -101.8690260
     drone_altitude = 0
     drone_heading = 90
 
     # your_latitude = 32.938385
     # your_longitude = -96.652751
-    your_latitude = 33.565371
-    your_longitude = -101.868981
+    your_latitude = 33.565523
+    your_longitude = -101.868993
 
 
     north_south_diff = haversine_distance_meters(drone_latitude, drone_longitude, your_latitude, drone_longitude)
@@ -114,6 +114,7 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     # pilot.objectDirection = (pilot.objectDirection + 360) % 360
 
     pilot.objectDistance = math.sqrt(v3[0]**2 + v3[1]**2 + v3[2]**2)
+    pilotObjectDistance.value = pilot.objectDistance
 
     # Print the vectors
     # print("Vector from your location to the drone (V1):", v1)
@@ -139,6 +140,7 @@ if __name__ == "__main__":
     offsetAngle = multiprocessing.Value('f', 0.0)
     direction = multiprocessing.Value('f', 0.0)
     objectDirection = multiprocessing.Value('f', 0.0)
+    pilotObjectDistance = multiprocessing.Value('f', 0.0)
 
     gpsQueue = multiprocessing.Queue()
     gpsProcess = multiprocessing.Process(target=runGPSscript, args=(pilot, gpsQueue, direction))
@@ -147,7 +149,7 @@ if __name__ == "__main__":
 
 
     displayHeadingQueue = multiprocessing.Queue()
-    displayHeadingProcess = multiprocessing.Process(target=display_heading.display_heading, args=(direction, objectDistance, objectDirection ))
+    displayHeadingProcess = multiprocessing.Process(target=display_heading.display_heading, args=(direction, objectDistance, objectDirection, pilotObjectDistance ))
     displayHeadingProcess.daemon = False
     displayHeadingProcess.start()
 
@@ -170,7 +172,7 @@ if __name__ == "__main__":
         # if not serialQueue.empty():
         #     drone = serialQueue.get()
         # print("Object Distance:", drone.objectDistance)
-        getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon, drone, pilot)
+        getVector(drone.lat, drone.lon, drone.altitude, drone.heading, drone.pitch, drone.roll, pilot.lat, pilot.lon, drone, pilot, pilotObjectDistance)
         getCompassDirection()
         drone.objectDistance = objectDistance.value
         drone.offsetAngle = offsetAngle.value
