@@ -35,7 +35,7 @@ def overlay_transparent(background, overlay, x, y):
     return background
 
 
-def drawTriangle(direction, resized_frame, objectDistance, objectDirection):
+def drawTriangle(direction, resized_frame, objectDistance, objectDirection, pilotObjectDistance):
 
     direction_difference = objectDirection.value - direction.value
     if direction_difference <= 0:
@@ -60,13 +60,13 @@ def drawTriangle(direction, resized_frame, objectDistance, objectDirection):
     font = cv2.FONT_HERSHEY_SIMPLEX
     font_scale = 0.5
     font_color = (255, 255, 255)  # White color
-    text = f"Distance: {objectDistance.value:.2f} m"
+    text = f"Distance: {pilotObjectDistance.value:.2f} m"
     cv2.putText(resized_frame, text, (x_triangle, y_triangle + triangle_size + 20), font, font_scale, font_color)
 
     # print(f"object distance is {objectDistance.value:.2f} m")
     # print(f"object direction is {objectDirection.value:.2f} degrees")
 
-def display_heading(direction, objectDistance, objectDirection):
+def display_heading(direction, objectDistance, objectDirection, pilotObjectDistance):
     try:
         
         print("Starting display_heading function...")
@@ -111,11 +111,11 @@ def display_heading(direction, objectDistance, objectDirection):
 
                 if angle_limit_left <= angle_limit_right:
                     if angle_limit_left <= direction.value <= angle_limit_right:
-                        drawTriangle(direction, resized_frame, objectDistance, objectDirection)
+                        drawTriangle(direction, resized_frame, objectDistance, objectDirection, pilotObjectDistance)
 
                 else:
                     if direction.value >= angle_limit_left or direction.value <= angle_limit_right:
-                        drawTriangle(direction, resized_frame, objectDistance, objectDirection)
+                        drawTriangle(direction, resized_frame, objectDistance, objectDirection, pilotObjectDistance)
 
                 # Rotate the compass image based on the direction angle
                 rotated_compass = rotate_image(compass_img, direction.value)
