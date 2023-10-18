@@ -75,8 +75,8 @@ def objectDetection(objectDistance, offsetAngle):
             print("Error: Could not open camera 2.")
             return
 
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
     
         model = YOLO('yolov8n.pt')
 
