@@ -23,11 +23,13 @@
   </head>
   <body>
     <header id="header">
-      <a href="#top">
-        <!-- Add this anchor link to go to the top -->
+      <h1 class="glowing">RIS Drones</h1>
+      <!-- <a href="#top">
+        Add this anchor link to go to the top 
         <img src="./logo.png" class="icon" alt="Logo" />
-      </a>
-      <div id="headerLinks">
+      </a> 
+    -->
+      <div id="headerLinks" class="glowing">
         <a href="#explore">Explore</a>
         <!-- Add this anchor link for Donate -->
         <a href="#newsletter">Subscribe</a>
@@ -37,6 +39,7 @@
       </div>
     </header>
     <div class="cool" style="height: 96vh; z-index: -1"></div>
+    <img id="placeholderImage" src="screenshot.png" />
     <section id="3d-container"></section>
     <section id="explore">
       <div class="explore-video">
@@ -47,74 +50,83 @@
         </video>
       </div>
 
+      <section id="newsletter">
+        <h2 class="newsletter-title glowing">Get Ready for Takeoff</h2>
+        <div class="newsletter-content">
+          <input
+            type="email"
+            id="newsletter-email"
+            class="newsletter-input"
+            placeholder="name@email.com"
+          />
+          <button class="newsletter-btn" id="subscribe-button">
+            Subscribe
+          </button>
+          <img
+            src="./newsletter2.svg"
+            alt="Newsletter Icon"
+            class="newsletter-icon"
+          />
+        </div>
+      </section>
       <div class="text-content">
-        <h2 class="highlight">
+        <h2 class="glowing">
           Discover the Future of Flight: Collapsible, Portable, and Smart
         </h2>
-        <p>
+        <p class="glowing">
           Our drone combines cutting-edge technology with unmatched portability.
           Fly anywhere, anytime.
         </p>
       </div>
-    </section>
-    <section id="newsletter">
-      <img
-        src="./newsletter2.svg"
-        alt="Newsletter Icon"
-        class="newsletter-icon"
-      />
-      <h2 class="newsletter-title">Get Ready for Takeoff</h2>
-      <div class="newsletter-content">
-        <input
-          type="email"
-          id="newsletter-email"
-          class="newsletter-input"
-          placeholder="name@email.com"
-        />
-        <button class="newsletter-btn" id="subscribe-button">Subscribe</button>
-      </div>
-    </section>
-    <section id="support-us">
-      <!-- Icon -->
-      <img src="supportus.svg" alt="Support Icon" class="icon" />
+      <section id="support-us">
+        <!-- Title -->
+        <h2 class="glowing">Support Us</h2>
 
-      <!-- Title -->
-      <h2>Support Us</h2>
+        <!-- Description -->
+        <p class="glowing">
+          Be part of the journey, contribute to our project on Patreon. Help us
+          propel the next-generation of aerial technology and support our
+          mission to innovate, explore, and capture breathtaking experiences.
+          Pledge now, and together we’ll fly high!
+        </p>
 
-      <!-- Description -->
-      <p>
-        Be part of the journey, contribute to our project on Patreon. Help us
-        propel the next-generation of aerial technology and support our mission
-        to innovate, explore, and capture breathtaking experiences. Pledge now,
-        and together we’ll fly high!
-      </p>
-
-      <!-- Patreon Button -->
-      <a
-        href="https://www.patreon.com/RISDrones"
-        target="_blank"
-        class="btn-orange"
-        >Support on Patreon</a
-      >
+        <!-- Patreon Button -->
+        <a
+          href="https://www.patreon.com/RISDrones"
+          target="_blank"
+          class="btn-orange"
+          >Support on Patreon</a
+        >
+        <!-- Icon -->
+        <img src="supportus.svg" alt="Support Icon" class="icon" />
+      </section>
     </section>
+
     <script src="/script.js"></script>
     <!-- Social Media Links -->
     <div class="social-media-icons">
-      <a href="https://twitter.com/steveGilletTex" target="_blank">
-        <img src="twitter.svg" alt="Twitter" class="social-icon" />
-      </a>
-      <a
-        href="https://www.youtube.com/channel/UCXbUsunUCJZRd0AAiu-lJ8w"
-        target="_blank"
-      >
-        <img src="youtube.svg" alt="YouTube" class="social-icon" />
-      </a>
-      <a
-        href="https://github.com/rishikesh2715/Augment-Vision-Drone"
-        target="_blank"
-      >
-        <img src="github.svg" alt="GitHub" class="social-icon" />
-      </a>
+      <div class="social-icon">
+        <a href="https://twitter.com/steveGilletTex" target="_blank">
+          <img src="twitter.svg" alt="Twitter" />
+        </a>
+      </div>
+
+      <div class="social-icon">
+        <a
+          href="https://www.youtube.com/channel/UCXbUsunUCJZRd0AAiu-lJ8w"
+          target="_blank"
+        >
+          <img src="youtube.svg" alt="YouTube" />
+        </a>
+      </div>
+      <div class="social-icon">
+        <a
+          href="https://github.com/rishikesh2715/Augment-Vision-Drone"
+          target="_blank"
+        >
+          <img src="github.svg" alt="GitHub" />
+        </a>
+      </div>
     </div>
   </body>
 </html>

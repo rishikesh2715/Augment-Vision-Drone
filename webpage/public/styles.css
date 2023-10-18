@@ -2,55 +2,65 @@
 * {
   z-index: 99;
   position: relative;
+  font-weight: bold;
 }
 
 @font-face {
-  font-family: "Dela Gothic One";
-  src: url("dela.ttf") format("truetype");
+  font-family: "Poppins";
+  src: url("Poppins-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YoungSerif";
+  src: url("YoungSerif-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Audiowide";
+  src: url("Audiowide-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
   margin: 0;
-  background-image: url(sky.jpg);
+  background-image: url(sky.png);
   background-size: cover;
   padding: 0;
-  background-color: #403f4c;
-  font-family: "Dela Gothic One", sans-serif;
-  color: #e0dfdb; /* Light gray text color */
+  background-color: #e2e2e2; /* Adjusted to a lighter shade */
+  font-family: "w", sans-serif;
+  color: #403f4c; /* Drone's primary gray color */
   position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-body::after {
+/* body::after {
   content: "";
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(
-    239,
-    230,
-    221,
-    0.5
-  ); /* 0.5 is the opacity level; adjust as needed */
-  pointer-events: none; /* Ensures the shading doesn't block any interactions */
-}
+  background-color: rgba(239, 230, 221, 0.5);
+  pointer-events: none;
+} */
 
 /* Highlighted text styles */
 .highlight {
-  color: #ef8354; /* Orange text color */
+  color: #a9241a; /* Drone's red color */
   font-weight: bold;
 }
 
 /* Button styles */
 .btn {
-  background-color: #ef8354; /* Orange button color */
-  color: white; /* White text color */
+  background-color: #a9241a; /* Drone's red color */
+  color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -58,7 +68,23 @@ body::after {
 }
 
 .btn:hover {
-  background-color: #d5703b; /* Darker orange on hover */
+  background-color: #8a1e15; /* Darkened Drone's red color */
+}
+
+.glowing {
+  color: #f6c041; /* Primary color of the text */
+  background: linear-gradient(
+    #f6c041,
+    #a9241a
+  ); /* Transition from gold to red */
+  -webkit-background-clip: text; /* Applies the background only to the text */
+  color: transparent; /*Makes the text color transparent so only the background shows */
+
+  /* Subtle outward glow */
+  text-shadow: 0 0 3px #f6c04150,
+    /* 50 at the end means 50% transparency */ 0 0 6px #f6c04150,
+    0 0 8px #a9241a50;
+  text-transform: uppercase;
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< HEADER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
@@ -73,19 +99,47 @@ header {
   top: 0;
   width: 100vw;
   z-index: 1000;
-  display: flex;
   justify-content: space-between;
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
+  text-align: center;
 }
 
 header a {
   color: white;
   text-decoration: none;
-  margin-right: 2vw;
+}
+
+header h1 {
+  color: white !important;
+  font-size: 1.2vw;
+  background: none;
+  font-family: "Audiowide", sans-serif;
+}
+
+header h1::before,
+header h1::after {
+  content: "";
+  position: absolute;
+  background-color: white; /* or whichever color you prefer for the lines */
+  height: 2px; /* adjust for desired thickness */
+  width: 5%; /* adjust for desired length */
+  top: 1vw;
+}
+
+header h1::before {
+  left: 38vw;
+  transform: translateY(-100%);
+}
+
+header h1::after {
+  right: 38vw;
+  transform: translateY(-100%);
 }
 
 #headerLinks {
-  margin-right: 4vw;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 1vw;
 }
 
 .icon {
@@ -108,6 +162,21 @@ canvas {
   z-index: 0;
 }
 
+/* 3D model canvas styles */
+#placeholderImage {
+  width: 40vw !important; /* Resize the canvas to 1/3 of the viewport */
+  height: 40vw !important;
+  margin: auto auto;
+  position: fixed;
+  top: 8vw;
+  left: 30vw;
+}
+
+#placeholderImage,
+#3d-container {
+  transition: opacity 0.5s ease-out;
+}
+
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< EXPLORE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
 /* Text content styles */
 #explore {
@@ -121,6 +190,7 @@ canvas {
 .explore-video {
   width: 33vw;
   height: 15vw;
+  display: none;
 }
 
 /* Style the video controls */
@@ -134,12 +204,12 @@ video:hover::-webkit-media-controls {
 }
 
 .text-content {
-  text-align: left;
+  text-align: center;
   max-width: 25vw;
 }
 
 .text-content h2 {
-  color: #bb4430; /* Orange text color */
+  color: white; /* Drone's gold color */
   font-size: 28px;
 }
 
@@ -164,6 +234,7 @@ video:hover::-webkit-media-controls {
 .newsletter-title {
   font-size: 36px;
   margin-bottom: 20px;
+  color: white;
 }
 
 /* Newsletter content styles */
@@ -176,6 +247,8 @@ video:hover::-webkit-media-controls {
 /* Newsletter icon styles (adjust size as needed) */
 .newsletter-icon {
   width: 4vw;
+  filter: drop-shadow(0 0 5px #f6c041);
+  display: none;
 }
 
 /* Newsletter input styles (rounded and custom colors) */
@@ -183,11 +256,11 @@ video:hover::-webkit-media-controls {
   padding: 10px;
   width: 80%;
   border: none;
-  background-color: #f3dfa2; /* Lighter background color */
-  border-radius: 10px; /* Rounded corners */
+  background-color: #e2e2e2; /* Lighter background color matching drone's shade */
+  border-radius: 10px;
   margin-bottom: 20px;
   font-size: 18px;
-  color: white; /* White text color */
+  color: #403f4c; /* Drone's primary gray color */
   outline: none;
 }
 
@@ -197,19 +270,23 @@ video:hover::-webkit-media-controls {
 
 /* Newsletter subscribe button styles (rounded and custom colors) */
 .newsletter-btn {
-  background-color: #efe6dd; /* Darker background color */
-  color: #bb4430; /* Orange text color */
+  background-color: #f6c041; /* Drone's gold color */
+  color: white; /* Drone's primary gray color */
   padding: 10px 20px;
   border: none;
   cursor: pointer;
   font-size: 18px;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px;
   transition: background-color 0.3s ease;
   outline: none;
+  text-shadow: 0 0 5px #f6c041;
+  box-shadow: 0 0 5px #f6c041;
+  margin-top: 1vw;
 }
 
 .newsletter-btn:hover {
-  background-color: #d9cdc5; /* Darker orange on hover */
+  background-color: #d9a937; /* Darkened Drone's gold color */
+  box-shadow: 0 0 3px #f6c041;
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SUPPORT US >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
@@ -217,7 +294,7 @@ video:hover::-webkit-media-controls {
 #support-us {
   text-align: center;
   border-radius: 10px; /* Rounded corners */
-  max-width: 50vw;
+  max-width: 25vw;
   margin: 0 auto 6vw;
   padding-top: 8vw;
 }
@@ -226,12 +303,14 @@ video:hover::-webkit-media-controls {
 #support-us .icon {
   margin: 0;
   width: 4vw; /* Adjust icon size as needed */
+  filter: drop-shadow(0 0 5px #f6c041);
+  display: none;
 }
 
 /* Title styles */
 #support-us h2 {
   color: white; /* Orange text color */
-  font-family: "Dela Gothic One", sans-serif;
+  font-family: "w", sans-serif;
   font-size: 36px;
 }
 
@@ -240,23 +319,27 @@ video:hover::-webkit-media-controls {
   color: white; /* White text color */
   font-size: 16px;
   line-height: 1.5;
+  margin-bottom: 2vw;
 }
 
 /* Patreon Button styles */
 #support-us .btn-orange {
   background-color: #bb4430; /* Orange button color */
-  color: #231f20; /* White text color */
+  color: white; /* White text color */
   padding: 10px 20px;
   border: none;
   border-radius: 10px; /* Rounded button */
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-decoration: none; /* Remove underline from links */
+  text-shadow: 0 0 5px #f6c041;
+  box-shadow: 0 0 5px #f6c041;
 }
 
 /* Hover effect for Patreon Button */
 #support-us .btn-orange:hover {
   background-color: #9f3a26; /* Darker orange on hover */
+  box-shadow: 0 0 3px #f6c041;
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SOCIAL MEDIA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
@@ -271,30 +354,85 @@ video:hover::-webkit-media-controls {
 
 .social-icon {
   margin: 0 1rem;
-  height: 40px; /* Adjust this value for desired icon size */
+  width: 60px; /* Adjust as needed */
+  height: 60px;
+  display: flex; /* Flexbox for centering the SVG icon */
+  align-items: center; /* Vertically centers the SVG icon */
+  justify-content: center; /* Horizontally centers the SVG icon */
+
+  /* Drop shadow */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s;
+  filter: drop-shadow(0 0 3px #f6c041);
+
+  border: double 2px transparent;
+  border-radius: 10px;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(20, 19, 25, 0.8),
+      rgba(30, 29, 35, 0.95)
+    ),
+    linear-gradient(to top right, #f6c041, white);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+/* For the SVG icon */
+.social-icon img {
+  width: 30px; /* Adjust as needed */
+  height: 30px;
+  filter: drop-shadow(0 0 5px #f6c041);
 }
 
 .social-icon:hover {
-  opacity: 0.7;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 0 5px #f6c041);
+}
+.social-icon img:hover {
+  filter: drop-shadow(0 0 10px #f6c041);
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< MEDIA QUERIES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
 
 @media (max-width: 768px) {
   /* CSS styles for screens smaller than 768px (typically smartphones) */
+  body {
+    background-position: 75% 50%;
+  }
+  header h1 {
+    font-size: 4vw;
+  }
   header {
     font-size: 3vw;
+    backdrop-filter: blur(5px);
+  }
+  header h1::before,
+  header h1::after {
+    top: 3vw;
+  }
+
+  header h1::before {
+    left: 25vw;
+  }
+
+  header h1::after {
+    right: 25vw;
   }
   .icon {
     width: 20vw;
   }
   canvas {
-    width: 100vw !important;
-    max-width: 100vw !important;
+    width: 92vw !important;
+    max-width: 92vw !important;
     height: 92vw !important;
     top: 8vw;
-    left: 0;
+    left: 4vw;
+  }
+  /* 3D model canvas styles */
+  #placeholderImage {
+    width: 92vw !important; /* Resize the canvas to 1/3 of the viewport */
+    height: 92vw !important;
+    top: 8vw;
+    left: 4vw;
   }
   #explore {
     flex-direction: column;
@@ -307,13 +445,16 @@ video:hover::-webkit-media-controls {
     height: 61vw;
   }
   .text-content {
-    text-align: left;
+    text-align: center;
     max-width: 92vw;
   }
   #support-us {
     max-width: 92vw;
     margin: 0 auto 20vw;
     padding-top: 12vw;
+  }
+  #support-us p {
+    margin-bottom: 10vw;
   }
   #support-us .icon {
     width: 15vw; /* Adjust icon size as needed */
@@ -326,4 +467,35 @@ video:hover::-webkit-media-controls {
   .newsletter-icon {
     width: 15vw;
   }
+  .newsletter-btn {
+    margin-top: 10vw;
+  }
+}
+
+/* Styling for the text input field */
+input[type="email"] {
+  width: 80%; /* Width of the input field */
+  padding: 12px 20px; /* Padding inside the input field */
+  margin: 8px 0; /* Margin outside the input field */
+  box-sizing: border-box; /* Ensures padding doesn't increase the input field's total width/height */
+  border: 1px solid white; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  background: linear-gradient(
+    to left,
+    rgba(20, 19, 25, 0.8),
+    rgba(30, 29, 35, 0.95)
+  ); /* Background color */
+  font-size: 16px; /* email size */
+  font-family: "Poppins", sans-serif; /* Font family */
+  color: white; /* email color */
+  text-shadow: 0 0 5px #f6c041; /* Text glow effect */
+  transition: all 0.3s; /* Smooth transition for all changes */
+  /* Add glow effect on focus */
+  transition: box-shadow 0.3s ease; /* Smooth transition for the glow effect */
+  box-shadow: 0 0 5px #f6c041; /* Orange glow effect */
+}
+/* Styling for the input field on focus */
+input[type="email"]:focus {
+  box-shadow: 0 0 10px #f6c041; /* Orange glow effect */
+  outline: none; /* Remove the default focus outline */
 }

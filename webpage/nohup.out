@@ -1,0 +1,21 @@
+time="2023-10-16T00:13:52-05:00" level=info msg="Migrating keychain helper"
+
+            Welcome to Proton Mail Bridge interactive shell
+                              ___....___
+    ^^                __..-:'':__:..:__:'':-..__
+                  _.-:__:.-:'':  :  :  :'':-.:__:-._
+                .':.-:  :  :  :  :  :  :  :  :  :._:'.
+             _ :.':  :  :  :  :  :  :  :  :  :  :  :'.: _
+            [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]
+            [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]
+   :::::::::[ ]:__:__:__:__:__:__:__:__:__:__:__:__:__:[ ]:::::::::::
+   !!!!!!!!![ ]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![ ]!!!!!!!!!!!
+   ^^^^^^^^^[ ]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[ ]^^^^^^^^^^^
+            [ ]                                        [ ]
+            [ ]                                        [ ]
+      jgs   [ ]                                        [ ]
+    ~~^_~^~/   \~^-~^~ _~^-~_^~-^~_^~~-^~_~^~-~_~-^~_^/   \~^ ~~_ ^
+EOF
+[31mERRO[0m[Oct 16 00:13:52.074] Post "https://mail-api.proton.me/auth/v4/refresh": context canceled, Attempt 1 
+[31mERRO[0m[Oct 16 00:13:52.074] Failed to load connected user                 [31merror[0m="failed to create API client: Post \"https://mail-api.proton.me/auth/v4/refresh\": context canceled" [31muserID[0m="2kO60u7p1vpTADW8mJcRO5JdpxCNU7J6R_haXXwUpziZHnVRoeI-tF8ATiRusElKp6J_utXP4fFh1oI2noO3sA=="
+[31mERRO[0m[Oct 16 00:13:52.074] Get "https://proton.me/download/bridge/version_linux.json": context canceled, Attempt 1 

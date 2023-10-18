@@ -5,21 +5,45 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,
-  window.innerWidth / window.innerHeight,
+  (window.innerWidth * 0.4) / (window.innerWidth * 0.4),
   0.1,
   1000
 );
 const renderer = new THREE.WebGLRenderer();
 renderer.setClearColor(0x403f4c, 0); // Set background color to white
-renderer.setSize(window.innerWidth / 2, window.innerHeight);
+renderer.setSize(window.innerWidth * 0.4, window.innerWidth * 0.4);
+renderer.setPixelRatio(window.devicePixelRatio);
 document.getElementById("3d-container").appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
 
 const loader = new ThreeMFLoader();
-loader.load("./droneV2.3mf", (object) => {
-  object.scale.set(0.02, 0.02, 0.02); // Adjust the scale as needed
+
+// Before loading the model
+document.getElementById("3d-container").style.display = "none";
+document.getElementById("placeholderImage").style.opacity = "1";
+
+loader.load("./droneV3extended.3mf", (object) => {
+  let colors = [];
+
+  object.traverse((child) => {
+    if (child.material && child.material.color) {
+      colors.push(child.material.color);
+    }
+  });
+
+  // At this point, the 'colors' array should contain all the unique colors from your 3MF model
+  console.log(colors);
+
+  // Remove duplicates (if any)
+  const uniqueColors = Array.from(
+    new Set(colors.map((color) => color.getHexString()))
+  ).map((hex) => new THREE.Color(hex));
+
+  console.log(uniqueColors);
+
+  object.scale.set(0.014, 0.014, 0.014); // Adjust the scale as needed
   object.rotation.x = (3 / 2) * Math.PI;
   scene.add(object);
   // Set camera position and look at the center of the scene
@@ -35,12 +59,21 @@ loader.load("./droneV2.3mf", (object) => {
   pointLight.position.set(0, 0, 2);
   scene.add(camera);
 
+  // At this point, your 3D model is set up and ready to be rendered
+  // so, hide the placeholder image and show the 3D container
+  document.getElementById("placeholderImage").style.opacity = "0";
+  document.getElementById("3d-container").style.display = "block";
+
+  setTimeout(() => {
+    document.getElementById("placeholderImage").style.display = "none";
+  }, 500); // Assuming you're using a 500ms fade-out for the image
+
   const keyframes = [
     // Define keyframes for position and rotation
     { position: { x: 0, y: 0, z: 0 }, rotation: { x: 4.8, z: 0 } },
-    { position: { x: 2, y: -1, z: -2 }, rotation: { x: 6, z: 0.5 } },
-    { position: { x: 4, y: -1, z: -2 }, rotation: { x: 6, z: 0 } },
-    { position: { x: 2, y: -1, z: -2 }, rotation: { x: 6, z: -0.5 } },
+    { position: { x: 1.25, y: -1, z: -2 }, rotation: { x: 6, z: 0.5 } },
+    { position: { x: 2.5, y: -1, z: -2 }, rotation: { x: 6, z: 0 } },
+    { position: { x: 1.25, y: -1, z: -2 }, rotation: { x: 6, z: -0.5 } },
     { position: { x: 0, y: -1, z: -2 }, rotation: { x: 6, z: 0 } },
     // Add more keyframes as needed
   ];
@@ -115,6 +148,29 @@ loader.load("./droneV2.3mf", (object) => {
     object.rotation.set(rotation.x, 0, rotation.z);
 
     renderer.render(scene, camera);
+    // Assuming you're using a PerspectiveCamera
+    window.addEventListener("resize", () => {
+      let newWidth = window.innerWidth;
+      let newHeight = window.innerHeight;
+
+      // If the window width is 768px or less
+      if (newWidth <= 768) {
+        newWidth = newWidth * 0.92; // 92% of the view width
+        newHeight = newWidth; // Keep it square since you mentioned 92% of the view width
+        object.scale.set(0.028, 0.028, 0.028); // Adjust the scale as needed
+      } else {
+        newWidth = newWidth * 0.4; // 92% of the view width
+        newHeight = newWidth; // Keep it square since you mentioned 92% of the view width
+        object.scale.set(0.014, 0.014, 0.014); // Adjust the scale as needed
+      }
+
+      camera.aspect = newWidth / newHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(newWidth, newHeight);
+    });
+
+    window.dispatchEvent(new Event("resize"));
   };
 
   animate();
@@ -141,7 +197,26 @@ loader.load("./droneV2.3mf", (object) => {
       }
     });
   });
+  // captureAndSaveSnapshot();
+
+  // ... [Rest of your code]
 });
+
+function captureAndSaveSnapshot() {
+  // Make sure to render the scene first
+  renderer.render(scene, camera);
+
+  // Extract the image data
+  const imgData = renderer.domElement.toDataURL("image/png");
+
+  // Create a link element
+  const link = document.createElement("a");
+  link.href = imgData;
+  link.download = "snapshot.png";
+
+  // Trigger a click on the link to start the download
+  link.click();
+}
 
 document
   .getElementById("subscribe-button")
