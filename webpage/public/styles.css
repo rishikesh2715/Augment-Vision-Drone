@@ -72,17 +72,17 @@ body {
 }
 
 .glowing {
-  color: #f6c041; /* Primary color of the text */
+  color: #ffbc58; /* Primary color of the text */
   background: linear-gradient(
-    #f6c041,
+    #ffbc58,
     #a9241a
   ); /* Transition from gold to red */
   -webkit-background-clip: text; /* Applies the background only to the text */
   color: transparent; /*Makes the text color transparent so only the background shows */
 
   /* Subtle outward glow */
-  text-shadow: 0 0 3px #f6c04150,
-    /* 50 at the end means 50% transparency */ 0 0 6px #f6c04150,
+  text-shadow: 0 0 3px #ffbc5850,
+    /* 50 at the end means 50% transparency */ 0 0 6px #ffbc5850,
     0 0 8px #a9241a50;
   text-transform: uppercase;
 }
@@ -114,6 +114,7 @@ header h1 {
   font-size: 1.2vw;
   background: none;
   font-family: "Audiowide", sans-serif;
+  text-decoration: underline;
 }
 
 header h1::before,
@@ -247,21 +248,43 @@ video:hover::-webkit-media-controls {
 /* Newsletter icon styles (adjust size as needed) */
 .newsletter-icon {
   width: 4vw;
-  filter: drop-shadow(0 0 5px #f6c041);
+  filter: drop-shadow(0 0 5px #ffbc58);
   display: none;
 }
 
 /* Newsletter input styles (rounded and custom colors) */
 .newsletter-input {
-  padding: 10px;
-  width: 80%;
-  border: none;
-  background-color: #e2e2e2; /* Lighter background color matching drone's shade */
+  margin: 0 1rem;
+  padding: 12px 20px;
+
+  /* Drop shadow */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s;
+  filter: drop-shadow(0 0 3px #ffbc58);
+
+  border: double 2px transparent;
   border-radius: 10px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  color: #403f4c; /* Drone's primary gray color */
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(20, 19, 25, 0.8),
+      rgba(30, 29, 35, 0.95)
+    ),
+    linear-gradient(to top right, #ffbc58, white);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  font-size: 1vw;
+  color: white;
+  text-shadow: 0 0 5px #ffbc58;
+}
+
+/* Styles for the input box when it's focused */
+.newsletter-input:focus {
+  /* Remove default browser focus styles */
   outline: none;
+
+  /* Keep the border styles consistent with non-focused state */
+  border: double 2px transparent;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .newsletter-input::placeholder {
@@ -270,23 +293,35 @@ video:hover::-webkit-media-controls {
 
 /* Newsletter subscribe button styles (rounded and custom colors) */
 .newsletter-btn {
-  background-color: #f6c041; /* Drone's gold color */
+  background-color: #ffbc58; /* Drone's gold color */
   color: white; /* Drone's primary gray color */
   padding: 10px 20px;
-  border: none;
+  border: double 2px transparent;
+  border-radius: 100px;
+  background-image: linear-gradient(to bottom left, white, 10%, #ffbc58),
+    linear-gradient(to top right, rgb(255, 188, 88), white);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   cursor: pointer;
   font-size: 18px;
-  border-radius: 10px;
-  transition: background-color 0.3s ease;
   outline: none;
-  text-shadow: 0 0 5px #f6c041;
-  box-shadow: 0 0 5px #f6c041;
+  text-shadow: 0 0 5px #ffbc58;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 0 3px #ffbc58);
   margin-top: 1vw;
 }
 
 .newsletter-btn:hover {
-  background-color: #d9a937; /* Darkened Drone's gold color */
-  box-shadow: 0 0 3px #f6c041;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(
+      to bottom left,
+      white,
+      10%,
+      rgb(230, 164, 77)
+    ),
+    linear-gradient(to top right, rgb(255, 188, 88), white);
+  background-color: rgb(230, 164, 77); /* Darkened Drone's gold color */
+  box-shadow: 0 0 10px #ffbc58;
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SUPPORT US >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
@@ -303,7 +338,7 @@ video:hover::-webkit-media-controls {
 #support-us .icon {
   margin: 0;
   width: 4vw; /* Adjust icon size as needed */
-  filter: drop-shadow(0 0 5px #f6c041);
+  filter: drop-shadow(0 0 5px #ffbc58);
   display: none;
 }
 
@@ -322,24 +357,31 @@ video:hover::-webkit-media-controls {
   margin-bottom: 2vw;
 }
 
-/* Patreon Button styles */
+/* Newsletter subscribe button styles (rounded and custom colors) */
 #support-us .btn-orange {
-  background-color: #bb4430; /* Orange button color */
-  color: white; /* White text color */
+  color: white; /* Drone's primary gray color */
   padding: 10px 20px;
-  border: none;
-  border-radius: 10px; /* Rounded button */
+  border: double 2px transparent;
+  border-radius: 100px;
+  background-image: linear-gradient(to bottom left, white, 10%, #bb4430),
+    linear-gradient(to top right, #bb4430, 50%, rgb(255, 188, 88), white);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none; /* Remove underline from links */
-  text-shadow: 0 0 5px #f6c041;
-  box-shadow: 0 0 5px #f6c041;
+  font-size: 18px;
+  outline: none;
+  text-shadow: 0 0 5px #ffbc58;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 0 3px #ffbc58);
+  margin-top: 1vw;
+  text-decoration: none;
 }
 
-/* Hover effect for Patreon Button */
 #support-us .btn-orange:hover {
-  background-color: #9f3a26; /* Darker orange on hover */
-  box-shadow: 0 0 3px #f6c041;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to bottom left, white, 10%, #9f3a26),
+    linear-gradient(to top right, rgb(255, 188, 88), white);
+  box-shadow: 0 0 10px #ffbc58;
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SOCIAL MEDIA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
@@ -363,7 +405,7 @@ video:hover::-webkit-media-controls {
   /* Drop shadow */
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s;
-  filter: drop-shadow(0 0 3px #f6c041);
+  filter: drop-shadow(0 0 3px #ffbc58);
 
   border: double 2px transparent;
   border-radius: 10px;
@@ -372,7 +414,7 @@ video:hover::-webkit-media-controls {
       rgba(20, 19, 25, 0.8),
       rgba(30, 29, 35, 0.95)
     ),
-    linear-gradient(to top right, #f6c041, white);
+    linear-gradient(to top right, #ffbc58, white);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -380,15 +422,15 @@ video:hover::-webkit-media-controls {
 .social-icon img {
   width: 30px; /* Adjust as needed */
   height: 30px;
-  filter: drop-shadow(0 0 5px #f6c041);
+  filter: drop-shadow(0 0 5px #ffbc58);
 }
 
 .social-icon:hover {
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0 0 5px #f6c041);
+  filter: drop-shadow(0 0 5px #ffbc58);
 }
 .social-icon img:hover {
-  filter: drop-shadow(0 0 10px #f6c041);
+  filter: drop-shadow(0 0 10px #ffbc58);
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< MEDIA QUERIES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
@@ -470,32 +512,4 @@ video:hover::-webkit-media-controls {
   .newsletter-btn {
     margin-top: 10vw;
   }
-}
-
-/* Styling for the text input field */
-input[type="email"] {
-  width: 80%; /* Width of the input field */
-  padding: 12px 20px; /* Padding inside the input field */
-  margin: 8px 0; /* Margin outside the input field */
-  box-sizing: border-box; /* Ensures padding doesn't increase the input field's total width/height */
-  border: 1px solid white; /* Border color */
-  border-radius: 4px; /* Rounded corners */
-  background: linear-gradient(
-    to left,
-    rgba(20, 19, 25, 0.8),
-    rgba(30, 29, 35, 0.95)
-  ); /* Background color */
-  font-size: 16px; /* email size */
-  font-family: "Poppins", sans-serif; /* Font family */
-  color: white; /* email color */
-  text-shadow: 0 0 5px #f6c041; /* Text glow effect */
-  transition: all 0.3s; /* Smooth transition for all changes */
-  /* Add glow effect on focus */
-  transition: box-shadow 0.3s ease; /* Smooth transition for the glow effect */
-  box-shadow: 0 0 5px #f6c041; /* Orange glow effect */
-}
-/* Styling for the input field on focus */
-input[type="email"]:focus {
-  box-shadow: 0 0 10px #f6c041; /* Orange glow effect */
-  outline: none; /* Remove the default focus outline */
 }
