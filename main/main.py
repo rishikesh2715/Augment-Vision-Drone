@@ -56,7 +56,7 @@ def haversine_distance_meters(lat1, lon1, lat2, lon2):
     distance_m = distance_km * 1000  # Convert to meters
     return distance_m
 
-def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude, drone, pilot):
+def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, drone_pitch, drone_roll, your_latitude, your_longitude, drone, pilot, pilotObjectDistance):
     print(drone_latitude)
     # GPS coordinates
     drone_latitude = 33.565325
@@ -108,13 +108,14 @@ def getVector(drone_latitude, drone_longitude, drone_altitude, drone_heading, dr
     )
 
     pilot.objectDirection = math.degrees(math.atan2(v3[1], v3[0]))
-    pilot.objectDirection = (pilot.objectDirection + 360) % 360
+    pilot.objectDirection = (-pilot.objectDirection + 90 + 360) % 360
 
     # add the offset angle from the drone camera to the pilot heading
-    pilot.objectDirection += drone.offsetAngle
-    pilot.objectDirection = (pilot.objectDirection + 360) % 360
+    # pilot.objectDirection += drone.offsetAngle
+    # pilot.objectDirection = (pilot.objectDirection + 360) % 360
 
     pilot.objectDistance = math.sqrt(v3[0]**2 + v3[1]**2 + v3[2]**2)
+    pilotObjectDistance.value = pilot.objectDistance
 
     # Print the vectors
     # print("Vector from your location to the drone (V1):", v1)
