@@ -20,5 +20,5 @@ while True:
         break
 
 # Release the webcam and close the window
-cap.release()
+camera.release()
 cv2.destroyAllWindows()
