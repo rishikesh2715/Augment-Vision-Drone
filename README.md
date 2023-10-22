@@ -15,6 +15,7 @@ We are in the process of designing a 3D body with spring-loaded foldable arms th
 https://github.com/rishikesh2715/Augment-Vision-Drone/assets/72249404/e26e6b2b-a58c-4abd-882a-1e7397c7bb89
 
 This phase involved developing an object detection model that operates seamlessly on the drone. We are pleased to announce that this part of the project has been completed successfully.
+We get the live camera feed from the drone video transmitter to a local video reciever that we can connect to a perosnal computer. This method reduces the need to run the computer vision model directly on the drone thus saving a lot of computaional power.
 
 ### 3. AR Overlay on VR Headset
 
