@@ -211,6 +211,7 @@ while True:
             remaining = struct.unpack('>B', payload[7:])[0]
             voltage /= 10            # volts
             current /= 10          # amps
+            used = used / 100        # milliamp hours
 
             # Update data dictionary
             data["drone.voltage"] = voltage
