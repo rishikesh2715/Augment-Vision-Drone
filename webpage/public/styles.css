@@ -2,7 +2,6 @@
 * {
   z-index: 99;
   position: relative;
-  font-weight: bold;
 }
 
 @font-face {
@@ -28,11 +27,12 @@
 
 body {
   margin: 0;
-  background-image: url(sky.png);
+  background-image: url(skyos.jpg);
   background-size: cover;
+  background-position: center;
   padding: 0;
   background-color: #e2e2e2; /* Adjusted to a lighter shade */
-  font-family: "w", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #403f4c; /* Drone's primary gray color */
   position: relative;
   height: 100%;
@@ -72,18 +72,18 @@ body {
 }
 
 .glowing {
-  color: #ffbc58; /* Primary color of the text */
-  background: linear-gradient(
-    #ffbc58,
-    #a9241a
+  background-image: linear-gradient(
+    to bottom,
+    white,
+    90%,
+    #f7d7a8
   ); /* Transition from gold to red */
-  -webkit-background-clip: text; /* Applies the background only to the text */
   color: transparent; /*Makes the text color transparent so only the background shows */
+  -webkit-background-clip: text; /* Applies the background only to the text */
+  background-clip: text;
 
   /* Subtle outward glow */
-  text-shadow: 0 0 3px #ffbc5850,
-    /* 50 at the end means 50% transparency */ 0 0 6px #ffbc5850,
-    0 0 8px #a9241a50;
+  filter: drop-shadow(0 0 3px #ffbc58);
   text-transform: uppercase;
 }
 
@@ -92,7 +92,7 @@ body {
 header {
   background: transparent;
   color: white; /* White text */
-  padding-top: 4vw;
+  padding-top: 5vh;
   text-align: left;
   font-size: 1vw;
   position: fixed;
@@ -105,8 +105,8 @@ header {
 }
 
 header a {
-  color: white;
   text-decoration: none;
+  color: white;
 }
 
 header h1 {
@@ -125,6 +125,7 @@ header h1::after {
   height: 2px; /* adjust for desired thickness */
   width: 5%; /* adjust for desired length */
   top: 1vw;
+  box-shadow: 0 0 8px #ffbc58;
 }
 
 header h1::before {
@@ -184,8 +185,7 @@ canvas {
   overflow: hidden;
   display: flex;
   justify-content: space-around;
-  margin: 0 0 6vw;
-  padding-top: 8vw;
+  height: 80vh;
 }
 
 .explore-video {
@@ -206,7 +206,7 @@ video:hover::-webkit-media-controls {
 
 .text-content {
   text-align: center;
-  max-width: 25vw;
+  width: 33vw;
 }
 
 .text-content h2 {
@@ -215,20 +215,100 @@ video:hover::-webkit-media-controls {
 }
 
 .text-content p {
-  color: white; /* White text color */
+  color: transparent; /* White text color */
   font-size: 22px;
   line-height: 1.5;
+  text-transform: none;
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< NEWSLETTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
+
+/* Main container */
+.container {
+  display: flex; /* Using flexbox to align the sections horizontally */
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 10px;
+
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box;
+  box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
+  width: 50%; /* Adjust the width as needed */
+  overflow: clip;
+  overflow-clip-margin: 2px;
+  z-index: unset;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: -3px; /* equal to negative border-width */
+  left: -3px; /* equal to negative border-width */
+  right: -3px; /* equal to negative border-width */
+  bottom: -3px; /* equal to negative border-width */
+  border: 6px solid;
+  border-image: linear-gradient(to top right, #ffbc58, white) 2;
+  z-index: -1;
+}
+
+.container:hover {
+  cursor: pointer;
+}
+
+/* Individual sections */
+.section {
+  color: #fff; /* White text color */
+  font-size: 18px; /* Adjust font size as needed */
+  background: transparent;
+  font-weight: 500;
+  width: 100%;
+  text-shadow: 0 0 5px #ffbc58;
+  border-bottom: 1px solid white;
+  box-shadow: 0 0px 5px #ffbc58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-image: linear-gradient(
+    to left,
+    rgba(20, 19, 25, 0.05),
+    rgba(20, 19, 25, 0.95)
+  );
+}
+
+.section:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.section p {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 0;
+}
+
+/* Remove margin for the last section */
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+.section:hover {
+  text-shadow: 0 0 10px #ffbc58;
+}
+
 /* Newsletter section styles */
 #newsletter {
   color: white; /* White text color */
   text-align: center;
-  display: block;
-  max-width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33vw;
   margin: 0 auto 6vw;
-  padding-top: 8vw;
 }
 
 /* Newsletter title styles */
@@ -245,6 +325,21 @@ video:hover::-webkit-media-controls {
   align-items: center;
 }
 
+.newsletter-content p {
+  font-size: 16px;
+}
+
+.newsletter-content p::after {
+  content: "";
+  position: absolute;
+  background-color: white; /* or whichever color you prefer for the lines */
+  height: 1px; /* adjust for desired thickness */
+  width: 50%; /* adjust for desired length */
+  bottom: -1vh;
+  left: 25%;
+  box-shadow: 0 0 8px #ffbc58;
+}
+
 /* Newsletter icon styles (adjust size as needed) */
 .newsletter-icon {
   width: 4vw;
@@ -252,27 +347,54 @@ video:hover::-webkit-media-controls {
   display: none;
 }
 
-/* Newsletter input styles (rounded and custom colors) */
-.newsletter-input {
-  margin: 0 1rem;
-  padding: 12px 20px;
-
-  /* Drop shadow */
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.3s;
-  filter: drop-shadow(0 0 3px #ffbc58);
-
-  border: double 2px transparent;
+/* Container for the input */
+.inputContainer {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   border-radius: 10px;
+  background: transparent;
   background-image: linear-gradient(
-      to bottom right,
-      rgba(20, 19, 25, 0.8),
-      rgba(30, 29, 35, 0.95)
-    ),
-    linear-gradient(to top right, #ffbc58, white);
+    to bottom left,
+    rgba(20, 19, 25, 0.05),
+    rgba(20, 19, 25, 0.95)
+  );
+  border: 2px solid transparent;
   background-origin: border-box;
-  background-clip: padding-box, border-box;
-  font-size: 1vw;
+  background-clip: padding-box;
+  box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
+  width: 90%;
+  position: relative; /* Important to position the ::before pseudo-element */
+  overflow: clip;
+
+  overflow-clip-margin: 2px;
+  z-index: unset;
+  padding: 8px 4px;
+  margin-top: 6px;
+}
+
+.inputContainer::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 6px solid;
+  border-image: linear-gradient(to top right, #ffbc58, white) 2;
+  z-index: -1;
+}
+
+.newsletter-input {
+  width: 80%;
+  height: 20px;
+  font-size: inherit; /* Inherit the font-size from the container */
+  border: none; /* Remove default input borders */
+  background: transparent; /* Make the input background transparent */
+  outline: none; /* Remove the default outline */
+  padding: 5px; /* Optional, add some padding for better visuals */
   color: white;
   text-shadow: 0 0 5px #ffbc58;
 }
@@ -282,17 +404,127 @@ video:hover::-webkit-media-controls {
   /* Remove default browser focus styles */
   outline: none;
 
-  /* Keep the border styles consistent with non-focused state */
-  border: double 2px transparent;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  color: white;
 }
 
 .newsletter-input::placeholder {
   color: white; /* White text color */
 }
 
+.mail {
+  filter: drop-shadow(0 0 5px #ffbc58);
+}
+
+.newsletter-btn::before {
+  content: "";
+  position: absolute;
+  background-color: white; /* or whichever color you prefer for the lines */
+  height: 1px; /* adjust for desired thickness */
+  width: 75%; /* adjust for desired length */
+  top: -1vw;
+  left: 12.5%;
+  box-shadow: 0 0 8px #ffbc58;
+}
+
 /* Newsletter subscribe button styles (rounded and custom colors) */
 .newsletter-btn {
+  width: 100%;
+  color: white; /* Drone's primary gray color */
+  border: double 2px transparent;
+  border-radius: 100px;
+  background-image: linear-gradient(to bottom left, white, 10%, #bb4430),
+    linear-gradient(to top right, #bb4430, 50%, rgb(255, 188, 88), white);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  cursor: pointer;
+  font-size: 36px;
+  font-weight: 500;
+  outline: none;
+  text-shadow: 0 0 5px #ffbc58;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 0 3px #ffbc58);
+  margin-top: 2vw;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.newsletter-btn:hover {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to bottom left, white, 10%, #9f3a26),
+    linear-gradient(to top right, rgb(255, 188, 88), white);
+  box-shadow: 0 0 10px #ffbc58;
+  text-shadow: 0 0 10px #ffbc58;
+}
+
+.newsletter-btn p {
+  height: 60px;
+  font-weight: 500;
+  font-size: 36px;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: normal;
+  background-image: linear-gradient(
+    to bottom left,
+    white,
+    70%,
+    #ffbc58
+  ); /* Transition from gold to red */
+  text-shadow: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletter-btn p:hover {
+  background-image: linear-gradient(
+    to bottom left,
+    white,
+    80%,
+    #ffbc58
+  ); /* Transition from gold to red */
+}
+
+.newsletter-btn p::after {
+  display: none;
+}
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SUPPORT US >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
+/* Support Us section styles */
+#support-us {
+  text-align: center;
+  border-radius: 10px; /* Rounded corners */
+  width: 33vw;
+  margin: 0 auto 6vw;
+  padding-left: 1vw;
+}
+
+/* Icon styles */
+#support-us .icon {
+  margin: 0;
+  width: 4vw; /* Adjust icon size as needed */
+  filter: drop-shadow(0 0 5px #ffbc58);
+  display: none;
+}
+
+/* Title styles */
+#support-us h2 {
+  color: white; /* Orange text color */
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+}
+
+/* Description styles */
+#support-us p {
+  color: transparent; /* White text color */
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 2vw;
+  text-transform: none;
+}
+
+/* Newsletter subscribe button styles (rounded and custom colors) */
+#support-us .btn-orange {
   background-color: #ffbc58; /* Drone's gold color */
   color: white; /* Drone's primary gray color */
   padding: 10px 20px;
@@ -309,9 +541,10 @@ video:hover::-webkit-media-controls {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   filter: drop-shadow(0 0 3px #ffbc58);
   margin-top: 1vw;
+  text-decoration: none;
 }
 
-.newsletter-btn:hover {
+#support-us .btn-orange:hover {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   background-image: linear-gradient(
       to bottom left,
@@ -324,100 +557,56 @@ video:hover::-webkit-media-controls {
   box-shadow: 0 0 10px #ffbc58;
 }
 
-/* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SUPPORT US >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
-/* Support Us section styles */
-#support-us {
-  text-align: center;
-  border-radius: 10px; /* Rounded corners */
-  max-width: 25vw;
-  margin: 0 auto 6vw;
-  padding-top: 8vw;
-}
-
-/* Icon styles */
-#support-us .icon {
-  margin: 0;
-  width: 4vw; /* Adjust icon size as needed */
-  filter: drop-shadow(0 0 5px #ffbc58);
-  display: none;
-}
-
-/* Title styles */
-#support-us h2 {
-  color: white; /* Orange text color */
-  font-family: "w", sans-serif;
-  font-size: 36px;
-}
-
-/* Description styles */
-#support-us p {
-  color: white; /* White text color */
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 2vw;
-}
-
-/* Newsletter subscribe button styles (rounded and custom colors) */
-#support-us .btn-orange {
-  color: white; /* Drone's primary gray color */
-  padding: 10px 20px;
-  border: double 2px transparent;
-  border-radius: 100px;
-  background-image: linear-gradient(to bottom left, white, 10%, #bb4430),
-    linear-gradient(to top right, #bb4430, 50%, rgb(255, 188, 88), white);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  cursor: pointer;
-  font-size: 18px;
-  outline: none;
-  text-shadow: 0 0 5px #ffbc58;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0 0 3px #ffbc58);
-  margin-top: 1vw;
-  text-decoration: none;
-}
-
-#support-us .btn-orange:hover {
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-  background-image: linear-gradient(to bottom left, white, 10%, #9f3a26),
-    linear-gradient(to top right, rgb(255, 188, 88), white);
-  box-shadow: 0 0 10px #ffbc58;
-}
-
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SOCIAL MEDIA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
 
 /* Social Media Icons */
 .social-media-icons {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 2rem 0;
+  width: 50%;
 }
 
+/* Container for the input */
 .social-icon {
-  margin: 0 1rem;
-  width: 60px; /* Adjust as needed */
   height: 60px;
-  display: flex; /* Flexbox for centering the SVG icon */
-  align-items: center; /* Vertically centers the SVG icon */
-  justify-content: center; /* Horizontally centers the SVG icon */
-
-  /* Drop shadow */
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.3s;
-  filter: drop-shadow(0 0 3px #ffbc58);
-
-  border: double 2px transparent;
+  width: 60px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   border-radius: 10px;
+  background: transparent;
   background-image: linear-gradient(
-      to bottom right,
-      rgba(20, 19, 25, 0.8),
-      rgba(30, 29, 35, 0.95)
-    ),
-    linear-gradient(to top right, #ffbc58, white);
+    to bottom left,
+    rgba(20, 19, 25, 0.2),
+    rgba(20, 19, 25, 0.8)
+  );
+  border: 2px solid transparent;
   background-origin: border-box;
-  background-clip: content-box, border-box;
+  background-clip: padding-box;
+  box-shadow: inset 0 0 2px 3px rgba(20, 19, 25, 1),
+    inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
+  position: relative; /* Important to position the ::before pseudo-element */
+  overflow: clip;
+
+  overflow-clip-margin: 2px;
+  z-index: unset;
 }
+
+.social-icon::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 6px solid;
+  border-image: linear-gradient(to top right, #ffbc58, white) 2;
+  z-index: -1;
+}
+
 /* For the SVG icon */
 .social-icon img {
   width: 30px; /* Adjust as needed */
@@ -425,9 +614,14 @@ video:hover::-webkit-media-controls {
   filter: drop-shadow(0 0 5px #ffbc58);
 }
 
+.social-icon a {
+  width: 30px; /* Adjust as needed */
+  height: 30px;
+}
+
 .social-icon:hover {
-  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0 0 5px #ffbc58);
+  box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 10px #ffbc58;
 }
 .social-icon img:hover {
   filter: drop-shadow(0 0 10px #ffbc58);
@@ -481,6 +675,7 @@ video:hover::-webkit-media-controls {
     justify-content: space-around;
     margin: 0 auto 20vw;
     padding-top: 12vw;
+    height: fit-content;
   }
   .explore-video {
     width: 92vw;
@@ -488,10 +683,10 @@ video:hover::-webkit-media-controls {
   }
   .text-content {
     text-align: center;
-    max-width: 92vw;
+    width: 92vw;
   }
   #support-us {
-    max-width: 92vw;
+    width: 92vw;
     margin: 0 auto 20vw;
     padding-top: 12vw;
   }
@@ -502,7 +697,7 @@ video:hover::-webkit-media-controls {
     width: 15vw; /* Adjust icon size as needed */
   }
   #newsletter {
-    max-width: 92vw;
+    width: 92vw;
     margin: 0 auto 20vw;
     padding-top: 12vw;
   }

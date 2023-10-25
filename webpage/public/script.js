@@ -198,8 +198,6 @@ loader.load("./droneV3extended.3mf", (object) => {
     });
   });
   // captureAndSaveSnapshot();
-
-  // ... [Rest of your code]
 });
 
 function captureAndSaveSnapshot() {
@@ -260,3 +258,31 @@ document
         console.error("Error:", error);
       });
   });
+
+document.querySelectorAll(".section").forEach((section) => {
+  section.addEventListener("click", function () {
+    // Reset all sections to original state
+    document
+      .querySelectorAll(".section")
+      .forEach(
+        (s) =>
+          (s.style.backgroundImage =
+            "linear-gradient(to left, rgba(20, 19, 25, 0.05), rgba(20, 19, 25, 0.95))")
+      );
+
+    // Apply style to clicked section
+    this.style.backgroundImage =
+      "linear-gradient(to left, rgba(20, 19, 25, 0.75), rgba(20, 19, 25, 0.95))";
+  });
+});
+
+document.addEventListener("click", function (eve) {
+  if (eve.target.className != "section")
+    document
+      .querySelectorAll(".section")
+      .forEach(
+        (s) =>
+          (s.style.backgroundImage =
+            "linear-gradient(to left, rgba(20, 19, 25, 0.05), rgba(20, 19, 25, 0.95))")
+      );
+});
