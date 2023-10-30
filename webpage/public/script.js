@@ -216,6 +216,58 @@ function captureAndSaveSnapshot() {
   link.click();
 }
 
+// V1 3d Model
+
+const sceneV1 = new THREE.Scene();
+const cameraV1 = new THREE.PerspectiveCamera(
+  75,
+  (window.innerWidth * 0.4) / (window.innerWidth * 0.4),
+  0.1,
+  1000
+);
+cameraV1.position.set(0, 0, 2.5); // Adjust these values to position the camera
+
+const rendererV1 = new THREE.WebGLRenderer();
+rendererV1.setClearColor(0xabcdef, 0); // Sets a light blue color for clarity
+rendererV1.setSize(window.innerWidth * 0.4, window.innerWidth * 0.4);
+
+document
+  .getElementById("version1threeDcontainer")
+  .appendChild(rendererV1.domElement);
+
+const controlsV1 = new OrbitControls(cameraV1, rendererV1.domElement);
+controlsV1.update();
+
+const loaderV1 = new ThreeMFLoader();
+
+loaderV1.load("./droneV1.3mf", (objectV1) => {
+  objectV1.scale.set(0.01, 0.01, 0.01); // Adjust these values as needed
+  objectV1.rotation.x = (3 / 2) * Math.PI;
+
+  sceneV1.add(objectV1);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff); // Set ambient light color
+  ambientLight.intensity = 0.5;
+  sceneV1.add(ambientLight);
+
+  // Create a point light and attach it to the camera
+  const pointLight = new THREE.PointLight(0xffffff, 25); // Adjust intensity
+  camera.add(pointLight);
+  pointLight.position.set(0, 0, 2);
+  sceneV1.add(camera);
+
+  const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+  light.position.set(0, 1, 0);
+  sceneV1.add(light);
+});
+
+const animateV1 = () => {
+  requestAnimationFrame(animateV1);
+  rendererV1.render(sceneV1, cameraV1);
+};
+
+animateV1();
+
 document
   .getElementById("subscribe-button")
   .addEventListener("click", function () {
@@ -259,30 +311,43 @@ document
       });
   });
 
-document.querySelectorAll(".section").forEach((section) => {
-  section.addEventListener("click", function () {
-    // Reset all sections to original state
-    document
-      .querySelectorAll(".section")
-      .forEach(
-        (s) =>
-          (s.style.backgroundImage =
-            "linear-gradient(to left, rgba(20, 19, 25, 0.05), rgba(20, 19, 25, 0.95))")
-      );
-
-    // Apply style to clicked section
-    this.style.backgroundImage =
-      "linear-gradient(to left, rgba(20, 19, 25, 0.75), rgba(20, 19, 25, 0.95))";
-  });
-});
-
 document.addEventListener("click", function (eve) {
-  if (eve.target.className != "section")
-    document
-      .querySelectorAll(".section")
-      .forEach(
-        (s) =>
-          (s.style.backgroundImage =
-            "linear-gradient(to left, rgba(20, 19, 25, 0.05), rgba(20, 19, 25, 0.95))")
-      );
+  const clickedSection = eve.target.closest(".section");
+  let version1Element = document.getElementById("version1");
+  let newsletterContentElement = document.getElementById("newsletterContent");
+
+  // Reset all sections to original state
+  document
+    .querySelectorAll(".section")
+    .forEach(
+      (s) =>
+        (s.style.backgroundImage =
+          "linear-gradient(to left, rgba(20, 19, 25, 0.05), rgba(20, 19, 25, 0.95))")
+    );
+
+  // If a section was clicked
+  if (clickedSection) {
+    clickedSection.style.backgroundImage =
+      "linear-gradient(to left, rgba(20, 19, 25, 0.75), rgba(20, 19, 25, 0.95))";
+  }
+  if (
+    eve.target.id === "version1section" ||
+    eve.target.closest("#version1section") ||
+    eve.target.closest("#version1")
+  ) {
+    // Show version1 section and hide newsletter section
+    version1Element.classList.add("visible");
+    newsletterContentElement.classList.remove("visible");
+    document.getElementById("version1section").style.backgroundImage =
+      "linear-gradient(to left, rgba(20, 19, 25, 0.75), rgba(20, 19, 25, 0.95))";
+    document.getElementById("newsletterTitle").style.textDecoration =
+      "underline";
+    document.getElementById("newsletterTitle").style.cursor = "pointer";
+  } else {
+    // Show version1 section and hide newsletter section
+    version1Element.classList.remove("visible");
+    newsletterContentElement.classList.add("visible");
+    document.getElementById("newsletterTitle").style.textDecoration = "none";
+    document.getElementById("newsletterTitle").style.cursor = "auto";
+  }
 });

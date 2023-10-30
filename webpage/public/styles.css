@@ -234,6 +234,7 @@ video:hover::-webkit-media-controls {
   background-origin: border-box;
   background-clip: padding-box;
   box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 5px 3px rgba(20, 19, 25, 1),
     inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
   width: 50%; /* Adjust the width as needed */
   overflow: clip;
@@ -320,9 +321,17 @@ video:hover::-webkit-media-controls {
 
 /* Newsletter content styles */
 .newsletter-content {
-  display: flex;
+  visibility: hidden;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transform: scaleY(0.1) scaleX(0.5) translateY(-700%);
+  transition-property: opacity, transform, visibility, pointer-events;
+  transition-duration: 0.25s, 0.25s, 0.25s, 0.25s;
+  transition-timing-function: linear, linear, linear, linear;
+  pointer-events: none;
+  z-index: 1;
+  position: unset;
 }
 
 .newsletter-content p {
@@ -364,6 +373,7 @@ video:hover::-webkit-media-controls {
   background-origin: border-box;
   background-clip: padding-box;
   box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 5px 3px rgba(20, 19, 25, 1),
     inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
   width: 90%;
   position: relative; /* Important to position the ::before pseudo-element */
@@ -489,6 +499,70 @@ video:hover::-webkit-media-controls {
   display: none;
 }
 
+#version1 {
+  border-radius: 10px;
+  background: transparent;
+  background-image: linear-gradient(
+    to bottom left,
+    rgba(20, 19, 25, 0.2),
+    rgba(20, 19, 25, 0.8)
+  );
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box;
+  box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 5px 3px rgba(20, 19, 25, 1),
+    inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
+  position: absolute; /* Important to position the ::before pseudo-element */
+  overflow: clip;
+  top: 80px;
+
+  overflow-clip-margin: 2px;
+  z-index: 2;
+  opacity: 0;
+  transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-400%);
+  transition-property: opacity, transform, visibility, pointer-events;
+  transition-duration: 0.25s, 0.25s, 0.25s, 0.25s;
+  transition-timing-function: linear, linear, linear, linear;
+
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#version1::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 6px solid;
+  border-image: linear-gradient(to top right, #ffbc58, white) 2;
+  z-index: -1;
+}
+
+.visible {
+  opacity: 1 !important;
+  transform: scaleX(1) translateX(0) scaleY(1) translateY(0) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+#version1threeDcontainer canvas {
+  position: relative;
+  width: 50% !important;
+  height: 50% !important;
+  top: auto;
+  left: auto;
+  z-index: unset;
+}
+
+#version1 p {
+  font-size: unset;
+  width: 90%;
+  margin: 0 auto 16px auto;
+}
+
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SUPPORT US >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
 /* Support Us section styles */
 #support-us {
@@ -586,7 +660,8 @@ video:hover::-webkit-media-controls {
   border: 2px solid transparent;
   background-origin: border-box;
   background-clip: padding-box;
-  box-shadow: inset 0 0 2px 3px rgba(20, 19, 25, 1),
+  box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 5px 3px rgba(20, 19, 25, 1),
     inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
   position: relative; /* Important to position the ::before pseudo-element */
   overflow: clip;
@@ -688,7 +763,7 @@ video:hover::-webkit-media-controls {
   #support-us {
     width: 92vw;
     margin: 0 auto 20vw;
-    padding-top: 12vw;
+    padding-top: 30vw;
   }
   #support-us p {
     margin-bottom: 10vw;
