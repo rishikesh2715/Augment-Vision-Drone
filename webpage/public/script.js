@@ -240,7 +240,7 @@ controlsV1.update();
 
 const loaderV1 = new ThreeMFLoader();
 
-loaderV1.load("./droneV1.3mf", (objectV1) => {
+loaderV1.load("./droneVone.3mf", (objectV1) => {
   objectV1.scale.set(0.01, 0.01, 0.01); // Adjust these values as needed
   objectV1.rotation.x = (3 / 2) * Math.PI;
 
@@ -252,9 +252,9 @@ loaderV1.load("./droneV1.3mf", (objectV1) => {
 
   // Create a point light and attach it to the camera
   const pointLight = new THREE.PointLight(0xffffff, 25); // Adjust intensity
-  camera.add(pointLight);
+  cameraV1.add(pointLight);
   pointLight.position.set(0, 0, 2);
-  sceneV1.add(camera);
+  sceneV1.add(cameraV1);
 
   const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
   light.position.set(0, 1, 0);
@@ -336,8 +336,8 @@ document.addEventListener("click", function (eve) {
     eve.target.closest("#version1")
   ) {
     // Show version1 section and hide newsletter section
-    version1Element.classList.add("visible");
-    newsletterContentElement.classList.remove("visible");
+    version1Element.classList.add("visibleVersion1");
+    newsletterContentElement.classList.remove("visibleNewsletter");
     document.getElementById("version1section").style.backgroundImage =
       "linear-gradient(to left, rgba(20, 19, 25, 0.75), rgba(20, 19, 25, 0.95))";
     document.getElementById("newsletterTitle").style.textDecoration =
@@ -345,8 +345,8 @@ document.addEventListener("click", function (eve) {
     document.getElementById("newsletterTitle").style.cursor = "pointer";
   } else {
     // Show version1 section and hide newsletter section
-    version1Element.classList.remove("visible");
-    newsletterContentElement.classList.add("visible");
+    version1Element.classList.remove("visibleVersion1");
+    newsletterContentElement.classList.add("visibleNewsletter");
     document.getElementById("newsletterTitle").style.textDecoration = "none";
     document.getElementById("newsletterTitle").style.cursor = "auto";
   }
