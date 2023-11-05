@@ -8,7 +8,9 @@ def processSerialData(drone):
 
     # Open serial port
     # ser = serial.Serial('/dev/ttyUSB0', 115200)
-    ser = serial.Serial('COM7', 115200)
+    ser = serial.Serial('COM7', 57600)
+    if not ser.is_open():
+        ser.open()
 
 
     crc8_dvb_s2_table = [
@@ -100,7 +102,14 @@ def processSerialData(drone):
                 drone.pitch /= 10000           # degrees
                 drone.roll /= 10000            # degrees
                 drone.yaw /= 10000             # degrees
-                # print(f'Attitude: drone.Pitch={drone.pitch}, drone.Roll={drone.roll}, drone.Yaw={drone.yaw}')
+                print(f'Attitude: drone.Pitch={drone.pitch}, drone.Roll={drone.roll}, drone.Yaw={drone.yaw}')
+
+            elif frame_type == 0x1e:  # Attitude
+                drone.pitch = float((payload[0] << 8) + payload[1]) / 1000
+                drone.roll = float((payload[2] << 8) + payload[3]) / 1000
+                drone.yaw = float((payload[4] << 8) + payload[5]) / 1000
+                print(f'Attitude: drone.Pitch={drone.pitch}, drone.Roll={drone.roll}, drone.Yaw={drone.yaw}')
+
 
             elif frame_type == 0x21:  # Flight Mode
                 flight_mode = payload.decode('ascii').rstrip('\x00')
@@ -117,3 +126,5 @@ def processSerialData(drone):
 
         else:
             print(f'Unknown device address: {device_address}')
+
+
