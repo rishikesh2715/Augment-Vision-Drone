@@ -165,18 +165,25 @@ while True:
 
             # print(f'Link Statistics: Uplink RSSI Ant.1={uplink_rssi_ant1}dBm, Uplink RSSI Ant.2={uplink_rssi_ant2}dBm, Uplink Quality={uplink_quality}%, Uplink SNR={uplink_snr}db, Active Antenna={active_antenna}, RF Mode={rf_mode}, Uplink TX Power={uplink_tx_power}, Downlink RSSI={downlink_rssi}dBm, Downlink Quality={downlink_quality}%, Downlink SNR={downlink_snr}db')
         
+        # elif frame_type == 0x1e:  # Attitude
+        #     pitch, roll, yaw = struct.unpack('>hhh', payload)
+        #     pitch /= 10000           # degrees
+        #     roll /= 10000            # degrees
+        #     yaw /= 10000             # degrees
+
+        #     # Update data dictionary
+        #     data["drone.pitch"] = pitch
+        #     data["drone.roll"] = roll
+        #     data["drone.yaw"] = yaw
+
+        #     print(f'Attitude: Pitch={pitch}, Roll={roll}, Yaw={yaw}')
+
         elif frame_type == 0x1e:  # Attitude
-            pitch, roll, yaw = struct.unpack('>hhh', payload)
-            pitch /= 10000           # degrees
-            roll /= 10000            # degrees
-            yaw /= 10000             # degrees
+                pitch = float((payload[0] << 8) + payload[1]) / 10000
+                roll = float((payload[2] << 8) + payload[3]) / 10000
+                yaw = float((payload[4] << 8) + payload[5]) / 10000
+                print("[Attitude] pitch=%.3f roll=%.3f yaw=%.3f" % (pitch, roll, yaw))
 
-            # Update data dictionary
-            data["drone.pitch"] = pitch
-            data["drone.roll"] = roll
-            data["drone.yaw"] = yaw
-
-            print(f'Attitude: Pitch={pitch}, Roll={roll}, Yaw={yaw}')
 
         elif frame_type == 0x21:  # Flight Mode
             flight_mode = payload.decode('ascii').rstrip('\x00')
@@ -192,7 +199,8 @@ while True:
             # print(f'Device Info: Destination={destination}, Origin={origin}, Device Name={device_name}')
 
         else:
-            print(f'Unknown frame type: {frame_type}')
+            # print(f'Unknown frame type: {frame_type}')
+            pass
 
     else:
         print(f'Unknown device address: {device_address}')
