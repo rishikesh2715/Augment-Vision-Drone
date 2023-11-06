@@ -118,26 +118,16 @@ class CRSFParser:
         
         # Assuming payload is a list or tuple of byte values
         pitch = float((payload[0] << 8) + payload[1]) / 10000
-        roll = float(((payload[2] << 8) + payload[3]) - 65536) / 10000
+        roll = float((payload[2] << 8) + payload[3]) / 10000
         yaw = float((payload[4] << 8) + payload[5]) / 10000
 
-        # Adjust the pitch, roll, and yaw value if it is negative
-        if pitch > 32767:
-            pitch -= 65536
-
-        if roll > 32767:
-            roll -= 65536
-        
-        if yaw > 32767:
-            yaw -= 65536
-            
-        # Construct the output string with the formatted pitch, roll, and yaw
+        # formatted pitch, roll, and yaw values to print with 3 decimal places
         attitude_str = "[Attitude] pitch=%.3f roll=%.3f yaw=%.3f" % (pitch, roll, yaw)
         
         # Print the attitude string
         print(attitude_str)
         
-        # Optionally, return it if you need the value elsewhere
+        # returning the attitude string for openMCT
         return attitude_str
     
     def ParseFlightMode(self, payload):
