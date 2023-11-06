@@ -8,7 +8,7 @@ def processSerialData(drone):
 
     # Open serial port
     # ser = serial.Serial('/dev/ttyUSB0', 115200)
-    ser = serial.Serial('COM7', 57600)
+    ser = serial.Serial('COM7', 115200)
     if not ser.is_open():
         ser.open()
 
