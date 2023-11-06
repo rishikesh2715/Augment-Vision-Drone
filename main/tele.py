@@ -1,7 +1,7 @@
 from __future__ import division, print_function
 
-import sys, struct
-import argparse
+import struct
+import serial
 
 lineNumber = 0
 timeData = 0
@@ -93,10 +93,12 @@ def ParseChannels(payload):
     return "[Channel Data] "
 
 def ParseAttitude(payload):
-    pitch = float((payload[0] << 8) + payload[1]) / 1000
-    roll = float((payload[2] << 8) + payload[3]) / 1000
-    yaw = float((payload[4] << 8) + payload[5]) / 1000
-    return "[Attitude] pitch=%.3f roll=%.3f yaw=%.3f" % (pitch, roll, yaw)
+    pitch = float((payload[0] << 8) + payload[1]) / 10000
+    roll = float((payload[2] << 8) + payload[3]) / 10000
+    yaw = float((payload[4] << 8) + payload[5]) / 10000
+    attitude = "[Attitude] pitch=%.3f roll=%.3f yaw=%.3f" % (pitch, roll, yaw)
+    print(attitude)  # print the attitude values
+    return attitude
 
 def ParseFlightMode(payload):
     return '[Flight Mode] "%s"' % "".join([chr(c) for c in payload[:-1]])
@@ -188,10 +190,10 @@ def ParsePacket(packet):
     prefix = '(%d)' % lineNumber if timeData == 0 else '%10.6f [%9.6f]' % (timeData, diffTime)
     prevTimeData = timeData
     timeData = 0
+    if packet[0] != 0xea:  # Check if the packet starts with 0xea
+        return
     if crc != crc8(packet[2:-1]):
         print(prefix, dump(packet), "[CRC error]")
-        return
-    if args.ignore and command == 0x16:
         return
     parser = parsers.get(command, None)
     if parser != None:
@@ -207,7 +209,7 @@ def ParseData(data):
     # build packet for parsing
     # separate buffers for data sources so chunked data handled correctly
     while len(crossfireDataBuff) > 4:
-        if crossfireDataBuff[0] != 0x00 and crossfireDataBuff[0] != 0xee and crossfireDataBuff[0] != 0xea:
+        if crossfireDataBuff[0] != 0xea:
             print("Skipped 1 byte", dump(crossfireDataBuff[:1]))
             crossfireDataBuff = crossfireDataBuff[1:]
             continue
@@ -221,89 +223,9 @@ def ParseData(data):
         ParsePacket(crossfireDataBuff[:length+2])
         crossfireDataBuff = crossfireDataBuff[length+2:]
 
-def readSport(inp):
-    global timeData
-    line = inp.readline()
-    lineNumber += 1
-    if len(line) == 0:
-        return
-    line = line.strip('\r\n')
-    if len(line) == 0:
-        return
-    parts = line.split(': ')
-    if len(parts) < 2:
-        print("weird data: \"%s\" at line %d" % (line, lineNumber))
-        return
-    timeData = float(parts[0].strip())
-    crossfireData = parts[1].strip()
-    # convert from hex
-    parts = crossfireData.split(' ')
-    binData = [int(hex, 16) for hex in parts]
-    return binData
 
-def readCsv(inp):
-    global lineNumber
-    global timeData
-    crossfireData = []
-    line = inp.readline()
-    if ('Value' in line):
-        line = inp.readline()
-    lineNumber += 1
-    line = "".join(line.split())
-    parts = line.split(',')
-    if len(parts) < 2:
-        return []
-    crossfireData = [int(parts[1][2:4],16)]
-    if timeData == 0:
-        timeData = float(parts[0].strip())
-    return crossfireData
+ser = serial.Serial('COM7', 115200)
 
-def readHex(inp):
-    global lineNumber
-    crossfireData = []
-    line = inp.readline()
-    lineNumber += 1
-    line = "".join(line.split())
-    crossfireData = [int(hex,16) for hex in [line[i:i+2] for i in range(0, len(line), 2)]]
-    return crossfireData
-
-def readBinary(inp):
-    crossfireData = []
-    while (b := inp.read(1)):
-        crossfireData += b
-    return crossfireData
-
-
-# execution starts here
-parser = argparse.ArgumentParser()
-parser.add_argument('inputFile', default='stdin', help='Input file with capture data (stdin works)')
-parser.add_argument('-f', '--format', default='sport',
-                    choices=['bin', 'hex', 'csv', 'sport'],
-                    help='Type of input file. bin=binary, hex=ascii hex, csv=salae async serial export, sport=s.port log')
-parser.add_argument('-i', '--ignore', action="store_true",
-                    help='Ignore rc data (stick) packets')
-args = parser.parse_args()
-
-# open input
-if args.inputFile == 'stdin':
-    if args.format == 'bin':
-        inp = sys.stdin.buffer
-    else:
-        inp = sys.stdin
-else:
-    if args.format == 'bin':
-        inp = open(args.inputFile, 'rb')
-    else:
-        inp = open(args.inputFile, 'r')
-
-if args.format == 'sport':
-    get_data = readSport
-elif args.format == 'csv':
-    get_data = readCsv
-elif args.format == 'bin':
-    get_data = readBinary
-else:
-    get_data = readHex
-
-while (crossfireData := get_data(inp)):
-    ParseData(crossfireData)
+while True:
+    data = ser.read()
+    ParseData(data)
