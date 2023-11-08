@@ -23,12 +23,9 @@
   </head>
   <body>
     <header id="header">
-      <h1 class="glowing">RIS Drones</h1>
-      <!-- <a href="#top">
-        Add this anchor link to go to the top 
-        <img src="./logo.png" class="icon" alt="Logo" />
-      </a> 
-    -->
+      <a href="#top">
+        <h1 class="glowing">RIS Drones</h1>
+      </a>
       <div id="headerLinks" class="glowing">
         <a href="#explore">Explore</a>
         <!-- Add this anchor link for Donate -->
@@ -54,8 +51,8 @@
         <h2 class="glowing">Our Story</h2>
         <div class="container">
           <div class="section" id="version1section"><p>Version 1</p></div>
-          <div class="section"><p>Nights & Weekends</p></div>
-          <div class="section"><p>Arm Locks</p></div>
+          <div class="section" id="NandWsection"><p>Nights & Weekends</p></div>
+          <div class="section" id="armLocksection"><p>Arm Locks</p></div>
           <!-- Add as many sections as needed -->
         </div>
 
@@ -89,10 +86,7 @@
         <h2 class="newsletter-title glowing" id="newsletterTitle">
           Newsletter
         </h2>
-        <div
-          class="newsletter-content visibleNewsletter"
-          id="newsletterContent"
-        >
+        <div class="newsletter-content" id="newsletterContent">
           <p class="glowing">
             Join our newsletter today and get ready for take off! We'll keep you
             up-to-date with any major progress updates we make and you'll be the
@@ -124,6 +118,26 @@
             not work as anticipated. The springs were not strong enough or
             correctly positioned to fully extend the arms and there was no
             mechanism to actually hold the arms in place.
+          </p>
+        </div>
+        <div class="NandW" id="NandW">
+          <div>
+            <video controls width="45%">
+              <source src="rawARdemo.mp4" type="video/mp4" />
+              Download Our AR Demo <a href="rawARdemo.mp4">Video</a>.
+            </video>
+            <section id="NandW3Dcontainer"></section>
+          </div>
+          <p class="glowing">
+            Buildspace Nights & Weekends saw our first major software feature
+            and a new spring mechanism for the drone arms.
+          </p>
+        </div>
+        <div class="armLock" id="armLock">
+          <section id="armLock3Dcontainer"></section>
+          <p class="glowing">
+            The first thing we set out to do after getting the arms to correctly
+            deploy was to be able to lock them in place.
           </p>
         </div>
       </div>

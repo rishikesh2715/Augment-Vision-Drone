@@ -115,6 +115,7 @@ header h1 {
   background: none;
   font-family: "Audiowide", sans-serif;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 header h1::before,
@@ -321,33 +322,46 @@ video:hover::-webkit-media-controls {
 
 @keyframes newsletterAnimation {
   0% {
-    transform: scaleY(0.1) scaleX(0.5) translateY(-400%);
+    opacity: 0;
+    transform: scaleY(0.1) scaleX(0.5) translateY(-700%);
   }
   50% {
+    opacity: 1;
     transform: scaleY(0.1) scaleX(0.5) translateY(0%);
   }
   100% {
+    opacity: 1;
     transform: scaleY(1) scaleX(1) translateY(0%);
   }
 }
 .visibleNewsletter {
-  opacity: 1 !important;
   animation: newsletterAnimation 1s forwards;
-  visibility: visible !important;
-  pointer-events: auto !important;
+}
+
+@keyframes reverseNewsletterContentanimation {
+  0% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1) translateY(0%);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.1) scaleX(0.5) translateY(-700%);
+  }
+}
+.hiddenNewsletter {
+  animation: reverseNewsletterContentanimation 1s forwards;
 }
 
 /* Newsletter content styles */
 .newsletter-content {
-  visibility: hidden;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-  transform: scaleY(0.1) scaleX(0.5) translateY(-700%);
-  transition-property: opacity, transform, visibility, pointer-events;
-  transition-duration: 0.25s, 0.25s, 0.25s, 0.25s;
-  transition-timing-function: linear, linear, linear, linear;
-  pointer-events: none;
+
   z-index: 1;
   position: unset;
 }
@@ -362,7 +376,7 @@ video:hover::-webkit-media-controls {
   background-color: white; /* or whichever color you prefer for the lines */
   height: 1px; /* adjust for desired thickness */
   width: 50%; /* adjust for desired length */
-  bottom: -1vh;
+  bottom: -0.75vw;
   left: 25%;
   box-shadow: 0 0 8px #ffbc58;
 }
@@ -449,7 +463,7 @@ video:hover::-webkit-media-controls {
   background-color: white; /* or whichever color you prefer for the lines */
   height: 1px; /* adjust for desired thickness */
   width: 75%; /* adjust for desired length */
-  top: -1vw;
+  top: -1.25vw;
   left: 12.5%;
   box-shadow: 0 0 8px #ffbc58;
 }
@@ -517,49 +531,23 @@ video:hover::-webkit-media-controls {
   display: none;
 }
 
-@keyframes version1animation {
-  0% {
-    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-400%);
-  }
-  33% {
-    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-400%);
-  }
-  66% {
-    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(0%);
-  }
-  100% {
-    transform: scaleY(1) scaleX(1) translateX(0%) translateY(0%);
-  }
-}
-
 #version1 {
   border-radius: 10px;
-  background: transparent;
-  background-image: linear-gradient(
-    to bottom left,
-    rgba(20, 19, 25, 0.2),
-    rgba(20, 19, 25, 0.8)
-  );
+
   border: 2px solid transparent;
   background-origin: border-box;
   background-clip: padding-box;
-  box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
-    inset 0 0 5px 3px rgba(20, 19, 25, 1),
-    inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
+  box-shadow: 0 0 5px #ffbc58;
+  width: 90%;
   position: absolute; /* Important to position the ::before pseudo-element */
   overflow: clip;
-  top: 80px;
 
   overflow-clip-margin: 2px;
   z-index: unset;
-  opacity: 0;
-  transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-400%);
-  transition-property: opacity, transform, visibility, pointer-events;
-  transition-duration: 0.25s, 0.25s, 0.25s, 0.25s;
-  transition-timing-function: linear, linear, linear, linear;
 
-  visibility: hidden;
-  pointer-events: none;
+  display: none;
+  top: 90px;
+  left: 5%;
 }
 
 #version1::before {
@@ -574,11 +562,69 @@ video:hover::-webkit-media-controls {
   z-index: -1;
 }
 
+#version1::after {
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom left,
+    rgba(20, 19, 25, 0.05),
+    rgba(20, 19, 25, 0.95)
+  );
+  box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 5px 3px rgba(20, 19, 25, 1),
+    inset 0 0 10px 3px rgba(20, 19, 25, 1);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+@keyframes version1animation {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-400%);
+  }
+  33% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-400%);
+  }
+  66% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1) translateX(0%) translateY(0%);
+  }
+}
+
 .visibleVersion1 {
-  opacity: 1 !important;
   animation: version1animation 1s forwards;
-  visibility: visible !important;
-  pointer-events: auto !important;
+}
+
+@keyframes reverseVersion1animation {
+  0% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1) translateX(0%) translateY(0%);
+  }
+  33% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(0%);
+  }
+  66% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-400%);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-400%);
+  }
+}
+
+.hiddenVersion1 {
+  animation: reverseVersion1animation 1s forwards;
 }
 
 #version1threeDcontainer canvas {
@@ -590,6 +636,236 @@ video:hover::-webkit-media-controls {
 }
 
 #version1 p {
+  font-size: unset;
+  width: 90%;
+  margin: 0 auto 16px auto;
+}
+
+#NandW {
+  border-radius: 10px;
+
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box;
+  box-shadow: 0 0 5px #ffbc58;
+  width: 90%;
+  position: absolute; /* Important to position the ::before pseudo-element */
+  overflow: clip;
+
+  overflow-clip-margin: 2px;
+  z-index: unset;
+
+  display: none;
+  top: 90px;
+  left: 5%;
+}
+
+#NandW::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 6px solid;
+  border-image: linear-gradient(to top right, #ffbc58, white) 2;
+  z-index: -1;
+}
+
+#NandW::after {
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom left,
+    rgba(20, 19, 25, 0.05),
+    rgba(20, 19, 25, 0.95)
+  );
+  box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 5px 3px rgba(20, 19, 25, 1),
+    inset 0 0 10px 3px rgba(20, 19, 25, 1);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+@keyframes NandWanimation {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-100%);
+  }
+  33% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-100%);
+  }
+  66% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1) translateX(0%) translateY(0%);
+  }
+}
+
+.visibleNandW {
+  animation: NandWanimation 1s forwards;
+}
+
+@keyframes reverseNandWanimation {
+  0% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1) translateX(0%) translateY(0%);
+  }
+  33% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(0%);
+  }
+  66% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-100%);
+  }
+}
+
+.hiddenNandW {
+  animation: reverseNandWanimation 1s forwards;
+}
+
+#NandW div {
+  display: flex;
+  justify-content: space-around;
+}
+
+#NandW3Dcontainer {
+  width: 45%;
+}
+
+#NandW3Dcontainer canvas {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+  top: auto;
+  left: auto;
+}
+
+#NandW p {
+  font-size: unset;
+  width: 90%;
+  margin: 0 auto 16px auto;
+}
+
+#armLock {
+  border-radius: 10px;
+
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box;
+  box-shadow: 0 0 5px #ffbc58;
+  width: 90%;
+  position: absolute; /* Important to position the ::before pseudo-element */
+  overflow: clip;
+
+  overflow-clip-margin: 2px;
+  z-index: unset;
+
+  display: none;
+  top: 90px;
+  left: 5%;
+}
+
+#armLock::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 6px solid;
+  border-image: linear-gradient(to top right, #ffbc58, white) 2;
+  z-index: -1;
+}
+
+#armLock::after {
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom left,
+    rgba(20, 19, 25, 0.05),
+    rgba(20, 19, 25, 0.95)
+  );
+  box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
+    inset 0 0 5px 3px rgba(20, 19, 25, 1),
+    inset 0 0 10px 3px rgba(20, 19, 25, 1);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+@keyframes armLockanimation {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(150%);
+  }
+  33% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(150%);
+  }
+  66% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1) translateX(0%) translateY(0%);
+  }
+}
+
+.visibleArmLock {
+  animation: armLockanimation 1s forwards;
+}
+
+@keyframes reverseArmLockanimation {
+  0% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1) translateX(0%) translateY(0%);
+  }
+  33% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(0%);
+  }
+  66% {
+    opacity: 1;
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(150%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(150%);
+  }
+}
+
+.hiddenArmLock {
+  animation: reverseArmLockanimation 1s forwards;
+}
+
+#armLock3Dcontainer canvas {
+  position: relative;
+  width: 50% !important;
+  height: 50% !important;
+  top: auto;
+  left: auto;
+}
+
+#armLock p {
   font-size: unset;
   width: 90%;
   margin: 0 auto 16px auto;
@@ -795,7 +1071,7 @@ video:hover::-webkit-media-controls {
   #support-us {
     width: 92vw;
     margin: 0 auto 20vw;
-    padding-top: 30vw;
+    padding-top: 450px;
   }
   #support-us p {
     margin-bottom: 10vw;
@@ -813,5 +1089,11 @@ video:hover::-webkit-media-controls {
   }
   .newsletter-btn {
     margin-top: 10vw;
+  }
+  .newsletter-btn::before {
+    top: -5.5vw;
+  }
+  .newsletter-content p::after {
+    bottom: -1.5vw;
   }
 }

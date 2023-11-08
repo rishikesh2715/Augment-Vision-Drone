@@ -33,16 +33,6 @@ loader.load("./droneV3extended.3mf", (object) => {
     }
   });
 
-  // At this point, the 'colors' array should contain all the unique colors from your 3MF model
-  console.log(colors);
-
-  // Remove duplicates (if any)
-  const uniqueColors = Array.from(
-    new Set(colors.map((color) => color.getHexString()))
-  ).map((hex) => new THREE.Color(hex));
-
-  console.log(uniqueColors);
-
   object.scale.set(0.014, 0.014, 0.014); // Adjust the scale as needed
   object.rotation.x = (3 / 2) * Math.PI;
   scene.add(object);
@@ -268,6 +258,113 @@ const animateV1 = () => {
 
 animateV1();
 
+// N&W 3d Model
+
+const sceneNandW = new THREE.Scene();
+const cameraNandW = new THREE.PerspectiveCamera(
+  75,
+  (window.innerWidth * 0.4) / (window.innerWidth * 0.4),
+  0.1,
+  1000
+);
+cameraNandW.position.set(0, 0, 2.5); // Adjust these values to position the camera
+
+const rendererNandW = new THREE.WebGLRenderer();
+rendererNandW.setClearColor(0xabcdef, 0); // Sets a light blue color for clarity
+rendererNandW.setSize(window.innerWidth * 0.4, window.innerWidth * 0.4);
+
+document
+  .getElementById("NandW3Dcontainer")
+  .appendChild(rendererNandW.domElement);
+
+const controlsNandW = new OrbitControls(cameraNandW, rendererNandW.domElement);
+controlsNandW.update();
+
+const loaderNandW = new ThreeMFLoader();
+
+loaderNandW.load("./droneV1.3mf", (objectNandW) => {
+  objectNandW.scale.set(0.01, 0.01, 0.01); // Adjust these values as needed
+  objectNandW.rotation.x = (3 / 2) * Math.PI;
+
+  sceneNandW.add(objectNandW);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff); // Set ambient light color
+  ambientLight.intensity = 0.5;
+  sceneNandW.add(ambientLight);
+
+  // Create a point light and attach it to the camera
+  const pointLight = new THREE.PointLight(0xffffff, 25); // Adjust intensity
+  cameraNandW.add(pointLight);
+  pointLight.position.set(0, 0, 2);
+  sceneNandW.add(cameraNandW);
+
+  const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+  light.position.set(0, 1, 0);
+  sceneNandW.add(light);
+});
+
+const animateNandW = () => {
+  requestAnimationFrame(animateNandW);
+  rendererNandW.render(sceneNandW, cameraNandW);
+};
+
+animateNandW();
+
+// armLock 3d Model
+
+const sceneArmLock = new THREE.Scene();
+const cameraArmLock = new THREE.PerspectiveCamera(
+  75,
+  (window.innerWidth * 0.4) / (window.innerWidth * 0.4),
+  0.1,
+  1000
+);
+cameraArmLock.position.set(0, 0, 2.5); // Adjust these values to position the camera
+
+const rendererArmLock = new THREE.WebGLRenderer();
+rendererArmLock.setClearColor(0xabcdef, 0); // Sets a light blue color for clarity
+rendererArmLock.setSize(window.innerWidth * 0.4, window.innerWidth * 0.4);
+
+document
+  .getElementById("armLock3Dcontainer")
+  .appendChild(rendererArmLock.domElement);
+
+const controlsArmLock = new OrbitControls(
+  cameraArmLock,
+  rendererArmLock.domElement
+);
+controlsArmLock.update();
+
+const loaderArmLock = new ThreeMFLoader();
+
+loaderArmLock.load("./droneV3extended.3mf", (objectArmLock) => {
+  objectArmLock.scale.set(0.01, 0.01, 0.01); // Adjust these values as needed
+  objectArmLock.rotation.x = (3 / 2) * Math.PI;
+
+  sceneArmLock.add(objectArmLock);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff); // Set ambient light color
+  ambientLight.intensity = 0.5;
+  sceneArmLock.add(ambientLight);
+
+  // Create a point light and attach it to the camera
+  const pointLight = new THREE.PointLight(0xffffff, 25); // Adjust intensity
+  cameraArmLock.add(pointLight);
+  pointLight.position.set(0, 0, 2);
+  sceneArmLock.add(cameraArmLock);
+
+  const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+  light.position.set(0, 1, 0);
+  sceneArmLock.add(light);
+});
+
+const animateArmLock = () => {
+  requestAnimationFrame(animateArmLock);
+  rendererArmLock.render(sceneArmLock, cameraArmLock);
+};
+
+animateArmLock();
+
 document
   .getElementById("subscribe-button")
   .addEventListener("click", function () {
@@ -311,43 +408,131 @@ document
       });
   });
 
-document.addEventListener("click", function (eve) {
-  const clickedSection = eve.target.closest(".section");
-  let version1Element = document.getElementById("version1");
-  let newsletterContentElement = document.getElementById("newsletterContent");
+let version1Element = document.getElementById("version1");
+let NandWelement = document.getElementById("NandW");
+let armLockElement = document.getElementById("armLock");
+let newsletterContentElement = document.getElementById("newsletterContent");
 
-  // Reset all sections to original state
-  document
-    .querySelectorAll(".section")
-    .forEach(
-      (s) =>
-        (s.style.backgroundImage =
-          "linear-gradient(to left, rgba(20, 19, 25, 0.05), rgba(20, 19, 25, 0.95))")
-    );
+function getClassNames(elementId) {
+  let baseName = elementId.charAt(0).toUpperCase() + elementId.slice(1);
+  return {
+    visibleClass: "visible" + baseName,
+    hiddenClass: "hidden" + baseName,
+  };
+}
 
-  // If a section was clicked
-  if (clickedSection) {
-    clickedSection.style.backgroundImage =
+// Function to show a section
+function showSection(storyElement, sectionID) {
+  // Hide all sections
+  hideAllSections();
+  // Add visible class to the specified section
+  let classNames = getClassNames(storyElement.id);
+  storyElement.classList.remove(classNames.hiddenClass);
+  storyElement.classList.add(classNames.visibleClass);
+
+  // Remove newsletter content visible state
+  newsletterContentElement.classList.remove("visibleNewsletter");
+  newsletterContentElement.classList.add("hiddenNewsletter");
+
+  // Set the background for the active section
+  if (sectionID) {
+    document.getElementById(sectionID).style.backgroundImage =
       "linear-gradient(to left, rgba(20, 19, 25, 0.75), rgba(20, 19, 25, 0.95))";
   }
+
+  // Display the section
+  storyElement.style.display = "block";
+}
+
+// Function to hide a section
+function hideSection(storyElement) {
+  let classNames = getClassNames(storyElement.id);
+  // Remove visible state and add hidden class
+  storyElement.classList.remove(classNames.visibleClass);
+  storyElement.classList.add(classNames.hiddenClass);
+
+  let sectionID = storyElement.id + "section";
+  document.getElementById(sectionID).style.backgroundImage =
+    "linear-gradient(to left, rgba(20, 19, 25, 0.05), rgba(20, 19, 25, 0.95))";
+}
+
+// Hide all sections and show newsletter content by default
+function hideAllSections() {
+  [version1Element, NandWelement, armLockElement].forEach(hideSection);
+}
+
+// Set up animation end event listener to hide elements when their animation is complete
+[
+  version1Element,
+  NandWelement,
+  armLockElement,
+  newsletterContentElement,
+].forEach((mainElement) => {
+  mainElement.addEventListener("animationend", function (event) {
+    let reverseAnimationName =
+      "reverse" +
+      mainElement.id.charAt(0).toUpperCase() +
+      mainElement.id.slice(1) +
+      "animation";
+    console.log(reverseAnimationName);
+    if (event.animationName === reverseAnimationName) {
+      mainElement.style.display = "none";
+
+      if (event.animationName === "reverseNewsletterContentanimation") {
+        document.getElementById("newsletterTitle").style.textDecoration =
+          "underline";
+        document.getElementById("newsletterTitle").style.cursor = "pointer";
+      }
+    }
+  });
+});
+
+function showNewsletter() {
+  // Ensure newsletter content has correct visibility state
+  newsletterContentElement.classList.remove("hiddenNewsletter");
+  newsletterContentElement.classList.add("visibleNewsletter");
+
+  // Handle decoration and cursor for the newsletter title
+  document.getElementById("newsletterTitle").style.textDecoration = "none";
+  document.getElementById("newsletterTitle").style.cursor = "auto";
+  newsletterContentElement.style.display = "flex";
+}
+
+// Click event listener for toggling visibility
+document.addEventListener("click", function (eve) {
+  // If the click is inside version1, NandW, or armLock, do nothing
   if (
-    eve.target.id === "version1section" ||
-    eve.target.closest("#version1section") ||
-    eve.target.closest("#version1")
+    eve.target.closest("#version1") ||
+    eve.target.closest("#NandW") ||
+    eve.target.closest("#armLock")
   ) {
-    // Show version1 section and hide newsletter section
-    version1Element.classList.add("visibleVersion1");
-    newsletterContentElement.classList.remove("visibleNewsletter");
-    document.getElementById("version1section").style.backgroundImage =
-      "linear-gradient(to left, rgba(20, 19, 25, 0.75), rgba(20, 19, 25, 0.95))";
-    document.getElementById("newsletterTitle").style.textDecoration =
-      "underline";
-    document.getElementById("newsletterTitle").style.cursor = "pointer";
+    return; // Exit the function early
+  }
+
+  const clickedSection = eve.target.closest(".section");
+
+  // If a section was clicked, determine which one and make it active
+  if (clickedSection) {
+    switch (clickedSection.id) {
+      case "version1section":
+        showSection(version1Element, clickedSection.id);
+        break;
+      case "NandWsection":
+        showSection(NandWelement, clickedSection.id);
+        break;
+      case "armLocksection":
+        showSection(armLockElement, clickedSection.id);
+        break;
+      default:
+        hideAllSections();
+        break;
+    }
   } else {
-    // Show version1 section and hide newsletter section
-    version1Element.classList.remove("visibleVersion1");
-    newsletterContentElement.classList.add("visibleNewsletter");
-    document.getElementById("newsletterTitle").style.textDecoration = "none";
-    document.getElementById("newsletterTitle").style.cursor = "auto";
+    // If clicked outside of sections, hide all and show newsletter content
+    hideAllSections();
+    showNewsletter();
   }
 });
+
+// Initialize the page with all sections hidden except newsletter content
+hideAllSections();
