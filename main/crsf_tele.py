@@ -1,6 +1,36 @@
 import serial
 import struct
-import math
+from serial import Serial
+
+keys = [
+    "gps.lat",
+    "gps.lon",
+    "gps.speed",
+    "gps.heading",
+    "gps.altitude",
+    "gps.sats",
+    "gps.vario",
+    "drone.voltage",
+    "drone.current",
+    "batt.used",
+    "batt.remaining",
+    "rssi.uplink.ant1",
+    "rssi.uplink.ant2",
+    "rssi.uplink.quality",
+    "rssi.uplink.snr",
+    "rssi.no.antenna",
+    "rf.mode",
+    "rf.txpower",
+    "rssi.downlink",
+    "rssi.downlink.quality",
+    "rssi.downlink.snr",
+    "drone.pitch",
+    "drone.roll",
+    "drone.yaw",
+    "drone.flightmode",
+]
+
+
 
 crc8_dvb_s2_table = [
         0x00, 0xD5, 0x7F, 0xAA, 0xFE, 0x2B, 0x81, 0x54, 0x29, 0xFC, 0x56, 0x83, 0xD7, 0x02, 0xA8, 0x7D,
@@ -174,4 +204,10 @@ class CRSFParser:
 if __name__ == "__main__":
     parser = CRSFParser()
     parser.processSerialData()
+
+
+
+
+
+
 
