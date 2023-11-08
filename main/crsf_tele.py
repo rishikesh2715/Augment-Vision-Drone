@@ -116,10 +116,12 @@ class CRSFParser:
             print("Invalid payload length for Attitude: expected 6, got {len(payload)}")
             return
         
+        #convert to signed shorts (-32768 to 32767)
+        pitch, roll, yaw = struct.unpack('>3h', payload)
         # Assuming payload is a list or tuple of byte values
-        pitch = float((payload[0] << 8) + payload[1]) / 10000
-        roll = float((payload[2] << 8) + payload[3]) / 10000
-        yaw = float((payload[4] << 8) + payload[5]) / 10000
+        pitch = float(pitch) / 10000
+        roll = float(roll) / 10000
+        yaw = float(yaw) / 10000
 
         # formatted pitch, roll, and yaw values to print with 3 decimal places
         attitude_str = "[Attitude] pitch=%.3f roll=%.3f yaw=%.3f" % (pitch, roll, yaw)
