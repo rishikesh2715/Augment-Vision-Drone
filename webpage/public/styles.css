@@ -27,7 +27,7 @@
 
 body {
   margin: 0;
-  background-image: url(skyos.jpg);
+  background-image: url(sky5enhanced.png);
   background-size: cover;
   background-position: center;
   padding: 0;
@@ -72,12 +72,7 @@ body {
 }
 
 .glowing {
-  background-image: linear-gradient(
-    to bottom,
-    white,
-    90%,
-    #f7d7a8
-  ); /* Transition from gold to red */
+  background-image: linear-gradient(to bottom, white, 90%, #f7d7a8);
   color: transparent; /*Makes the text color transparent so only the background shows */
   -webkit-background-clip: text; /* Applies the background only to the text */
   background-clip: text;
@@ -185,8 +180,8 @@ canvas {
 #explore {
   overflow: hidden;
   display: flex;
-  justify-content: space-around;
-  height: 80vh;
+  justify-content: center;
+  height: 70vh;
 }
 
 .explore-video {
@@ -207,7 +202,7 @@ video:hover::-webkit-media-controls {
 
 .text-content {
   text-align: center;
-  width: 33vw;
+  width: 20vw;
 }
 
 .text-content h2 {
@@ -237,7 +232,7 @@ video:hover::-webkit-media-controls {
   box-shadow: inset 0 0 1px 3px rgba(20, 19, 25, 1),
     inset 0 0 5px 3px rgba(20, 19, 25, 1),
     inset 0 0 10px 3px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
-  width: 50%; /* Adjust the width as needed */
+  width: 75%; /* Adjust the width as needed */
   overflow: clip;
   overflow-clip-margin: 2px;
   z-index: unset;
@@ -309,8 +304,8 @@ video:hover::-webkit-media-controls {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 33vw;
-  margin: 0 auto 6vw;
+  width: 15vw;
+  margin: 0 0 6vw;
 }
 
 /* Newsletter title styles */
@@ -548,6 +543,8 @@ video:hover::-webkit-media-controls {
   display: none;
   top: 90px;
   left: 5%;
+
+  height: 80%;
 }
 
 #version1::before {
@@ -636,7 +633,7 @@ video:hover::-webkit-media-controls {
 }
 
 #version1 p {
-  font-size: unset;
+  font-size: 12px;
   width: 90%;
   margin: 0 auto 16px auto;
 }
@@ -658,6 +655,7 @@ video:hover::-webkit-media-controls {
   display: none;
   top: 90px;
   left: 5%;
+  height: 80%;
 }
 
 #NandW::before {
@@ -739,11 +737,15 @@ video:hover::-webkit-media-controls {
 
 #NandW div {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center;
+  height: 100%;
 }
 
 #NandW3Dcontainer {
-  width: 45%;
+  width: 90%;
+  height: 50%;
 }
 
 #NandW3Dcontainer canvas {
@@ -755,7 +757,7 @@ video:hover::-webkit-media-controls {
 }
 
 #NandW p {
-  font-size: unset;
+  font-size: 12px;
   width: 90%;
   margin: 0 auto 16px auto;
 }
@@ -777,6 +779,7 @@ video:hover::-webkit-media-controls {
   display: none;
   top: 90px;
   left: 5%;
+  height: 80%;
 }
 
 #armLock::before {
@@ -866,7 +869,7 @@ video:hover::-webkit-media-controls {
 }
 
 #armLock p {
-  font-size: unset;
+  font-size: 12px;
   width: 90%;
   margin: 0 auto 16px auto;
 }
@@ -876,8 +879,8 @@ video:hover::-webkit-media-controls {
 #support-us {
   text-align: center;
   border-radius: 10px; /* Rounded corners */
-  width: 33vw;
-  margin: 0 auto 6vw;
+  width: 15vw;
+  margin: 0 0 6vw;
   padding-left: 1vw;
 }
 
@@ -896,10 +899,15 @@ video:hover::-webkit-media-controls {
   font-size: 28px;
 }
 
+#support-us h3 {
+  font-size: 12px;
+  background-image: linear-gradient(to bottom, white, #f7d7a8);
+}
+
 /* Description styles */
 #support-us p {
   color: transparent; /* White text color */
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.5;
   margin-bottom: 2vw;
   text-transform: none;
@@ -939,6 +947,70 @@ video:hover::-webkit-media-controls {
   box-shadow: 0 0 10px #ffbc58;
 }
 
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<< PATREON >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+#patreon {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: normal;
+}
+/* Container for the input */
+#patreon div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 100px;
+  background: transparent;
+  background-image: linear-gradient(
+    to bottom left,
+    rgba(20, 19, 25, 0.05),
+    rgba(20, 19, 25, 0.95)
+  );
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box;
+  box-shadow: inset 0 0 1px 14px rgba(20, 19, 25, 1),
+    inset 0 0 5px 14px rgba(20, 19, 25, 1),
+    inset 0 0 10px 14px rgba(20, 19, 25, 1), 0 0 5px #ffbc58;
+  width: 50%;
+  position: relative; /* Important to position the ::before pseudo-element */
+  overflow: clip;
+
+  overflow-clip-margin: 2px;
+  z-index: unset;
+  padding: 8px 4px;
+  margin-top: 1vh;
+  height: 8vh;
+  margin-bottom: 1vh;
+}
+
+#patreon div::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 16px solid;
+  border-image: linear-gradient(to top right, #ffbc58, white) 2;
+  z-index: -1;
+}
+
+#patreon div p {
+  width: 70%;
+}
+
+.patreon-icon {
+  filter: drop-shadow(0 0 5px #ffbc58);
+}
+
+.patreon-icon:hover {
+  filter: drop-shadow(0 0 10px #ffbc58);
+}
+
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<< SOCIAL MEDIA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. */
 
 /* Social Media Icons */
@@ -947,7 +1019,7 @@ video:hover::-webkit-media-controls {
   justify-content: space-around;
   align-items: center;
   padding: 2rem 0;
-  width: 50%;
+  width: 75%;
 }
 
 /* Container for the input */
@@ -1095,5 +1167,10 @@ video:hover::-webkit-media-controls {
   }
   .newsletter-content p::after {
     bottom: -1.5vw;
+  }
+  #patreon div {
+    width: 90%;
+    height: 30vh;
+    border-radius: 50px;
   }
 }

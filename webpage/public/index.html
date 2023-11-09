@@ -102,7 +102,7 @@
             />
           </div>
           <button class="newsletter-btn" id="subscribe-button">
-            <p class="glowing">Subscribe</p>
+            <p class="glowing">Learn More</p>
           </button>
           <img
             src="./newsletter2.svg"
@@ -122,16 +122,16 @@
         </div>
         <div class="NandW" id="NandW">
           <div>
-            <video controls width="45%">
+            <section id="NandW3Dcontainer"></section>
+            <video controls width="90%">
               <source src="rawARdemo.mp4" type="video/mp4" />
               Download Our AR Demo <a href="rawARdemo.mp4">Video</a>.
             </video>
-            <section id="NandW3Dcontainer"></section>
+            <p class="glowing">
+              Buildspace Nights & Weekends saw our first major software feature
+              and a new spring mechanism for the drone arms.
+            </p>
           </div>
-          <p class="glowing">
-            Buildspace Nights & Weekends saw our first major software feature
-            and a new spring mechanism for the drone arms.
-          </p>
         </div>
         <div class="armLock" id="armLock">
           <section id="armLock3Dcontainer"></section>
@@ -142,13 +142,31 @@
         </div>
       </div>
       <section id="support-us">
-        <h2 class="glowing">
-          Discover the Future of Flight: Collapsible, Portable, and Smart
-        </h2>
+        <h2 class="glowing">Features</h2>
+        <h3 class="glowing">Rapidly Deployable</h3>
         <p class="glowing">
-          Our drone combines cutting-edge technology with unmatched portability.
-          Fly anywhere, anytime.
+          Our drone uses a collapsible, spring-powered arm mechanism to deploy
+          and fly within seconds, while being sturdy enough in collapsed form to
+          carry without a protective case.
         </p>
+        <h3 class="glowing">Enhanced Software</h3>
+        <p class="glowing">
+          With an enhanced telemetry gui and object location software, our drone
+          is designed to maximize the amount of data that can be sent and acted
+          upon by the user.
+        </p>
+        <h3 class="glowing">Affordability</h3>
+        <p class="glowing">
+          Our drone diverges from the high-cost domain of drones typically
+          priced in the tens of thousands of dollars. It is constructed using
+          standard components found in racing-style quadcopters, and it reduces
+          onboard weight and complexity by delegating intensive computational
+          tasks to the ground-control systems.
+        </p>
+      </section>
+    </section>
+    <section id="patreon">
+      <div>
         <!-- Title -->
         <h2 class="glowing">Support Us</h2>
 
@@ -161,15 +179,10 @@
         </p>
 
         <!-- Patreon Button -->
-        <a
-          href="https://www.patreon.com/RISDrones"
-          target="_blank"
-          class="btn-orange"
-          >Support on Patreon</a
-        >
-        <!-- Icon -->
-        <img src="supportus.svg" alt="Support Icon" class="icon" />
-      </section>
+        <a href="https://www.patreon.com/RISDrones" target="_blank">
+          <img src="./patreon.svg" alt="Patreon Icon" class="patreon-icon" />
+        </a>
+      </div>
     </section>
 
     <script src="/script.js"></script>
