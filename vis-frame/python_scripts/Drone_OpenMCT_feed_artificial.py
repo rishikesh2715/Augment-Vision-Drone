@@ -7,33 +7,33 @@
 # # Constants for UDP sender
 # UDP_IP = "127.0.0.1"  # standard ip udp (localhost)
 # UDP_PORT = 50020  # chosen port to OpenMCT (same as in telemetry server object)
-keys = [
-    "gps.lat",
-    "gps.lon",
-    "gps.speed",
-    "gps.heading",
-    "gps.altitude",
-    "gps.sats",
-    "gps.vario",
-    "drone.voltage",
-    "drone.current",
-    "batt.used",
-    "batt.remaining",
-    "rssi.uplink.ant1",
-    "rssi.uplink.ant2",
-    "rssi.uplink.quality",
-    "rssi.uplink.snr",
-    "rssi.no.antenna",
-    "rf.mode",
-    "rf.txpower",
-    "rssi.downlink",
-    "rssi.downlink.quality",
-    "rssi.downlink.snr",
-    "drone.pitch",
-    "drone.roll",
-    "drone.yaw",
-    "drone.flightmode",
-]
+# keys = [
+#     "gps.lat",
+#     "gps.lon",
+#     "gps.speed",
+#     "gps.heading",
+#     "gps.altitude",
+#     "gps.sats",
+#     "gps.vario",
+#     "drone.voltage",
+#     "drone.current",
+#     "batt.used",
+#     "batt.remaining",
+#     "rssi.uplink.ant1",
+#     "rssi.uplink.ant2",
+#     "rssi.uplink.quality",
+#     "rssi.uplink.snr",
+#     "rssi.no.antenna",
+#     "rf.mode",
+#     "rf.txpower",
+#     "rssi.downlink",
+#     "rssi.downlink.quality",
+#     "rssi.downlink.snr",
+#     "drone.pitch",
+#     "drone.roll",
+#     "drone.yaw",
+#     "drone.flightmode",
+# ]
 
 # # Constants for Serial Reader
 # RADIO_ADDRESS = 0xea
@@ -142,26 +142,26 @@ keys = [
 #             # print(f'Battery: Voltage={voltage}, Current={current}, Used={used}, Remaining={remaining}')
 
 
-        # elif frame_type == 0x14:  # Link Statistics
-        #     # Unpack data
-        #     # data = struct.unpack('>BBBBBBBbbb', payload)
-        #     # print(f'Link Statistics: Uplink RSSI Ant. 1={data[0]}, Uplink RSSI Ant. 2={data[1]}, Uplink Package success rate / Link quality={data[2]}, Uplink SNR={data[3]}, Diversity active antenna={data[4]}, RF Mode={data[5]}, Uplink TX Power={data[6]}, Downlink RSSI={data[7]}, Downlink package success rate / Link quality={data[8]}, Downlink SNR={data[9]}')
-        #     uplink_rssi_ant1, uplink_rssi_ant2, uplink_quality, uplink_snr, active_antenna, rf_mode, uplink_tx_power, downlink_rssi, downlink_quality, downlink_snr = struct.unpack('>bbbBbbbbbB', payload)
-        #     uplink_rssi_ant1 /= -1
-        #     uplink_rssi_ant2 /= -1
-        #     downlink_rssi /= -1
+#         elif frame_type == 0x14:  # Link Statistics
+#             # Unpack data
+#             # data = struct.unpack('>BBBBBBBbbb', payload)
+#             # print(f'Link Statistics: Uplink RSSI Ant. 1={data[0]}, Uplink RSSI Ant. 2={data[1]}, Uplink Package success rate / Link quality={data[2]}, Uplink SNR={data[3]}, Diversity active antenna={data[4]}, RF Mode={data[5]}, Uplink TX Power={data[6]}, Downlink RSSI={data[7]}, Downlink package success rate / Link quality={data[8]}, Downlink SNR={data[9]}')
+#             uplink_rssi_ant1, uplink_rssi_ant2, uplink_quality, uplink_snr, active_antenna, rf_mode, uplink_tx_power, downlink_rssi, downlink_quality, downlink_snr = struct.unpack('>bbbBbbbbbB', payload)
+#             uplink_rssi_ant1 /= -1
+#             uplink_rssi_ant2 /= -1
+#             downlink_rssi /= -1
 
-        #     # Update data dictionary
-        #     data["rssi.uplink.ant1"] = uplink_rssi_ant1
-        #     data["rssi.uplink.ant2"] = uplink_rssi_ant2
-        #     data["rssi.uplink.quality"] = uplink_quality
-        #     data["rssi.uplink.snr"] = uplink_snr
-        #     data["rssi.no.antenna"] = active_antenna
-        #     data["rf.mode"] = rf_mode
-        #     data["rf.txpower"] = uplink_tx_power
-        #     data["rssi.downlink"] = downlink_rssi
-        #     data["rssi.downlink.quality"] = downlink_quality
-        #     data["rssi.downlink.snr"] = downlink_snr
+#             # Update data dictionary
+#             data["rssi.uplink.ant1"] = uplink_rssi_ant1
+#             data["rssi.uplink.ant2"] = uplink_rssi_ant2
+#             data["rssi.uplink.quality"] = uplink_quality
+#             data["rssi.uplink.snr"] = uplink_snr
+#             data["rssi.no.antenna"] = active_antenna
+#             data["rf.mode"] = rf_mode
+#             data["rf.txpower"] = uplink_tx_power
+#             data["rssi.downlink"] = downlink_rssi
+#             data["rssi.downlink.quality"] = downlink_quality
+#             data["rssi.downlink.snr"] = downlink_snr
 
 #             # print(f'Link Statistics: Uplink RSSI Ant.1={uplink_rssi_ant1}dBm, Uplink RSSI Ant.2={uplink_rssi_ant2}dBm, Uplink Quality={uplink_quality}%, Uplink SNR={uplink_snr}db, Active Antenna={active_antenna}, RF Mode={rf_mode}, Uplink TX Power={uplink_tx_power}, Downlink RSSI={downlink_rssi}dBm, Downlink Quality={downlink_quality}%, Downlink SNR={downlink_snr}db')
         
@@ -179,10 +179,14 @@ keys = [
 #         #     print(f'Attitude: Pitch={pitch}, Roll={roll}, Yaw={yaw}')
 
 #         elif frame_type == 0x1e:  # Attitude
-#                 pitch = float((payload[0] << 8) + payload[1]) / 10000
-#                 roll = float((payload[2] << 8) + payload[3]) / 10000
-#                 yaw = float((payload[4] << 8) + payload[5]) / 10000
-#                 print("[Attitude] pitch=%.3f roll=%.3f yaw=%.3f" % (pitch, roll, yaw))
+#             if len(payload) !=6:
+#                 print(f"Invalid payload length for Attitude: expected 6, got {len(payload)}")
+#                 pass
+
+#             pitch = float((payload[0] << 8) + payload[1]) / 10000
+#             roll = float((payload[2] << 8) + payload[3]) / 10000
+#             yaw = float((payload[4] << 8) + payload[5]) / 10000
+#             print("[Attitude] pitch=%.3f roll=%.3f yaw=%.3f" % (pitch, roll, yaw))
 
 
 #         elif frame_type == 0x21:  # Flight Mode
@@ -224,8 +228,6 @@ import socket
 import time
 from serial import Serial
 import struct
-
-
 
 # Constants for UDP sender
 keys = [
@@ -321,10 +323,10 @@ class DroneTelemetry:
                 print(f'Unknown device address: {device_address}')
 
             # Optional: send data after every packet read; tweak depending on use case
-            # self.send_to_udp()
+            self.send_to_udp()
 
             # Small delay to prevent tight loop that hogs CPU resources
-            time.sleep(0.1)  # Adjust sleep time as needed
+            # time.sleep(0.1)  # Adjust sleep time as needed
 
     def parse_packet(self):
         frame_length = struct.unpack('<B', self.ser.read(1))[0]
