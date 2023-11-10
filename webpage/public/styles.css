@@ -692,11 +692,11 @@ video:hover::-webkit-media-controls {
 @keyframes NandWanimation {
   0% {
     opacity: 0;
-    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-100%);
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-250%);
   }
   33% {
     opacity: 1;
-    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-100%);
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-250%);
   }
   66% {
     opacity: 1;
@@ -723,11 +723,11 @@ video:hover::-webkit-media-controls {
   }
   66% {
     opacity: 1;
-    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-100%);
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-250%);
   }
   100% {
     opacity: 0;
-    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-100%);
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-250%);
   }
 }
 
@@ -816,11 +816,11 @@ video:hover::-webkit-media-controls {
 @keyframes armLockanimation {
   0% {
     opacity: 0;
-    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(150%);
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-75%);
   }
   33% {
     opacity: 1;
-    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(150%);
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-75%);
   }
   66% {
     opacity: 1;
@@ -847,12 +847,12 @@ video:hover::-webkit-media-controls {
   }
   66% {
     opacity: 1;
-    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(150%);
+    transform: scaleY(0.1) scaleX(0.5) translateX(0%) translateY(-75%);
   }
 
   100% {
     opacity: 0;
-    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(150%);
+    transform: scaleY(0.1) scaleX(0.5) translateX(-200%) translateY(-75%);
   }
 }
 
