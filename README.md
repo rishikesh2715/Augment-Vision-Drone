@@ -23,6 +23,12 @@ https://github.com/rishikesh2715/Augment-Vision-Drone/assets/72249404/c2243ad8-5
 
 The objective of this phase is to overlay the detected object's distance and direction onto a VR headset, ensuring it aligns with a team member's line of sight. This part of the project is still in progress.
 
+### 4. Real-time Telemetry Server
+
+https://github.com/rishikesh2715/Augment-Vision-Drone/assets/72249404/88e55e43-e3a6-4d88-80d7-9f065cdf25ee
+
+
+
 ## Contributing
 If you're passionate about drones, AR, and the future of aerial technology, we'd love to have you on board! If you're interested in being a part of this project and potentially joining a startup in the future, please contact us. We are actively seeking motivated individuals to contribute to this innovative venture.
 
