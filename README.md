@@ -27,7 +27,14 @@ The objective of this phase is to overlay the detected object's distance and dir
 
 https://github.com/rishikesh2715/Augment-Vision-Drone/assets/72249404/88e55e43-e3a6-4d88-80d7-9f065cdf25ee
 
+Our Real-Time Telemetry Server collects and displays live telemetry data from the drone, including battery voltage, current consumption, attitude values, GPS coordinates, RX uplink/downlink, SNR, and power values. This server is accessible globally via an internet connection.
 
+**Current Status and Issues:**
+- **Map Display Issue:** We are currently facing a bug where the map does not display correctly on the server.
+- **Battery Usage Readings:** There is a discrepancy in the used battery value readings.
+- **GPS Heading Issue:** The GPS heading data seems to be stuck and is not updating properly.
+
+We are actively working to resolve these issues to enhance the server's reliability and functionality.
 
 ## Contributing
 If you're passionate about drones, AR, and the future of aerial technology, we'd love to have you on board! If you're interested in being a part of this project and potentially joining a startup in the future, please contact us. We are actively seeking motivated individuals to contribute to this innovative venture.
