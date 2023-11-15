@@ -41,6 +41,6 @@ If you're passionate about drones, AR, and the future of aerial technology, we'd
 
 ## Contact
 
-For any questions or collaboration opportunities, please contact us at rishikesh3304@gmail.com or stephen.gillet@gmail.com
+For any questions or collaboration opportunities, please contact us at rishikesh3304@gmail.com or steve0gillet@proton.me.
 
 
